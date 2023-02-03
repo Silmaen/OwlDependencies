@@ -20,6 +20,13 @@ Version: 1.0
 Depends: None
 Source: [github](https://github.com/scottt/debugbreak)
 
+### Magic Enum
+
+
+Version: 0.8.2
+Depends: None
+Source: [github](https://github.com/Neargye/magic_enum)
+
 ## Libraries
 
 ### FMT
