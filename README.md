@@ -12,6 +12,14 @@ python3 PyUtils/regenerate.py
 
 A cmake target `regenerate` will do the same or with the `all` target.
 
+## header-only
+
+### DebugBreak
+
+Version: 1.0
+Depends: None
+Source: [github](https://github.com/scottt/debugbreak)
+
 ## Libraries
 
 ### FMT
