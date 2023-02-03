@@ -11,15 +11,32 @@ def build_config(where: Path, config: str = ""):
 
 
 def main():
-    import sys
-    info = System()
+    from argparse import ArgumentParser
+    parser = ArgumentParser()
+    parser.add_argument("--library", "-l", type=str, default="", help="The libreary to construct (default: all)")
+    args = parser.parse_args()
+
     root = get_root_dir() / "Libs"
+    to_do = "all"
+    if args.library not in [None, ""]:
+        if not (root / args.library ).exists():
+            log(F"No library {args.library} found!", levels["error"])
+            exit(-666)
+        to_do = args.library
+
     for lib in root.iterdir():
+        if to_do not in ["all", lib.name]:
+            continue
         if not (lib / "conanfile.py ").exists():
             continue
-        for config in ["Release", "Debug"]:
+        if (lib / "configs").exists():
+            with open(lib / "configs") as fc:
+                lines = [l.strip() for l in fc.readlines()]
+        else:
+            lines = [""]
+        for config in lines:
             if build_config(lib, config) != 0:
-                print(F"ERROR in BUILD of {lib} config {config}", sys.stderr)
+                log(F"in BUILD of {lib} config {config}", levels["error"])
                 exit(-666)
 
 

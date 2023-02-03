@@ -1,5 +1,26 @@
 from pathlib import Path
 
+logLevel = 2
+levels = {
+    "error":   0,
+    "warning": 1,
+    "message": 2,
+    "debug":   3
+}
+
+
+def log(msg: str, lvl: int = levels["message"]):
+    from sys import stderr
+    error_level = 2
+    if lvl > logLevel:
+        return
+    lvl = min(3, max(0, lvl))
+    pre = ["ERROR ", "WARNING ", "", "DEBUG "][lvl]
+    if lvl < error_level:
+        print(pre + msg, file=stderr)
+    else:
+        print(pre + msg, file=stderr)
+
 
 def get_root_dir():
     return Path(__file__).parent.parent
@@ -47,4 +68,3 @@ def run(cmd: str):
         print(F"EXCEPTION during run {err}", file=sys.stderr)
         return -666
     return 0
-
