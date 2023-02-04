@@ -17,7 +17,7 @@ A cmake target `regenerate` will do the same or with the `all` target.
 |     | name             | version | dependency | link                                            |
 |-----|------------------|---------|------------|-------------------------------------------------|
 | `X` | debugbreak       | 1.0     |            | [github](https://github.com/scottt/debugbreak)  |
-| ` ` | entt             |         |            |                                                 |
+| `X` | entt             | 3.11.1  |            | [github](https://github.com/skypjack/entt)      |
 | `X` | magic_enum       | 0.8.2   |            | [github](https://github.com/Neargye/magic_enum) |
 |     |                  |         |            |                                                 |
 | `X` | fmt              | 9.1.0   |            | [github](https://github.com/fmtlib/fmt)         |
@@ -50,6 +50,12 @@ Source: [github](https://github.com/scottt/debugbreak)
 Version: 0.8.2
 Depends: None
 Source: [github](https://github.com/Neargye/magic_enum)
+
+## entt
+
+Version: 3.11.1
+Depends: None
+Source: [github](https://github.com/skypjack/entt)
 
 ## Libraries
 
