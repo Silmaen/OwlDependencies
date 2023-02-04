@@ -69,7 +69,7 @@ def get_ordered_libs(name: str = ""):
     ordered_list_name = []
     while len(raw_list) > 0:
         for lib in raw_list:
-            if lib.hes_depends():
+            if not lib.has_depends():
                 ordered_list.append(lib)
                 ordered_list_name.append(lib.path.name)
                 raw_list.remove(lib)
