@@ -22,7 +22,7 @@ A cmake target `regenerate` will do the same or with the `all` target.
 |     |                  |         |            |                                                 |
 | `X` | fmt              | 9.1.0   |            | [github](https://github.com/fmtlib/fmt)         |
 | `X` | glad             | 0.1.36  |            | [glad](https://glad.dav1d.de/)                  |
-| ` ` | glfw             |         |            |                                                 |
+| ` ` | glfw             | 3.3.8   |            | [github](https://github.com/glfw/glfw)          |
 | ` ` | glm              |         |            |                                                 |
 | ` ` | glslang          |         |            |                                                 |
 | ` ` | googletest       |         |            |                                                 |
@@ -51,7 +51,7 @@ Version: 0.8.2
 Depends: None
 Source: [github](https://github.com/Neargye/magic_enum)
 
-## entt
+### entt
 
 Version: 3.11.1
 Depends: None
@@ -59,7 +59,7 @@ Source: [github](https://github.com/skypjack/entt)
 
 ## Libraries
 
-### FMT
+### fmt
 
 Version: 9.1.0
 Depends: None
@@ -71,7 +71,13 @@ Version: 0.1.36
 Depends: None
 Source : [glad](https://glad.dav1d.de/)
 
-### SPDLOG
+### glfw
+
+Version: 3.3.8
+Depends:
+Source: [github](https://github.com/glfw/glfw)
+
+### spdlog
 
 Version: 1.11.0
 Depends: fmt

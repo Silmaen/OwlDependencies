@@ -6,12 +6,12 @@ def build_config(lib: Library):
     cmd = F"conan create {lib.path}"
     if lib.is_header_only():
         if run(cmd) != 0:
-            log(F"in packaging of header-only: {lib}", levels["error"])
+            log(F"in packaging of header-only: {lib.path.name}", levels["error"])
             exit(-666)
     else:
         for config in lib.config:
-            if run(F"{cmd} -s build_type {config}") != 0:
-                log(F"in BUILD of {lib} config {config}", levels["error"])
+            if run(F"{cmd} -s build_type={config}") != 0:
+                log(F"in BUILD of {lib.path.name} config {config}", levels["error"])
                 exit(-666)
 
 
