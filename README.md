@@ -22,8 +22,8 @@ A cmake target `regenerate` will do the same or with the `all` target.
 |     |                  |         |            |                                                 |
 | `X` | fmt              | 9.1.0   |            | [github](https://github.com/fmtlib/fmt)         |
 | `X` | glad             | 0.1.36  |            | [glad](https://glad.dav1d.de/)                  |
-| ` ` | glfw             | 3.3.8   |            | [github](https://github.com/glfw/glfw)          |
-| ` ` | glm              |         |            |                                                 |
+| `X` | glfw             | 3.3.8   |            | [github](https://github.com/glfw/glfw)          |
+| `X` | glm              | 0.9.9.8 |            | [github](https://github.com/g-truc/glm)         |
 | ` ` | glslang          |         |            |                                                 |
 | ` ` | googletest       |         |            |                                                 |
 | ` ` | imgui            |         |            |                                                 |
@@ -43,19 +43,19 @@ A cmake target `regenerate` will do the same or with the `all` target.
 
 Version: 1.0
 Depends: None
-Source: [github](https://github.com/scottt/debugbreak)
+Source : [github](https://github.com/scottt/debugbreak)
 
 ### Magic Enum
 
 Version: 0.8.2
 Depends: None
-Source: [github](https://github.com/Neargye/magic_enum)
+Source : [github](https://github.com/Neargye/magic_enum)
 
 ### entt
 
 Version: 3.11.1
 Depends: None
-Source: [github](https://github.com/skypjack/entt)
+Source : [github](https://github.com/skypjack/entt)
 
 ## Libraries
 
@@ -75,7 +75,13 @@ Source : [glad](https://glad.dav1d.de/)
 
 Version: 3.3.8
 Depends:
-Source: [github](https://github.com/glfw/glfw)
+Source : [github](https://github.com/glfw/glfw)
+
+### glm
+
+Version: 0.9.9.8
+Depends:
+Source : [github](https://github.com/g-truc/glm)
 
 ### spdlog
 
