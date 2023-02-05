@@ -19,6 +19,7 @@ A cmake target `regenerate` will do the same or with the `all` target.
 | `X` | debugbreak       | 1.0     |            | [github](https://github.com/scottt/debugbreak)  |
 | `X` | entt             | 3.11.1  |            | [github](https://github.com/skypjack/entt)      |
 | `X` | magic_enum       | 0.8.2   |            | [github](https://github.com/Neargye/magic_enum) |
+| `X` | stb_image        | 2.28    |            | [github](https://github.com/nothings/stb)       |
 |     |                  |         |            |                                                 |
 | `X` | fmt              | 9.1.0   |            | [github](https://github.com/fmtlib/fmt)         |
 | `X` | glad             | 0.1.36  |            | [glad](https://glad.dav1d.de/)                  |
@@ -34,7 +35,6 @@ A cmake target `regenerate` will do the same or with the `all` target.
 | ` ` | SPIRV-Cross      |         |            |                                                 |
 | ` ` | SPIRV-Headers    |         |            |                                                 |
 | ` ` | SPIRV-Tools      |         |            |                                                 |
-| ` ` | stb              |         |            |                                                 |
 | ` ` | yaml-cpp         |         |            |                                                 |
 
 ## header-only
@@ -56,6 +56,12 @@ Source : [github](https://github.com/Neargye/magic_enum)
 Version: 3.11.1
 Depends: None
 Source : [github](https://github.com/skypjack/entt)
+
+### stb
+
+Version: stb_image-2.28
+Depends:
+Source : [github](https://github.com/nothings/stb)
 
 ## Libraries
 

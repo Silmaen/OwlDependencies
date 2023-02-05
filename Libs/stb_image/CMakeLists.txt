@@ -1,9 +1,8 @@
 cmake_minimum_required(VERSION 3.20)
 
-set(PROJECT_ID debugbreak)
-set(PROJECT_VERSION 1.0)
-set((PROJECT_DEST_INC debugbreak))
-
+set(PROJECT_ID stb_image)
+set(PROJECT_VERSION 2.28)
+set((PROJECT_DEST_INC stb))
 
 project(${PROJECT_ID} VERSION ${PROJECT_VERSION} LANGUAGES CXX)
 include(GNUInstallDirs)
