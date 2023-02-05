@@ -14,28 +14,28 @@ A cmake target `regenerate` will do the same or with the `all` target.
 
 ## lib summary
 
-|     | name             | version | dependency | link                                            |
-|-----|------------------|---------|------------|-------------------------------------------------|
-| `X` | debugbreak       | 1.0     |            | [github](https://github.com/scottt/debugbreak)  |
-| `X` | entt             | 3.11.1  |            | [github](https://github.com/skypjack/entt)      |
-| `X` | magic_enum       | 0.8.2   |            | [github](https://github.com/Neargye/magic_enum) |
-| `X` | stb_image        | 2.28    |            | [github](https://github.com/nothings/stb)       |
-|     |                  |         |            |                                                 |
-| `X` | fmt              | 9.1.0   |            | [github](https://github.com/fmtlib/fmt)         |
-| `X` | glad             | 0.1.36  |            | [glad](https://glad.dav1d.de/)                  |
-| `X` | glfw             | 3.3.8   |            | [github](https://github.com/glfw/glfw)          |
-| `X` | glm              | 0.9.9.8 |            | [github](https://github.com/g-truc/glm)         |
-| ` ` | glslang          |         |            |                                                 |
-| ` ` | googletest       |         |            |                                                 |
-| ` ` | imgui            |         |            |                                                 |
-| ` ` | imguizmo         |         |            |                                                 |
-| ` ` | nativefiledialog |         |            |                                                 |
-| ` ` | shaderc          |         |            |                                                 |
-| `X` | spdlog           | 1.11.0  | fmt        | [github](https://github.com/gabime/spdlog)      |
-| ` ` | SPIRV-Cross      |         |            |                                                 |
-| ` ` | SPIRV-Headers    |         |            |                                                 |
-| ` ` | SPIRV-Tools      |         |            |                                                 |
-| `X` | yaml-cpp         | 0.70    |            | [github](https://github.com/jbeder/yaml-cpp)    |
+|     | name          | version | dependency | link                                                        |
+|-----|---------------|---------|------------|-------------------------------------------------------------|
+| `X` | debugbreak    | 1.0     |            | [github](https://github.com/scottt/debugbreak)              |
+| `X` | entt          | 3.11.1  |            | [github](https://github.com/skypjack/entt)                  |
+| `X` | magic_enum    | 0.8.2   |            | [github](https://github.com/Neargye/magic_enum)             |
+| `X` | stb_image     | 2.28    |            | [github](https://github.com/nothings/stb)                   |
+|     |               |         |            |                                                             |
+| `X` | fmt           | 9.1.0   |            | [github](https://github.com/fmtlib/fmt)                     |
+| `X` | glad          | 0.1.36  |            | [glad](https://glad.dav1d.de/)                              |
+| `X` | glfw          | 3.3.8   |            | [github](https://github.com/glfw/glfw)                      |
+| `X` | glm           | 0.9.9.8 |            | [github](https://github.com/g-truc/glm)                     |
+| ` ` | glslang       |         |            |                                                             |
+| ` ` | googletest    |         |            |                                                             |
+| ` ` | imgui         |         |            |                                                             |
+| ` ` | imguizmo      |         |            |                                                             |
+| `X` | nfd           | 1.0.1   |            | [github](https://github.com/btzy/nativefiledialog-extended) |
+| ` ` | shaderc       |         |            |                                                             |
+| `X` | spdlog        | 1.11.0  | fmt        | [github](https://github.com/gabime/spdlog)                  |
+| ` ` | SPIRV-Cross   |         |            |                                                             |
+| ` ` | SPIRV-Headers |         |            |                                                             |
+| ` ` | SPIRV-Tools   |         |            |                                                             |
+| `X` | yaml-cpp      | 0.70    |            | [github](https://github.com/jbeder/yaml-cpp)                |
 
 ## header-only
 
@@ -88,6 +88,13 @@ Source : [github](https://github.com/glfw/glfw)
 Version: 0.9.9.8
 Depends:
 Source : [github](https://github.com/g-truc/glm)
+
+### nfd
+
+We use the 'extended' version which is a fork of the original one not maintained. 
+Version: 1.0.1
+Depends:
+Source : [github](https://github.com/btzy/nativefiledialog-extended)
 
 ### spdlog
 
