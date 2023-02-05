@@ -12,6 +12,12 @@ python3 PyUtils/regenerate.py
 
 A cmake target `regenerate` will do the same or with the `all` target.
 
+Alternatively to build only one of the lib, use:
+
+```bash
+python3 PyUtils/regenerate.py -l <lib name>
+```
+
 ## lib summary
 
 |     | name          | version | dependency | link                                                        |
@@ -26,7 +32,7 @@ A cmake target `regenerate` will do the same or with the `all` target.
 | `X` | glfw          | 3.3.8   |            | [github](https://github.com/glfw/glfw)                      |
 | `X` | glm           | 0.9.9.8 |            | [github](https://github.com/g-truc/glm)                     |
 | ` ` | glslang       |         |            |                                                             |
-| ` ` | googletest    |         |            |                                                             |
+| `X` | googletest    | 1.13.0  |            | [github](https://github.com/google/googletest)              |
 | ` ` | imgui         |         |            |                                                             |
 | ` ` | imguizmo      |         |            |                                                             |
 | `X` | nfd           | 1.0.1   |            | [github](https://github.com/btzy/nativefiledialog-extended) |
@@ -88,6 +94,12 @@ Source : [github](https://github.com/glfw/glfw)
 Version: 0.9.9.8
 Depends:
 Source : [github](https://github.com/g-truc/glm)
+
+### googletest
+
+Version: 1.13.0
+Depends:
+Source : [github](https://github.com/google/googletest)
 
 ### nfd
 
