@@ -35,7 +35,7 @@ A cmake target `regenerate` will do the same or with the `all` target.
 | ` ` | SPIRV-Cross      |         |            |                                                 |
 | ` ` | SPIRV-Headers    |         |            |                                                 |
 | ` ` | SPIRV-Tools      |         |            |                                                 |
-| ` ` | yaml-cpp         |         |            |                                                 |
+| `X` | yaml-cpp         | 0.70    |            | [github](https://github.com/jbeder/yaml-cpp)    |
 
 ## header-only
 
