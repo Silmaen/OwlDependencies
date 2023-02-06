@@ -34,7 +34,7 @@ python3 PyUtils/regenerate.py -l <lib name>
 | ` ` | glslang       |                              |            |                                                             |
 | `X` | googletest    | 1.13.0                       |            | [github](https://github.com/google/googletest)              |
 | `X` | imgui         | git submodule branch Docking |            | [github](https://github.com/ocornut/imgui)                  |
-| ` ` | imguizmo      |                              |            |                                                             |
+| `X` | imguizmo      | 1.84                         |            | github](https://github.com/CedricGuillemet/ImGuizmo)        |
 | `X` | nfd           | 1.0.1                        |            | [github](https://github.com/btzy/nativefiledialog-extended) |
 | ` ` | shaderc       |                              |            |                                                             |
 | `X` | spdlog        | 1.11.0                       | fmt        | [github](https://github.com/gabime/spdlog)                  |
@@ -107,6 +107,13 @@ use of a git submodule
 Version: branch docking
 Depends:
 Source : [github](https://github.com/ocornut/imgui)
+
+### imgui
+
+use of a git submodule
+Version: 1.84
+Depends:
+Source : [github](https://github.com/CedricGuillemet/ImGuizmo)
 
 ### nfd
 

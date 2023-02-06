@@ -3,24 +3,23 @@ from conan.tools.cmake import CMakeToolchain, CMake, cmake_layout, CMakeDeps
 from conan.errors import ConanInvalidConfiguration
 
 
-class imguiRecipe(ConanFile):
-    name = "imgui"
-    version = "docking_owl"
+class imguizmoRecipe(ConanFile):
+    name = "imguizmo"
+    version = "1.84"
 
     # Binary configuration
-    settings = "os", "compiler", "build_type", "arch"
+    settings = {"os", "compiler", "build_type", "arch"}
     options = {"shared": [True, False], "fPIC": [True, False]}
     default_options = {"shared": False, "fPIC": True}
 
     # Sources are located in the same place as this recipe, copy them to the recipe
     exports_sources = "CMakeLists.txt", \
-        "imgui-config.cmake.in", \
-        "imgui-docking/*.h", \
-        "imgui-docking/*.cpp", \
-        "imgui-docking/backend/*"
+        "imguizmo-config.cmake.in", \
+        "imguizmo-1.84/*.h", \
+        "imguizmo-1.84/*.cpp"
 
     def requirements(self):
-        self.requires("glfw3/3.3.8_owl")
+        self.requires("imgui/docking_owl")
 
     def validate(self):
         if self.settings.os not in ["Windows", "Linux"]:
@@ -57,4 +56,4 @@ class imguiRecipe(ConanFile):
         cmake.install()
 
     def package_info(self):
-        self.cpp_info.libs = ["imgui"]
+        self.cpp_info.libs = ["imguizmo"]

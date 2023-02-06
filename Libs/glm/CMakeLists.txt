@@ -6,7 +6,9 @@ set(PROJECT_ID glm)
 
 project(${PROJECT_ID} VERSION ${PROJECT_VERSION} LANGUAGES CXX)
 
-add_subdirectory(${PROJECT_ID}-${PROJECT_VERSION}/${PROJECT_ID})
+set(PROJECT_ROOT ${PROJECT_SOURCE_DIR}/${PROJECT_ID}-${PROJECT_VERSION})
+
+add_subdirectory(${PROJECT_ROOT})
 add_library(${PROJECT_ID}::${PROJECT_ID} ALIAS ${PROJECT_ID})
 
 target_include_directories(${PROJECT_ID} SYSTEM INTERFACE
@@ -14,15 +16,14 @@ target_include_directories(${PROJECT_ID} SYSTEM INTERFACE
         $<INSTALL_INTERFACE:include>
         )
 
-file(GLOB_RECURSE
-        GLM_HEADERS
+file(GLOB_RECURSE PUBLIC_HEADERS
         ${PROJECT_SOURCE_DIR}/${PROJECT_ID}-${PROJECT_VERSION}/glm/*.h
         ${PROJECT_SOURCE_DIR}/${PROJECT_ID}-${PROJECT_VERSION}/glm/*.hpp
         ${PROJECT_SOURCE_DIR}/${PROJECT_ID}-${PROJECT_VERSION}/glm/*.inl
         )
 
 set_target_properties(${PROJECT_ID} PROPERTIES
-        PUBLIC_HEADER "${GLM_HEADERS}"
+        PUBLIC_HEADER "${PUBLIC_HEADERS}"
         )
 
 set(version_config ${PROJECT_BINARY_DIR}/${PROJECT_ID}-config-version.cmake)

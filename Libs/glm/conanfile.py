@@ -16,6 +16,16 @@ class SpdlogRecipe(ConanFile):
         "glm-config.cmake.in", \
         "glm-0.9.9.8/glm/*"
 
+    def validate(self):
+        if self.settings.os not in ["Windows", "Linux"]:
+            raise ConanInvalidConfiguration(F" OS {self.settings.os} not supported")
+        if self.settings.compiler not in ["gcc", "clang"]:
+            raise ConanInvalidConfiguration(F"Compiler {self.settings.compiler} not supported")
+        if self.settings.build_type not in ["Debug", "Release"]:
+            raise ConanInvalidConfiguration(F"Build Type {self.settings.build_type} not supported")
+        if self.settings.arch not in ["x86_64"]:
+            raise ConanInvalidConfiguration(F"Arch {self.settings.arch} not supported")
+
     def config_options(self):
         if self.settings.os == "Windows":
             del self.options.fPIC
@@ -47,5 +57,3 @@ class SpdlogRecipe(ConanFile):
 
     def package_info(self):
         self.cpp_info.libs = ["glm"]
-
-    
