@@ -8,3 +8,6 @@
 [submodule "libs/glslang/src"]
 	path = libs/glslang/src
 	url = git@github.com:KhronosGroup/glslang.git
+[submodule "libs/spirv-cross/src"]
+	path = libs/spirv-cross/src
+	url = git@github.com:KhronosGroup/SPIRV-Cross.git
