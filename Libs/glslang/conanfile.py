@@ -3,22 +3,26 @@ from conan.tools.cmake import CMakeToolchain, CMake, cmake_layout, CMakeDeps
 from conan.errors import ConanInvalidConfiguration
 
 
-class glfwRecipe(ConanFile):
-    name = "glfw3"
-    version = "3.3.8_owl"
+class glslangRecipe(ConanFile):
+    name = "glslang"
+    version = "12.0.0_owl"
 
     # Binary configuration
     settings = "os", "compiler", "build_type", "arch"
     options = {"shared": [True, False], "fPIC": [True, False]}
     default_options = {"shared": False, "fPIC": True}
 
-    source_folder = "../../glfw-3.3.8"
+    source_folder = "../../src"
     # Sources are located in the same place as this recipe, copy them to the recipe
-    exports_sources = "glfw-3.3.8/CMakeLists.txt", \
-        "glfw-3.3.8/cmake_uninstall.cmake.in", \
-        "glfw-3.3.8/src/*", \
-        "glfw-3.3.8/include/*", \
-        "glfw-3.3.8/CMake/*"
+    exports_sources = "src/CMakeLists.txt", \
+        "src/*.cmake", \
+        "src/CHANGES.md", \
+        "src/build_info.h.tmpl", \
+        "src/glslang/*", \
+        "src/OGLCompilersDLL/*", \
+        "src/SPIRV/*", \
+        "src/StandAlone/*", \
+        "src/hlsl/*"
 
     def validate(self):
         if self.settings.os not in ["Windows", "Linux"]:
@@ -45,9 +49,14 @@ class glfwRecipe(ConanFile):
         tc.generator = "Ninja"
         if self.options.shared:
             tc.cache_variables["BUILD_SHARED_LIBS"] = "ON"
-        tc.cache_variables["GLFW_BUILD_EXAMPLES"] = "OFF"
-        tc.cache_variables["GLFW_BUILD_TESTS"] = "OFF"
-        tc.cache_variables["GLFW_BUILD_DOCS"] = "OFF"
+        tc.cache_variables["BUILD_EXTERNAL"] = "OFF"
+        tc.cache_variables["ENABLE_SPVREMAPPER"] = "OFF"
+        tc.cache_variables["ENABLE_GLSLANG_BINARIES"] = "OFF"
+        tc.cache_variables["ENABLE_OPT"] = "OFF"
+        tc.cache_variables["ENABLE_CTEST"] = "OFF"
+        tc.cache_variables["ENABLE_HLSL"] = "ON"
+        if self.settings.os == "Linux":
+            tc.cache_variables["USE_CCACHE"] = "ON"
         tc.generate()
 
     def build(self):
@@ -60,9 +69,12 @@ class glfwRecipe(ConanFile):
         cmake.install()
 
     def package_info(self):
-        if self.settings.os == "Windows" and self.options.shared:
-            self.cpp_info.libs = ["glfw3dll"]
+        if self.settings.os == "Windows":
+            if self.settings.build_type == "Debug":
+                self.cpp_info.libs = ["glslangd"]
+            else:
+                self.cpp_info.libs = ["glslang"]
         else:
-            self.cpp_info.libs = ["glfw3"]
+            self.cpp_info.libs = ["glslang"]
 
     
