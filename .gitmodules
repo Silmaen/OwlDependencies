@@ -2,3 +2,6 @@
 	path = Libs/imgui/imgui-docking
 	url = git@github.com:ocornut/imgui.git
 	branch = docking
+[submodule "libs/imguizmo/imguizmo-1.84"]
+	path = libs/imguizmo/imguizmo-1.84
+	url = git@github.com:CedricGuillemet/ImGuizmo.git

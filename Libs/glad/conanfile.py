@@ -12,7 +12,6 @@ class gladRecipe(ConanFile):
     options = {"shared": [True, False], "fPIC": [True, False]}
     default_options = {"shared": False, "fPIC": True}
 
-    #source_folder = "../../glad-0.1.36"
     # Sources are located in the same place as this recipe, copy them to the recipe
     exports_sources = "CMakeLists.txt", \
         "glad-config.cmake.in", \

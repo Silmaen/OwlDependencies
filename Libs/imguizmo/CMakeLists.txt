@@ -1,13 +1,12 @@
 cmake_minimum_required(VERSION 3.20 FATAL_ERROR)
 
-set(PROJECT_VERSION "0.1")
-set(PROJECT_ID imgui)
+set(PROJECT_VERSION "1.84")
+set(PROJECT_ID imguizmo)
 
 
 project(${PROJECT_ID} VERSION ${PROJECT_VERSION} LANGUAGES CXX)
-include(GNUInstallDirs)
 
-set(PROJECT_ROOT ${PROJECT_SOURCE_DIR}/${PROJECT_ID}-docking)
+set(PROJECT_ROOT ${PROJECT_SOURCE_DIR}/${PROJECT_ID}-${PROJECT_VERSION})
 
 file(GLOB SRCS
         ${PROJECT_ROOT}/*.cpp
@@ -16,36 +15,23 @@ file(GLOB HDRS
         ${PROJECT_ROOT}/*.h
         )
 
+
 add_library(${PROJECT_ID} ${SRCS} ${HDRS})
 add_library(${PROJECT_ID}::${PROJECT_ID} ALIAS ${PROJECT_ID})
 
-target_include_directories(${PROJECT_ID} PRIVATE ${PROJECT_ROOT} ${PROJECT_ROOT}/backend)
-
-target_compile_definitions(${PROJECT_ID} INTERFACE IMGUI_IMPL_HAS_DOCKING)
 
 target_include_directories(${PROJECT_ID} SYSTEM INTERFACE
         $<BUILD_INTERFACE:${PROJECT_ROOT}>
         $<INSTALL_INTERFACE:include>
         )
 
-# glfw dependency
-find_package(glfw3 REQUIRED)
-target_link_libraries(${PROJECT_ID} PRIVATE glfw3::glfw3)
-target_sources(imgui PRIVATE ${PROJECT_ROOT}/backends/imgui_impl_glfw.cpp ${PROJECT_ROOT}/backends/imgui_impl_glfw.h)
-
-# opengl dependency
-target_compile_definitions(${PROJECT_ID} PUBLIC IMGUI_IMPL_OPENGL_LOADER_GLAD)
-target_sources(imgui PRIVATE ${PROJECT_ROOT}/backends/imgui_impl_opengl3.cpp ${PROJECT_ROOT}/backends/imgui_impl_opengl3.h ${PROJECT_ROOT}/backends/imgui_impl_opengl3_loader.h)
-
-# windows
-if (${CMAKE_SYSTEM_NAME} MATCHES "Windows")
-    target_link_libraries(${PROJECT_ID} PRIVATE dwmapi)
-    target_sources(imgui PRIVATE ${PROJECT_ROOT}/backends/imgui_impl_win32.cpp ${PROJECT_ROOT}/backends/imgui_impl_win32.h)
-endif ()
+# imgui dependency
+find_package(imgui REQUIRED)
+target_link_libraries(${PROJECT_ID} PRIVATE imgui::imgui)
+target_include_directories(${PROJECT_ID} PRIVATE ${imgui_INCLUDE_DIRS}/imgui)
 
 file(GLOB PUBLIC_HEADERS
         ${PROJECT_ROOT}/*.h
-        ${PROJECT_ROOT}/backends/*.h
         )
 
 set_target_properties(${PROJECT_ID} PROPERTIES
@@ -84,4 +70,5 @@ install(
 )
 install(EXPORT ${targets_export_name} DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/${PROJECT_ID}
         NAMESPACE ${PROJECT_ID}::)
+
 

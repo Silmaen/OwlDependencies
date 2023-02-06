@@ -1,5 +1,6 @@
 from conan import ConanFile
 from conan.tools.cmake import CMakeToolchain, CMake, cmake_layout, CMakeDeps
+from conan.errors import ConanInvalidConfiguration
 
 
 class SpdlogRecipe(ConanFile):
@@ -18,6 +19,16 @@ class SpdlogRecipe(ConanFile):
         "glfw-3.3.8/src/*", \
         "glfw-3.3.8/include/*", \
         "glfw-3.3.8/CMake/*"
+
+    def validate(self):
+        if self.settings.os not in ["Windows", "Linux"]:
+            raise ConanInvalidConfiguration(F" OS {self.settings.os} not supported")
+        if self.settings.compiler not in ["gcc", "clang"]:
+            raise ConanInvalidConfiguration(F"Compiler {self.settings.compiler} not supported")
+        if self.settings.build_type not in ["Debug", "Release"]:
+            raise ConanInvalidConfiguration(F"Build Type {self.settings.build_type} not supported")
+        if self.settings.arch not in ["x86_64"]:
+            raise ConanInvalidConfiguration(F"Arch {self.settings.arch} not supported")
 
     def config_options(self):
         if self.settings.os == "Windows":
