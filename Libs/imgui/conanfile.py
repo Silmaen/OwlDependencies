@@ -3,9 +3,9 @@ from conan.tools.cmake import CMakeToolchain, CMake, cmake_layout, CMakeDeps
 from conan.errors import ConanInvalidConfiguration
 
 
-class gladRecipe(ConanFile):
-    name = "glad"
-    version = "0.1.36_owl"
+class imguiRecipe(ConanFile):
+    name = "imgui"
+    version = "docking_owl"
 
     # Binary configuration
     settings = {"os", "compiler", "build_type", "arch"}
@@ -15,9 +15,13 @@ class gladRecipe(ConanFile):
     #source_folder = "../../glad-0.1.36"
     # Sources are located in the same place as this recipe, copy them to the recipe
     exports_sources = "CMakeLists.txt", \
-        "glad-config.cmake.in", \
-        "glad-0.1.36/src/*", \
-        "glad-0.1.36/include/*"
+        "imgui-config.cmake.in", \
+        "imgui-docking/*.h", \
+        "imgui-docking/*.cpp", \
+        "imgui-docking/backend/*"
+
+    def requirements(self):
+        self.requires("glfw3/3.3.8_owl")
 
     def validate(self):
         if self.settings.os not in ["Windows", "Linux"]:
@@ -54,4 +58,4 @@ class gladRecipe(ConanFile):
         cmake.install()
 
     def package_info(self):
-        self.cpp_info.libs = ["glad"]
+        self.cpp_info.libs = ["imgui"]

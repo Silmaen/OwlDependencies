@@ -3,7 +3,7 @@ from conan.tools.cmake import CMakeToolchain, CMake, cmake_layout, CMakeDeps
 
 
 class SpdlogRecipe(ConanFile):
-    name = "glfw"
+    name = "glfw3"
     version = "3.3.8_owl"
 
     # Binary configuration
@@ -49,6 +49,9 @@ class SpdlogRecipe(ConanFile):
         cmake.install()
 
     def package_info(self):
-        self.cpp_info.libs = ["glfw"]
+        if self.settings.os == "Windows" and self.options.shared:
+            self.cpp_info.libs = ["glfw3dll"]
+        else:
+            self.cpp_info.libs = ["glfw3"]
 
     
