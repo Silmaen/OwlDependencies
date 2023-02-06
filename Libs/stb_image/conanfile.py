@@ -4,7 +4,7 @@ from conan.errors import ConanInvalidConfiguration
 
 
 class stbImageRecipe(ConanFile):
-    name = "stb-image"
+    name = "stb_image"
     version = "2.28_owl"
 
     exports_sources = "stb_image-2.28/stb_image.h", "stb_image-config.cmake.in", "CMakeLists.txt"
