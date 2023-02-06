@@ -3,9 +3,9 @@ from conan.tools.cmake import CMakeToolchain, CMake, cmake_layout, CMakeDeps
 from conan.errors import ConanInvalidConfiguration
 
 
-class spirvCrossRecipe(ConanFile):
-    name = "spirv-cross"
-    version = "1.3.239_owl"
+class spirvToolsRecipe(ConanFile):
+    name = "spirv-tools"
+    version = "2023.1_owl"
 
     # Binary configuration
     settings = "os", "compiler", "build_type", "arch"
@@ -15,12 +15,22 @@ class spirvCrossRecipe(ConanFile):
     source_folder = "../../src"
     # Sources are located in the same place as this recipe, copy them to the recipe
     exports_sources = "src/CMakeLists.txt", \
+        "src/CHANGES", \
         "src/cmake/*", \
-        "src/pkg-config/*", \
-        "src/*.cpp", \
-        "src/*.hpp", \
-        "src/*.h", \
-        "src/include/*"
+        "src/source/*", \
+        "src/utils/*", \
+        "src/include/*", \
+        "src/external/CMakeLists.txt", \
+        "src/test/CMakeLists.txt", \
+        "src/test/*/CMakeLists.txt", \
+        "src/test/diff/diff_files/*.cmake", \
+        "src/tools/CMakeLists.txt", \
+        "src/tools/emacs/CMakeLists.txt", \
+        "src/examples/CMakeLists.txt", \
+        "src/examples/cpp-interface/CMakeLists.txt"
+
+    def requirements(self):
+        self.requires("spirv-headers/1.3.239_owl")
 
     def validate(self):
         if self.settings.os not in ["Windows", "Linux"]:
@@ -45,9 +55,10 @@ class spirvCrossRecipe(ConanFile):
         deps.generate()
         tc = CMakeToolchain(self)
         tc.generator = "Ninja"
-        if self.options.shared:
-            tc.cache_variables["SPIRV_CROSS_SHARED"] = "ON"
-        tc.cache_variables["SPIRV_CROSS_ENABLE_TESTS"] = "OFF"
+        tc.cache_variables["SPIRV_TOOLS_BUILD_STATIC"] = "OFF"
+        tc.cache_variables["SPIRV_SKIP_EXECUTABLES"] = "ON"
+        tc.cache_variables["SPIRV_SKIP_TESTS"] = "ON"
+        tc.cache_variables["SPIRV-Headers_SOURCE_DIR"] = self.dependencies["spirv-headers"].package_folder
         tc.generate()
 
     def build(self):
@@ -60,4 +71,4 @@ class spirvCrossRecipe(ConanFile):
         cmake.install()
 
     def package_info(self):
-        self.cpp_info.libs = ["spirv-cross"]
+        self.cpp_info.libs = ["spirv-tools"]

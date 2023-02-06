@@ -11,3 +11,9 @@
 [submodule "libs/spirv-cross/src"]
 	path = libs/spirv-cross/src
 	url = git@github.com:KhronosGroup/SPIRV-Cross.git
+[submodule "libs/spirv-tools/src"]
+	path = libs/spirv-tools/src
+	url = git@github.com:KhronosGroup/SPIRV-Tools.git
+[submodule "libs/spirv-headers/src"]
+	path = libs/spirv-headers/src
+	url = git@github.com:KhronosGroup/SPIRV-Headers.git

@@ -3,17 +3,22 @@ from conan.tools.cmake import CMakeToolchain, CMake, cmake_layout, CMakeDeps
 from conan.errors import ConanInvalidConfiguration
 
 
-class debugBreakRecipe(ConanFile):
-    name = "debugbreak"
-    version = "1.0_owl"
+class spirvHeadersRecipe(ConanFile):
+    name = "spirv-headers"
+    version = "1.3.239_owl"
 
-    exports_sources = "debugbreak-1.0/debugbreak.h", "debugbreak-config.cmake.in", "CMakeLists.txt"
-    no_copy_source = True
+    exports_sources = "src/CMakeLists.txt", \
+        "src/cmake/*", \
+        "src/source/*", \
+        "src/include/*", \
+        "src/*.in"
+    source_folder = "src"
 
     def generate(self):
         tc = CMakeToolchain(self)
         tc.generator = "Ninja"
-        tc.cache_variables["DBR_SYSTEM_HEADERS"] = "ON"
+        tc.cache_variables["SPIRV_HEADERS_SKIP_INSTALL"] = "OFF"
+        tc.cache_variables["SPIRV_HEADERS_SKIP_EXAMPLES"] = "ON"
         tc.generate()
 
     def package(self):

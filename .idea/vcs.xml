@@ -2,5 +2,11 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Libs/glslang/src" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Libs/imgui/imgui-docking" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Libs/imguizmo/imguizmo-1.84" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Libs/spirv-cross/src" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Libs/spirv-headers/src" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Libs/spirv-tools/src" vcs="Git" />
   </component>
 </project>
