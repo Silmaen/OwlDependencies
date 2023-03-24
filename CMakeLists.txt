@@ -9,4 +9,4 @@ add_subdirectory(Libs/fmt)
 add_subdirectory(Libs/spdlog)
 add_subdirectory(Libs/magic_enum)
 add_subdirectory(Libs/glad)
-
+add_subdirectory(Libs/debugbreak)
