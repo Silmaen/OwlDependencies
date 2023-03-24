@@ -7,3 +7,9 @@
 [submodule "Libs/magic_enum/magic_enum"]
 	path = Libs/magic_enum/magic_enum
 	url = git@github.com:Neargye/magic_enum.git
+[submodule "Libs/debugbreak/sources/--force"]
+	path = Libs/debugbreak/sources/--force
+	url = git@github.com:scottt/debugbreak.git
+[submodule "Libs/debugbreak/sources/debugbreak"]
+	path = Libs/debugbreak/sources/debugbreak
+	url = git@github.com:scottt/debugbreak.git
