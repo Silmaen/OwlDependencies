@@ -10,10 +10,10 @@ Regenerate all the dependencies by running python script:
 
 |       | name          | submodule? | version/tag      | dependency           | link                                                        |
 |-------|---------------|------------|------------------|----------------------|-------------------------------------------------------------|
-| ` `   | debugbreak    | ` `        | 1.0              |                      | [github](https://github.com/scottt/debugbreak)              |
-| ` `   | entt          | ` `        | 3.11.1           |                      | [github](https://github.com/skypjack/entt)                  |
+| `X`   | debugbreak    | `X`        | 1.0              |                      | [github](https://github.com/scottt/debugbreak)              |
+| `X`   | entt          | `X`        | 3.11.1           |                      | [github](https://github.com/skypjack/entt)                  |
 | `X`   | magic_enum    | `X`        | 0.8.2            |                      | [github](https://github.com/Neargye/magic_enum)             |
-| ` `   | stb_image     | ` `        | 2.28             |                      | [github](https://github.com/nothings/stb)                   |
+| `X`   | stb_image     | `0`        | 2.28             |                      | [github](https://github.com/nothings/stb)                   |
 |       |               |            |                  |                      |                                                             |
 | `X`   | fmt           | `X`        | 9.1.0            |                      | [github](https://github.com/fmtlib/fmt)                     |
 | `X`   | glad          | `0`        | 0.1.36           |                      | [glad](https://glad.dav1d.de/)                              |
