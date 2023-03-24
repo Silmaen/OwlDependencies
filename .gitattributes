@@ -21,10 +21,13 @@
 *.natvis text eol=crlf
 
 Makefile text eol=lf
+CMakelist.txt text eol=lf
 *.sh text eol=lf
 *.pbxproj text eol=lf
 *.storyboard text eol=lf
 *.plist text eol=lf
+.gitmodules text eol=lf
+.gitattributes text eol=lf
 *.py text eol=lf
 
 *.png binary
