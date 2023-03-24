@@ -5,11 +5,11 @@ Depmanager recipes
 from depmanager.api.recipe import Recipe
 
 
-class DebugBreakHeader(Recipe):
+class StbImageHeader(Recipe):
     """
     Header-only version
     """
-    name = "debugbreak"
-    version = "1.0"
-    source_dir = "sources"
+    name = "stb_image"
+    version = "2.28"
+    source_dir = "stb_image"
     kind = "header"

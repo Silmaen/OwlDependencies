@@ -13,3 +13,6 @@
 [submodule "Libs/debugbreak/sources/debugbreak"]
 	path = Libs/debugbreak/sources/debugbreak
 	url = git@github.com:scottt/debugbreak.git
+[submodule "Libs/entt/entt"]
+	path = Libs/entt/entt
+	url = git@github.com:skypjack/entt.git
