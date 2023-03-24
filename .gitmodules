@@ -1,19 +1,9 @@
-[submodule "Libs/imgui/imgui-docking"]
-	path = Libs/imgui/imgui-docking
-	url = git@github.com:ocornut/imgui.git
-	branch = docking
-[submodule "libs/imguizmo/imguizmo-1.84"]
-	path = libs/imguizmo/imguizmo-1.84
-	url = git@github.com:CedricGuillemet/ImGuizmo.git
-[submodule "libs/glslang/src"]
-	path = libs/glslang/src
-	url = git@github.com:KhronosGroup/glslang.git
-[submodule "libs/spirv-cross/src"]
-	path = libs/spirv-cross/src
-	url = git@github.com:KhronosGroup/SPIRV-Cross.git
-[submodule "libs/spirv-tools/src"]
-	path = libs/spirv-tools/src
-	url = git@github.com:KhronosGroup/SPIRV-Tools.git
-[submodule "libs/spirv-headers/src"]
-	path = libs/spirv-headers/src
-	url = git@github.com:KhronosGroup/SPIRV-Headers.git
+[submodule "Libs/fmt/fmt"]
+	path = Libs/fmt/fmt
+	url = git@github.com:fmtlib/fmt.git
+[submodule "Libs/spdlog/spdlog"]
+	path = Libs/spdlog/spdlog
+	url = git@github.com:gabime/spdlog.git
+[submodule "Libs/magic_enum/magic_enum"]
+	path = Libs/magic_enum/magic_enum
+	url = git@github.com:Neargye/magic_enum.git
