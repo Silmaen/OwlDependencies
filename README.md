@@ -21,7 +21,7 @@ Regenerate all the dependencies by running python script:
 | `X`   | glm           | `X`        | replaced      | 0.9.9.8          |                      | [github](https://github.com/g-truc/glm)                     |
 | `X`   | googletest    | `X`        |               | 1.13.0           |                      | [github](https://github.com/google/googletest)              |
 | `X`   | imgui         | `X`        | missing       | docking (branch) | glfw                 | [github](https://github.com/ocornut/imgui)                  |
-| ` `   | imguizmo      | ` `        |               | 1.84             |                      | [github](https://github.com/CedricGuillemet/ImGuizmo)       |
+| `X`   | imguizmo      | `X`        | missing       | 1.84             | imgui                | [github](https://github.com/CedricGuillemet/ImGuizmo)       |
 | ` `   | nfd           | ` `        |               | 1.0.1            |                      | [github](https://github.com/btzy/nativefiledialog-extended) |
 | ` `   | shaderc       | ` `        |               | v2023.2          | spirv-tools, glslang | [github](https://github.com/google/shaderc/)                |
 | `> `  | glslang       | ` `        |               | 12.0.0           |                      | [github](https://github.com/KhronosGroup/glslang)           |

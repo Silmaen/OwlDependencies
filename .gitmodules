@@ -28,3 +28,6 @@
 [submodule "Libs/googletest/googletest"]
 	path = Libs/googletest/googletest
 	url = git@github.com:google/googletest.git
+[submodule "Libs/imguizmo/sources/ImGuizmo"]
+	path = Libs/imguizmo/sources/ImGuizmo
+	url = git@github.com:CedricGuillemet/ImGuizmo.git
