@@ -16,3 +16,9 @@
 [submodule "Libs/entt/entt"]
 	path = Libs/entt/entt
 	url = git@github.com:skypjack/entt.git
+[submodule "Libs/imgui/sources/imgui"]
+	path = Libs/imgui/sources/imgui
+	url = git@github.com:ocornut/imgui.git
+[submodule "Libs/glfw/glfw"]
+	path = Libs/glfw/glfw
+	url = git@github.com:glfw/glfw.git

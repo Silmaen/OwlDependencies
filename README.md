@@ -17,10 +17,10 @@ Regenerate all the dependencies by running python script:
 |       |               |            |                  |                      |                                                             |
 | `X`   | fmt           | `X`        | 9.1.0            |                      | [github](https://github.com/fmtlib/fmt)                     |
 | `X`   | glad          | `0`        | 0.1.36           |                      | [glad](https://glad.dav1d.de/)                              |
-| ` `   | glfw          | ` `        | 3.3.8            |                      | [github](https://github.com/glfw/glfw)                      |
+| `X`   | glfw          | `X`        | 3.3.8            |                      | [github](https://github.com/glfw/glfw)                      |
 | ` `   | glm           | ` `        | 0.9.9.8          |                      | [github](https://github.com/g-truc/glm)                     |
 | ` `   | googletest    | ` `        | 1.13.0           |                      | [github](https://github.com/google/googletest)              |
-| ` `   | imgui         | ` `        | docking (branch) |                      | [github](https://github.com/ocornut/imgui)                  |
+| `X`   | imgui         | `X`        | docking (branch) | glfw                 | [github](https://github.com/ocornut/imgui)                  |
 | ` `   | imguizmo      | ` `        | 1.84             |                      | [github](https://github.com/CedricGuillemet/ImGuizmo)       |
 | ` `   | nfd           | ` `        | 1.0.1            |                      | [github](https://github.com/btzy/nativefiledialog-extended) |
 | ` `   | shaderc       | ` `        | v2023.2          | spirv-tools, glslang | [github](https://github.com/google/shaderc/)                |
