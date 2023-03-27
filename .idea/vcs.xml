@@ -6,6 +6,7 @@
     <mapping directory="$PROJECT_DIR$/Libs/entt/entt" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Libs/fmt/fmt" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Libs/glfw/glfw" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Libs/glm/sources/glm" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Libs/imgui/sources/imgui" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Libs/magic_enum/magic_enum" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Libs/spdlog/spdlog" vcs="Git" />
