@@ -25,3 +25,6 @@
 [submodule "Libs/glm/sources/glm"]
 	path = Libs/glm/sources/glm
 	url = git@github.com:g-truc/glm.git
+[submodule "Libs/googletest/googletest"]
+	path = Libs/googletest/googletest
+	url = git@github.com:google/googletest.git
