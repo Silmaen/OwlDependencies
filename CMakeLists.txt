@@ -19,3 +19,4 @@ add_subdirectory(Libs/googletest)
 add_subdirectory(Libs/spdlog)
 # compiled with dependency
 add_subdirectory(Libs/imgui) # depends on glfw
+add_subdirectory(Libs/imguizmo) # depends on imgui

@@ -5,3 +5,4 @@ if (NOT TARGET imgui::imgui)
 endif ()
 
 check_required_components(imgui)
+set(imgui_INCLUDE_DIRS ${PACKAGE_PREFIX_DIR}/include)
