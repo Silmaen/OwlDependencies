@@ -31,3 +31,6 @@
 [submodule "Libs/imguizmo/sources/ImGuizmo"]
 	path = Libs/imguizmo/sources/ImGuizmo
 	url = git@github.com:CedricGuillemet/ImGuizmo.git
+[submodule "Libs/nfd/nativefiledialog-extended"]
+	path = Libs/nfd/nativefiledialog-extended
+	url = git@github.com:btzy/nativefiledialog-extended.git

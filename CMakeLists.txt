@@ -16,6 +16,7 @@ add_subdirectory(Libs/glad)
 add_subdirectory(Libs/glfw)
 add_subdirectory(Libs/glm)
 add_subdirectory(Libs/googletest)
+add_subdirectory(Libs/nfd)
 add_subdirectory(Libs/spdlog)
 # compiled with dependency
 add_subdirectory(Libs/imgui) # depends on glfw

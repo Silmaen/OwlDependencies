@@ -22,7 +22,7 @@ Regenerate all the dependencies by running python script:
 | `X`   | googletest    | `X`        |               | 1.13.0           |                      | [github](https://github.com/google/googletest)              |
 | `X`   | imgui         | `X`        | missing       | docking (branch) | glfw                 | [github](https://github.com/ocornut/imgui)                  |
 | `X`   | imguizmo      | `X`        | missing       | 1.84             | imgui                | [github](https://github.com/CedricGuillemet/ImGuizmo)       |
-| ` `   | nfd           | ` `        |               | 1.0.1            |                      | [github](https://github.com/btzy/nativefiledialog-extended) |
+| `X`   | nfd           | `X`        |               | 1.0.1            |                      | [github](https://github.com/btzy/nativefiledialog-extended) |
 | ` `   | shaderc       | ` `        |               | v2023.2          | spirv-tools, glslang | [github](https://github.com/google/shaderc/)                |
 | `> `  | glslang       | ` `        |               | 12.0.0           |                      | [github](https://github.com/KhronosGroup/glslang)           |
 | `> `  | SPIRV-Tools   | ` `        |               | v2023.1          | spirv-headers        | [github](https://github.com/KhronosGroup/SPIRV-Tools)       |
