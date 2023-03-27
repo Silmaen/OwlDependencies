@@ -29,7 +29,7 @@ Regenerate all the dependencies by running python script:
 | `>> ` | SPIRV-Headers | ` `        |               | sdk-1.3.239.0    |                      | [github](https://github.com/KhronosGroup/SPIRV-Headers)     |
 | `X`   | spdlog        | `X`        |               | 1.11.0           | fmt                  | [github](https://github.com/gabime/spdlog)                  |
 | ` `   | SPIRV-Cross   | ` `        |               | sdk-1.3.239.0    |                      | [github](https://github.com/KhronosGroup/SPIRV-Cross)       |
-| ` `   | yaml-cpp      | ` `        |               | 0.70             |                      | [github](https://github.com/jbeder/yaml-cpp)                |
+| `X`   | yaml-cpp      | `X`        |               | 0.70             |                      | [github](https://github.com/jbeder/yaml-cpp)                |
 
 ## header-only
 
