@@ -17,7 +17,8 @@ add_subdirectory(Libs/glfw)
 add_subdirectory(Libs/glm)
 add_subdirectory(Libs/googletest)
 add_subdirectory(Libs/nfd)
-add_subdirectory(Libs/spdlog)
+add_subdirectory(Libs/yaml-cpp)
 # compiled with dependency
+add_subdirectory(Libs/spdlog) # depends on fmt
 add_subdirectory(Libs/imgui) # depends on glfw
 add_subdirectory(Libs/imguizmo) # depends on imgui

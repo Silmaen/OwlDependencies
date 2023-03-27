@@ -34,3 +34,6 @@
 [submodule "Libs/nfd/nativefiledialog-extended"]
 	path = Libs/nfd/nativefiledialog-extended
 	url = git@github.com:btzy/nativefiledialog-extended.git
+[submodule "Libs/yaml-cpp/yaml-cpp"]
+	path = Libs/yaml-cpp/yaml-cpp
+	url = git@github.com:jbeder/yaml-cpp.git
