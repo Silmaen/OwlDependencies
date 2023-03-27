@@ -19,7 +19,7 @@ Regenerate all the dependencies by running python script:
 | `X`   | glad          | `0`        | missing       | 0.1.36           |                      | [glad](https://glad.dav1d.de/)                              |
 | `X`   | glfw          | `X`        |               | 3.3.8            |                      | [github](https://github.com/glfw/glfw)                      |
 | `X`   | glm           | `X`        | replaced      | 0.9.9.8          |                      | [github](https://github.com/g-truc/glm)                     |
-| ` `   | googletest    | ` `        |               | 1.13.0           |                      | [github](https://github.com/google/googletest)              |
+| `X`   | googletest    | `X`        |               | 1.13.0           |                      | [github](https://github.com/google/googletest)              |
 | `X`   | imgui         | `X`        | missing       | docking (branch) | glfw                 | [github](https://github.com/ocornut/imgui)                  |
 | ` `   | imguizmo      | ` `        |               | 1.84             |                      | [github](https://github.com/CedricGuillemet/ImGuizmo)       |
 | ` `   | nfd           | ` `        |               | 1.0.1            |                      | [github](https://github.com/btzy/nativefiledialog-extended) |
