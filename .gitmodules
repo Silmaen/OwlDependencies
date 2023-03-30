@@ -37,3 +37,9 @@
 [submodule "Libs/yaml-cpp/yaml-cpp"]
 	path = Libs/yaml-cpp/yaml-cpp
 	url = git@github.com:jbeder/yaml-cpp.git
+[submodule "Libs/spirv-cross/SPIRV-Cross"]
+	path = Libs/spirv-cross/SPIRV-Cross
+	url = git@github.com:KhronosGroup/SPIRV-Cross.git
+[submodule "Libs/shaderc/sources/shaderc"]
+	path = Libs/shaderc/sources/shaderc
+	url = git@github.com:google/shaderc.git

@@ -17,6 +17,7 @@ add_subdirectory(Libs/glfw)
 add_subdirectory(Libs/glm)
 add_subdirectory(Libs/googletest)
 add_subdirectory(Libs/nfd)
+add_subdirectory(Libs/spirv-cross)
 add_subdirectory(Libs/yaml-cpp)
 # compiled with dependency
 add_subdirectory(Libs/spdlog) # depends on fmt
