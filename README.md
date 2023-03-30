@@ -24,7 +24,7 @@ Regenerate all the dependencies by running python script:
 | `X`   | imguizmo      | `X`        | missing       | 1.84             | imgui                | [github](https://github.com/CedricGuillemet/ImGuizmo)       |
 | `X`   | nfd           | `X`        |               | 1.0.1            |                      | [github](https://github.com/btzy/nativefiledialog-extended) |
 | ` `   | shaderc       | ` `        |               | v2023.2          | spirv-tools, glslang | [github](https://github.com/google/shaderc/)                |
-| `> `  | glslang       | ` `        |               | 12.0.0           |                      | [github](https://github.com/KhronosGroup/glslang)           |
+| `> `  | glslang       | ` `        |               | 12.1.0           |                      | [github](https://github.com/KhronosGroup/glslang)           |
 | `> `  | SPIRV-Tools   | ` `        |               | v2023.1          | spirv-headers        | [github](https://github.com/KhronosGroup/SPIRV-Tools)       |
 | `>> ` | SPIRV-Headers | ` `        |               | sdk-1.3.239.0    |                      | [github](https://github.com/KhronosGroup/SPIRV-Headers)     |
 | `X`   | spdlog        | `X`        |               | 1.11.0           | fmt                  | [github](https://github.com/gabime/spdlog)                  |

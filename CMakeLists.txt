@@ -15,6 +15,7 @@ add_subdirectory(Libs/fmt)
 add_subdirectory(Libs/glad)
 add_subdirectory(Libs/glfw)
 add_subdirectory(Libs/glm)
+add_subdirectory(Libs/glslang)
 add_subdirectory(Libs/googletest)
 add_subdirectory(Libs/nfd)
 add_subdirectory(Libs/spirv-cross)
@@ -23,3 +24,4 @@ add_subdirectory(Libs/yaml-cpp)
 add_subdirectory(Libs/spdlog) # depends on fmt
 add_subdirectory(Libs/imgui) # depends on glfw
 add_subdirectory(Libs/imguizmo) # depends on imgui
+add_subdirectory(Libs/shaderc) # depends on glslang & spirv-tools
