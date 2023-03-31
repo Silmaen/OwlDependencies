@@ -13,6 +13,7 @@ Regenerate all the dependencies by running python script:
 | `X`   | debugbreak    | `X`        | missing       | 1.0              |                      | [github](https://github.com/scottt/debugbreak)              |
 | `X`   | entt          | `X`        |               | 3.11.1           |                      | [github](https://github.com/skypjack/entt)                  |
 | `X`   | magic_enum    | `X`        |               | 0.8.2            |                      | [github](https://github.com/Neargye/magic_enum)             |
+| `>>X` | SPIRV-Headers | `X`        |               | sdk-1.3.243.0    |                      | [github](https://github.com/KhronosGroup/SPIRV-Headers)     |
 | `X`   | stb_image     | `0`        | missing       | 2.28             |                      | [github](https://github.com/nothings/stb)                   |
 |       |               |            |               |                  |                      |                                                             |
 | `X`   | fmt           | `X`        |               | 9.1.0            |                      | [github](https://github.com/fmtlib/fmt)                     |
@@ -24,11 +25,10 @@ Regenerate all the dependencies by running python script:
 | `X`   | imguizmo      | `X`        | missing       | 1.84             | imgui                | [github](https://github.com/CedricGuillemet/ImGuizmo)       |
 | `X`   | nfd           | `X`        |               | 1.0.1            |                      | [github](https://github.com/btzy/nativefiledialog-extended) |
 | ` `   | shaderc       | ` `        |               | v2023.2          | spirv-tools, glslang | [github](https://github.com/google/shaderc/)                |
-| `> `  | glslang       | ` `        |               | 12.1.0           |                      | [github](https://github.com/KhronosGroup/glslang)           |
-| `> `  | SPIRV-Tools   | ` `        |               | v2023.1          | spirv-headers        | [github](https://github.com/KhronosGroup/SPIRV-Tools)       |
-| `>> ` | SPIRV-Headers | ` `        |               | sdk-1.3.239.0    |                      | [github](https://github.com/KhronosGroup/SPIRV-Headers)     |
+| `>X`  | glslang       | `X`        |               | 12.1.0           |                      | [github](https://github.com/KhronosGroup/glslang)           |
+| `>X`  | SPIRV-Tools   | `X`        |               | v2023.2          | spirv-headers        | [github](https://github.com/KhronosGroup/SPIRV-Tools)       |
 | `X`   | spdlog        | `X`        |               | 1.11.0           | fmt                  | [github](https://github.com/gabime/spdlog)                  |
-| `X`   | SPIRV-Cross   | `X`        |               | sdk-1.3.239.0    |                      | [github](https://github.com/KhronosGroup/SPIRV-Cross)       |
+| `X`   | SPIRV-Cross   | `X`        |               | sdk-1.3.243.0    |                      | [github](https://github.com/KhronosGroup/SPIRV-Cross)       |
 | `X`   | yaml-cpp      | `X`        |               | 0.70             |                      | [github](https://github.com/jbeder/yaml-cpp)                |
 
 ## header-only

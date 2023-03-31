@@ -46,3 +46,9 @@
 [submodule "Libs/glslang/glslang"]
 	path = Libs/glslang/glslang
 	url = git@github.com:KhronosGroup/glslang.git
+[submodule "Libs/spirv-header/SPIRV-Headers"]
+	path = Libs/spirv-header/SPIRV-Headers
+	url = git@github.com:KhronosGroup/SPIRV-Headers.git
+[submodule "Libs/spirv-tools/SPIRV-Tools"]
+	path = Libs/spirv-tools/SPIRV-Tools
+	url = git@github.com:KhronosGroup/SPIRV-Tools.git
