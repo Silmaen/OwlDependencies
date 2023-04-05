@@ -1,13 +1,9 @@
 
 cmake_minimum_required(VERSION 3.24)
+project(shaderc-dep)
 
-find_package(glslang REQUIRED COMPONENTS SPIRV)
-add_library(glslang ALIAS glslang::glslang)
-add_library(SPIRV ALIAS glslang::SPIRV)
-find_package(spirv-tools REQUIRED)
-add_library(SPIRV-Tools ALIAS spirv-tools::spirv-tools)
-
+set(SHADERC_GLSLANG_DIR "${CMAKE_CURRENT_SOURCE_DIR}/glslang" CACHE STRING "")
+set(SHADERC_SPIRV_TOOLS_DIR "${CMAKE_CURRENT_SOURCE_DIR}/SPIRV-Tools" CACHE STRING "")
+set(SHADERC_SPIRV_HEADERS_DIR "${CMAKE_CURRENT_SOURCE_DIR}/SPIRV-Headers" CACHE STRING "")
 
 add_subdirectory(shaderc)
-
-

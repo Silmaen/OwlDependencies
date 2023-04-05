@@ -9,21 +9,18 @@ endif()
 add_subdirectory(Libs/debugbreak)
 add_subdirectory(Libs/entt)
 add_subdirectory(Libs/magic_enum)
-add_subdirectory(Libs/spirv-header)
 add_subdirectory(Libs/stb)
 # compiled without dependency
 add_subdirectory(Libs/fmt)
 add_subdirectory(Libs/glad)
 add_subdirectory(Libs/glfw)
 add_subdirectory(Libs/glm)
-add_subdirectory(Libs/glslang)
 add_subdirectory(Libs/googletest)
 add_subdirectory(Libs/nfd)
 add_subdirectory(Libs/spirv-cross)
 add_subdirectory(Libs/yaml-cpp)
+add_subdirectory(Libs/shaderc)
 # compiled with dependency
 add_subdirectory(Libs/spdlog) # depends on fmt
 add_subdirectory(Libs/imgui) # depends on glfw
 add_subdirectory(Libs/imguizmo) # depends on imgui
-add_subdirectory(Libs/spirv-tools) # depends on spirv-header
-add_subdirectory(Libs/shaderc) # depends on glslang & spirv-tools

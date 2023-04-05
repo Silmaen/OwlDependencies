@@ -43,12 +43,12 @@
 [submodule "Libs/shaderc/sources/shaderc"]
 	path = Libs/shaderc/sources/shaderc
 	url = git@github.com:google/shaderc.git
-[submodule "Libs/glslang/glslang"]
-	path = Libs/glslang/glslang
-	url = git@github.com:KhronosGroup/glslang.git
-[submodule "Libs/spirv-header/SPIRV-Headers"]
-	path = Libs/spirv-header/SPIRV-Headers
-	url = git@github.com:KhronosGroup/SPIRV-Headers.git
-[submodule "Libs/spirv-tools/SPIRV-Tools"]
-	path = Libs/spirv-tools/SPIRV-Tools
+[submodule "Libs/shaderc/sources/SPIRV-Tools"]
+	path = Libs/shaderc/sources/SPIRV-Tools
 	url = git@github.com:KhronosGroup/SPIRV-Tools.git
+[submodule "Libs/shaderc/sources/SPIRV-Headers"]
+	path = Libs/shaderc/sources/SPIRV-Headers
+	url = git@github.com:KhronosGroup/SPIRV-Headers.git
+[submodule "Libs/shaderc/sources/glslang"]
+	path = Libs/shaderc/sources/glslang
+	url = git@github.com:KhronosGroup/glslang.git
