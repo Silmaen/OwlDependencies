@@ -24,7 +24,6 @@ set(SHADERC_VERSION "1.3.243")
 project(shaderc)
 enable_testing()
 
-
 if ("${CMAKE_BUILD_TYPE}" STREQUAL "")
   message(STATUS "No build type selected, default to Debug")
   set(CMAKE_BUILD_TYPE "Debug")
