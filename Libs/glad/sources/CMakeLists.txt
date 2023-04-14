@@ -12,14 +12,13 @@ include(GNUInstallDirs)
 
 set(PROJECT_ROOT ${PROJECT_SOURCE_DIR}/${PROJECT_ID}-${PROJECT_VERSION})
 
-set(SRCS ${PROJECT_ROOT}/src/glad.c ${PROJECT_ROOT}/include/glad/glad.h ${PROJECT_ROOT}/include/KHR/khrplatform.h)
+set(SRCS ${PROJECT_ROOT}/src/glad.c)
+set(HDRS ${PROJECT_ROOT}/include/glad/glad.h ${PROJECT_ROOT}/include/KHR/khrplatform.h)
 
 add_library(${PROJECT_ID} ${SRCS})
 add_library(${PROJECT_ID}::${PROJECT_ID} ALIAS ${PROJECT_ID})
 
-target_include_directories(${PROJECT_ID} PRIVATE ${PROJECT_ROOT}/include)
-
-target_include_directories(${PROJECT_ID} SYSTEM INTERFACE
+target_include_directories(${PROJECT_ID} PUBLIC
         $<BUILD_INTERFACE:${PROJECT_ROOT}/include>
         $<INSTALL_INTERFACE:include>
         )
@@ -44,6 +43,7 @@ install(TARGETS ${PROJECT_ID} EXPORT ${targets_export_name}
         PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/${PROJECT_ID}
         PRIVATE_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/${PROJECT_ID}
         RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
+install(DIRECTORY ${PROJECT_ROOT}/include/glad ${PROJECT_ROOT}/include/KHR TYPE INCLUDE)
 # Use a namespace because CMake provides better diagnostics for namespaced
 # imported targets.
 export(TARGETS ${PROJECT_ID} NAMESPACE ${PROJECT_ID}::

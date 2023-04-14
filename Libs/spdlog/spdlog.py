@@ -37,6 +37,7 @@ class SpdlogStatic(Recipe):
     dependencies = [{"name": "fmt", "kind": "static"}]
 
     def configure(self):
+        self.cache_variables["SPDLOG_BUILD_SHARED"] = "OFF"
         self.cache_variables["SPDLOG_BUILD_EXAMPLE"] = "OFF"
         self.cache_variables["SPDLOG_BUILD_TESTS"] = "OFF"
         self.cache_variables["SPDLOG_BUILD_BENCH"] = "OFF"

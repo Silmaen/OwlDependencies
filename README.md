@@ -1,10 +1,18 @@
 # Owl Dependencies
 
-This project only aims to gather all dependencies for the Owl Engine
+This project only aims to gather all dependencies for the Owl Engine.
+
+See the git repository [OwlEngine](https://github.com/Silmaen/Owl) for the Engine code.
+
+## Requirement
+
+This project requires that DepManager is installed on the system and available
+from PATH. Check it git repository: [DepManager](https://github.com/Silmaen/DepManager)
+for more details.
 
 ## Rebuild Package
 
-Regenerate all the dependencies by running python script:
+Regenerate all the dependencies by running script:
 
 ## lib summary
 
