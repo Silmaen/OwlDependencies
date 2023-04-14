@@ -32,7 +32,7 @@ endif()
 message(STATUS "Shaderc: build type is \"${CMAKE_BUILD_TYPE}\".")
 
 if (WIN32)
-  set(CMAKE_DEBUG_POSTFIX "d")
+  set(CMAKE_DEBUG_POSTFIX "d" PARENT_SCOPE)
 endif()
 
 option(SHADERC_ENABLE_WGSL_OUTPUT "Enable WGSL output" OFF)
@@ -170,8 +170,7 @@ function(define_pkg_config_file NAME LIBS)
         ${CMAKE_CURRENT_BINARY_DIR}/${NAME}.pc
       DESTINATION
         ${CMAKE_INSTALL_LIBDIR}/pkgconfig)
-  endif()
-  file(WRITE "${CMAKE_CURRENT_BINARY_DIR}/shaderc-config.cmake.in" [=[
+    file(WRITE "${CMAKE_CURRENT_BINARY_DIR}/shaderc-config.cmake.in" [=[
         @PACKAGE_INIT@
         include("@PACKAGE_PATH_EXPORT_TARGETS@")
     ]=])
@@ -203,6 +202,7 @@ function(define_pkg_config_file NAME LIBS)
         DESTINATION
             "${CMAKE_INSTALL_LIBDIR}/cmake/${PROJECT_NAME}"
     )
+  endif()
 endfunction()
 
 define_pkg_config_file(shaderc -lshaderc_shared)

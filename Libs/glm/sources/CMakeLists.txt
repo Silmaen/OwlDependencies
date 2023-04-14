@@ -17,16 +17,6 @@ target_include_directories(${PROJECT_ID} SYSTEM INTERFACE
         $<INSTALL_INTERFACE:include>
         )
 
-file(GLOB_RECURSE PUBLIC_HEADERS
-        ${PROJECT_ROOT}/glm/*.h
-        ${PROJECT_ROOT}/glm/*.hpp
-        ${PROJECT_ROOT}/glm/*.inl
-        )
-
-set_target_properties(${PROJECT_ID} PROPERTIES
-        PUBLIC_HEADER "${PUBLIC_HEADERS}"
-        )
-
 set(version_config ${PROJECT_BINARY_DIR}/${PROJECT_ID}-config-version.cmake)
 set(project_config ${PROJECT_BINARY_DIR}/${PROJECT_ID}-config.cmake)
 set(targets_export_name ${PROJECT_ID}-targets)
@@ -47,6 +37,10 @@ install(TARGETS ${PROJECT_ID} EXPORT ${targets_export_name}
         PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/${PROJECT_ID}
         PRIVATE_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/${PROJECT_ID}
         RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
+
+
+install(DIRECTORY ${PROJECT_ROOT}/glm TYPE INCLUDE PATTERN "*.h" PATTERN "*.hpp" PATTERN "*.inl")
+
 if (BUILD_STATIC_LIBS)
     install(TARGETS ${PROJECT_ID}_static EXPORT ${targets_export_name}
             LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
