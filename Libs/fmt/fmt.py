@@ -10,7 +10,7 @@ class FmtShared(Recipe):
     Shared version
     """
     name = "fmt"
-    version = "9.1.0"
+    version = "10.0.0"
     source_dir = "fmt"
     kind = "shared"
 
@@ -25,7 +25,7 @@ class FmtStatic(Recipe):
     Shared version
     """
     name = "fmt"
-    version = "9.1.0"
+    version = "10.0.0"
     source_dir = "fmt"
     kind = "static"
 
