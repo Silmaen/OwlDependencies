@@ -16,29 +16,31 @@ Regenerate all the dependencies by running script:
 
 ## lib summary
 
-|       | name          | submodule? | custom cmake?             | version/tag      | dependency           | link                                                        |
-|-------|---------------|------------|---------------------------|------------------|----------------------|-------------------------------------------------------------|
-| `X`   | debugbreak    | `X`        | missing                   | 1.0              |                      | [github](https://github.com/scottt/debugbreak)              |
-| `X`   | entt          | `X`        |                           | 3.11.1           |                      | [github](https://github.com/skypjack/entt)                  |
-| `X`   | magic_enum    | `X`        |                           | 0.8.2            |                      | [github](https://github.com/Neargye/magic_enum)             |
-| `X`   | stb_image     | `0`        | missing                   | 2.28             |                      | [github](https://github.com/nothings/stb)                   |
-|       |               |            |                           |                  |                      |                                                             |
-| `X`   | fmt           | `X`        |                           | 9.1.0            |                      | [github](https://github.com/fmtlib/fmt)                     |
-| `X`   | glad          | `0`        | missing                   | 0.1.36           |                      | [glad](https://glad.dav1d.de/)                              |
-| `X`   | glfw          | `X`        |                           | 3.3.8            |                      | [github](https://github.com/glfw/glfw)                      |
-| `X`   | glm           | `X`        | replaced                  | 0.9.9.8          |                      | [github](https://github.com/g-truc/glm)                     |
-| `X`   | googletest    | `X`        |                           | 1.13.0           |                      | [github](https://github.com/google/googletest)              |
-| `X`   | imgui         | `X`        | missing                   | docking (branch) | glfw                 | [github](https://github.com/ocornut/imgui)                  |
-| `X`   | imguizmo      | `X`        | missing                   | 1.84             | imgui                | [github](https://github.com/CedricGuillemet/ImGuizmo)       |
-| `X`   | nfd           | `X`        |                           | 1.0.1            |                      | [github](https://github.com/btzy/nativefiledialog-extended) |
-| `X`   | shaderc       | `X`        | many modifs for packaging | v2023.2          | spirv-tools, glslang | [github](https://github.com/google/shaderc/)                |
-| `>>X` | glslang       | `X`        |                           | 12.1.0           |                      | [github](https://github.com/KhronosGroup/glslang)           |
-| `>>X` | SPIRV-Tools   | `X`        |                           | v2023.2          | spirv-headers        | [github](https://github.com/KhronosGroup/SPIRV-Tools)       |
-| `>>X` | SPIRV-Headers | `X`        |                           | sdk-1.3.243.0    |                      | [github](https://github.com/KhronosGroup/SPIRV-Headers)     |
-| `X`   | spdlog        | `X`        |                           | 1.11.0           | fmt                  | [github](https://github.com/gabime/spdlog)                  |
-| `X`   | SPIRV-Cross   | `X`        |                           | sdk-1.3.243.0    |                      | [github](https://github.com/KhronosGroup/SPIRV-Cross)       |
-| `X`   | yaml-cpp      | `X`        |                           | 0.70             |                      | [github](https://github.com/jbeder/yaml-cpp)                |
+platforms:
+W : Windows x86_64
+L : Linux x86_64
+La64 : Linux aarch64
 
+|       | name          | submodule? | platforms | custom cmake?             | version/tag      | dependency           | link                                                        |
+|-------|---------------|------------|-----------|---------------------------|------------------|----------------------|-------------------------------------------------------------|
+| `X`   | debugbreak    | `X`        | n/a       | missing                   | 1.0              |                      | [github](https://github.com/scottt/debugbreak)              |
+| `X`   | entt          | `X`        | n/a       |                           | 3.11.1           |                      | [github](https://github.com/skypjack/entt)                  |
+| `X`   | magic_enum    | `X`        | n/a       |                           | 0.8.2            |                      | [github](https://github.com/Neargye/magic_enum)             |
+| `X`   | stb_image     | `0`        | n/a       | missing                   | 2.28             |                      | [github](https://github.com/nothings/stb)                   |
+|       |               |            |           |                           |                  |                      |                                                             |
+| `X`   | fmt           | `X`        | W L La64  |                           | 10.0.0           |                      | [github](https://github.com/fmtlib/fmt)                     |
+| `X`   | glad          | `0`        | W L La64  | missing                   | 0.1.36           |                      | [glad](https://glad.dav1d.de/)                              |
+| `X`   | glfw          | `X`        | W L       |                           | 3.3.8            |                      | [github](https://github.com/glfw/glfw)                      |
+| `X`   | glm           | `X`        | W L La64  | replaced                  | 0.9.9.8          |                      | [github](https://github.com/g-truc/glm)                     |
+| `X`   | googletest    | `X`        | W L La64  |                           | 1.13.0           |                      | [github](https://github.com/google/googletest)              |
+| `X`   | imgui         | `X`        | W L       | missing                   | docking (branch) | glfw                 | [github](https://github.com/ocornut/imgui)                  |
+| `X`   | imguizmo      | `X`        | W L       | missing                   | 1.84             | imgui                | [github](https://github.com/CedricGuillemet/ImGuizmo)       |
+| `X`   | nfd           | `X`        | W L       |                           | 1.0.1            |                      | [github](https://github.com/btzy/nativefiledialog-extended) |
+| `X`   | shaderc       | `X`        | W L La64  | many modifs for packaging | v2023.2          | spirv-tools, glslang | [github](https://github.com/google/shaderc/)                |
+| `X`   | spdlog        | `X`        | W L La64  |                           | 1.11.0           | fmt                  | [github](https://github.com/gabime/spdlog)                  |
+| `X`   | SPIRV-Cross   | `X`        | W L La64  |                           | sdk-1.3.243.0    |                      | [github](https://github.com/KhronosGroup/SPIRV-Cross)       |
+| `X`   | yaml-cpp      | `X`        | W L La64  |                           | 0.70             |                      | [github](https://github.com/jbeder/yaml-cpp)                |
+|
 ## header-only
 
 ### DebugBreak
@@ -69,7 +71,7 @@ Source : [github](https://github.com/nothings/stb)
 
 ### fmt
 
-Version: 9.1.0
+Version: 10.0.0
 Depends: None
 Source : [github](https://github.com/fmtlib/fmt)
 
