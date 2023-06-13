@@ -30,12 +30,12 @@ La64 : Linux aarch64
 |       |               |            |           |                           |                  |                      |                                                             |
 | `X`   | fmt           | `X`        | W L La64  |                           | 10.0.0           |                      | [github](https://github.com/fmtlib/fmt)                     |
 | `X`   | glad          | `0`        | W L La64  | missing                   | 0.1.36           |                      | [glad](https://glad.dav1d.de/)                              |
-| `X`   | glfw          | `X`        | W L       |                           | 3.3.8            |                      | [github](https://github.com/glfw/glfw)                      |
+| `X`   | glfw          | `X`        | W L La64  |                           | 3.3.8            |                      | [github](https://github.com/glfw/glfw)                      |
 | `X`   | glm           | `X`        | W L La64  | replaced                  | 0.9.9.8          |                      | [github](https://github.com/g-truc/glm)                     |
 | `X`   | googletest    | `X`        | W L La64  |                           | 1.13.0           |                      | [github](https://github.com/google/googletest)              |
-| `X`   | imgui         | `X`        | W L       | missing                   | docking (branch) | glfw                 | [github](https://github.com/ocornut/imgui)                  |
-| `X`   | imguizmo      | `X`        | W L       | missing                   | 1.84             | imgui                | [github](https://github.com/CedricGuillemet/ImGuizmo)       |
-| `X`   | nfd           | `X`        | W L       |                           | 1.0.1            |                      | [github](https://github.com/btzy/nativefiledialog-extended) |
+| `X`   | imgui         | `X`        | W L La64  | missing                   | docking (branch) | glfw                 | [github](https://github.com/ocornut/imgui)                  |
+| `X`   | imguizmo      | `X`        | W L La64  | missing                   | 1.84             | imgui                | [github](https://github.com/CedricGuillemet/ImGuizmo)       |
+| `X`   | nfd           | `X`        | W L La64  |                           | 1.0.1            |                      | [github](https://github.com/btzy/nativefiledialog-extended) |
 | `X`   | shaderc       | `X`        | W L La64  | many modifs for packaging | v2023.2          | spirv-tools, glslang | [github](https://github.com/google/shaderc/)                |
 | `X`   | spdlog        | `X`        | W L La64  |                           | 1.11.0           | fmt                  | [github](https://github.com/gabime/spdlog)                  |
 | `X`   | SPIRV-Cross   | `X`        | W L La64  |                           | sdk-1.3.243.0    |                      | [github](https://github.com/KhronosGroup/SPIRV-Cross)       |
