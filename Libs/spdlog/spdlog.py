@@ -3,6 +3,11 @@ Depmanager recipes
 """
 
 from depmanager.api.recipe import Recipe
+from shutil import copyfile
+from tempfile import gettempdir
+from pathlib import Path
+
+here = Path(__file__).parent
 
 
 class SpdlogShared(Recipe):
@@ -15,6 +20,18 @@ class SpdlogShared(Recipe):
     kind = "shared"
     dependencies = [{"name": "fmt", "kind": "shared"}]
 
+    def source(self):
+        """
+        Done at the beginning of the procedure
+        """
+        temp = Path(gettempdir()) / "depbuilder"
+        temp.mkdir(exist_ok=True, parents=True)
+        source = here / Path(self.source_dir)
+        # backup
+        copyfile(source / "include" / "spdlog" / "common.h", temp / "spdlog_common.h")
+        # use ours
+        copyfile(here / "configs" / "include" / "spdlog" / "common.h", source / "include" / "spdlog" / "common.h")
+
     def configure(self):
         self.cache_variables["SPDLOG_BUILD_SHARED"] = "ON"
         self.cache_variables["SPDLOG_BUILD_EXAMPLE"] = "OFF"
@@ -24,6 +41,12 @@ class SpdlogShared(Recipe):
         if self.settings["os"] == "Windows":
             self.cache_variables["SPDLOG_WCHAR_SUPPORT"] = "ON"
             self.cache_variables["SPDLOG_WCHAR_FILENAMES"] = "ON"
+
+    def clean(self):
+        temp = Path(gettempdir()) / "depbuilder"
+        temp.mkdir(exist_ok=True, parents=True)
+        source = here / Path(self.source_dir)
+        copyfile(temp / "spdlog_common.h", source / "include" / "spdlog" / "common.h")
 
 
 class SpdlogStatic(Recipe):
@@ -36,6 +59,18 @@ class SpdlogStatic(Recipe):
     kind = "static"
     dependencies = [{"name": "fmt", "kind": "static"}]
 
+    def source(self):
+        """
+        Done at the beginning of the procedure
+        """
+        temp = Path(gettempdir()) / "depbuilder"
+        temp.mkdir(exist_ok=True, parents=True)
+        source = here / Path(self.source_dir)
+        # backup
+        copyfile(source / "include" / "spdlog" / "common.h", temp / "spdlog_common.h")
+        # use ours
+        copyfile(here / "configs" / "include" / "spdlog" / "common.h", source / "include" / "spdlog" / "common.h")
+
     def configure(self):
         self.cache_variables["SPDLOG_BUILD_SHARED"] = "OFF"
         self.cache_variables["SPDLOG_BUILD_EXAMPLE"] = "OFF"
@@ -47,3 +82,9 @@ class SpdlogStatic(Recipe):
             self.cache_variables["SPDLOG_WCHAR_FILENAMES"] = "ON"
         elif self.settings["os"] == "Linux":
             self.cache_variables["SPDLOG_BUILD_PIC"] = "ON"
+
+    def clean(self):
+        temp = Path(gettempdir()) / "depbuilder"
+        temp.mkdir(exist_ok=True, parents=True)
+        source = here / Path(self.source_dir)
+        copyfile(temp / "spdlog_common.h", source / "include" / "spdlog" / "common.h")

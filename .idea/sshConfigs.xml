@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SshConfigs">
+    <configs>
+      <sshConfig authType="PASSWORD" connectionConfig="{&quot;serverAliveInterval&quot;:300}" host="ida.argawaen.net" id="e5e68705-bbd0-431c-bec3-d6aec4f18f46" port="22" nameFormat="DESCRIPTIVE" username="argawaen" useOpenSSHConfig="true" />
+    </configs>
+  </component>
+</project>
