@@ -10,7 +10,7 @@ class GlmShared(Recipe):
     Shared version
     """
     name = "glm"
-    version = "0.9.9.8"
+    version = "0.9.9.9"
     source_dir = "sources"
     kind = "shared"
 
@@ -23,7 +23,7 @@ class GlmStatic(Recipe):
     Shared version
     """
     name = "glm"
-    version = "0.9.9.8"
+    version = "0.9.9.9"
     source_dir = "sources"
     kind = "static"
 
