@@ -9,7 +9,7 @@
     <mapping directory="$PROJECT_DIR$/Libs/glm/sources/glm" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Libs/googletest/googletest" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Libs/imgui/sources/imgui" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/Libs/imguizmo/sources/ImGuizmo" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Libs/imguizmo/sources/imguizmo" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Libs/magic_enum/magic_enum" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Libs/nfd/nativefiledialog-extended" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Libs/shaderc/sources/SPIRV-Headers" vcs="Git" />
