@@ -31,15 +31,15 @@ target_include_directories(${PROJECT_ID} SYSTEM INTERFACE
 # glfw dependency
 find_package(glfw3 REQUIRED)
 target_link_libraries(${PROJECT_ID} PRIVATE glfw)
-target_sources(imgui PRIVATE
+target_sources(${PROJECT_ID} PRIVATE
         ${PROJECT_ROOT}/backends/imgui_impl_glfw.cpp
         ${PROJECT_ROOT}/backends/imgui_impl_glfw.h)
 install(FILES ${PROJECT_ROOT}/backends/imgui_impl_glfw.h
         DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/backends)
 
-# opengl dependency
+# opengl 3 dependency
 target_compile_definitions(${PROJECT_ID} PUBLIC IMGUI_IMPL_OPENGL_LOADER_GLAD)
-target_sources(imgui PRIVATE
+target_sources(${PROJECT_ID} PRIVATE
         ${PROJECT_ROOT}/backends/imgui_impl_opengl3.cpp
         ${PROJECT_ROOT}/backends/imgui_impl_opengl3.h
         ${PROJECT_ROOT}/backends/imgui_impl_opengl3_loader.h)
@@ -48,10 +48,23 @@ install(FILES
         ${PROJECT_ROOT}/backends/imgui_impl_opengl3_loader.h
         DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/backends)
 
+# opengl 2, legacy dependency
+target_sources(${PROJECT_ID} PRIVATE
+        ${PROJECT_ROOT}/backends/imgui_impl_opengl2.cpp
+        ${PROJECT_ROOT}/backends/imgui_impl_opengl2.h)
+install(FILES
+        ${PROJECT_ROOT}/backends/imgui_impl_opengl2.h
+        DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/backends)
+if (${CMAKE_SYSTEM_NAME} MATCHES "Windows")
+    target_link_libraries(${PROJECT_ID} PRIVATE opengl32)
+else()
+    target_link_libraries(${PROJECT_ID} PRIVATE GL)
+endif()
+
 # windows
 if (${CMAKE_SYSTEM_NAME} MATCHES "Windows")
     target_link_libraries(${PROJECT_ID} PRIVATE dwmapi)
-    target_sources(imgui PRIVATE
+    target_sources(${PROJECT_ID} PRIVATE
             ${PROJECT_ROOT}/backends/imgui_impl_win32.cpp
             ${PROJECT_ROOT}/backends/imgui_impl_win32.h)
     install(FILES
