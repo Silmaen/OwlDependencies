@@ -49,3 +49,6 @@
 [submodule "Libs/imguizmo/sources/imguizmo"]
 	path = Libs/imguizmo/sources/imguizmo
 	url = git@github.com:CedricGuillemet/ImGuizmo.git
+[submodule "Libs/cpptrace/cpptrace"]
+	path = Libs/cpptrace/cpptrace
+	url = git@github.com:jeremy-rifkin/cpptrace.git
