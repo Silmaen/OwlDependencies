@@ -2,6 +2,7 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Libs/cpptrace/cpptrace" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Libs/debugbreak/sources/debugbreak" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Libs/entt/entt" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Libs/fmt/fmt" vcs="Git" />
