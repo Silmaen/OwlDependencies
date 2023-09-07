@@ -12,6 +12,7 @@ add_subdirectory(Libs/magic_enum)
 add_subdirectory(Libs/stb)
 # compiled without dependency
 add_subdirectory(Libs/fmt)
+add_subdirectory(Libs/cpptrace)
 add_subdirectory(Libs/glad)
 add_subdirectory(Libs/glfw)
 add_subdirectory(Libs/glm)
