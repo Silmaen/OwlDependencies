@@ -52,3 +52,6 @@
 [submodule "Libs/cpptrace/cpptrace"]
 	path = Libs/cpptrace/cpptrace
 	url = git@github.com:jeremy-rifkin/cpptrace.git
+[submodule "Libs/opencv/opencv"]
+	path = Libs/opencv/opencv
+	url = git@github.com:opencv/opencv.git
