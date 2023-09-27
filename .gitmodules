@@ -55,3 +55,12 @@
 [submodule "Libs/opencv/opencv"]
 	path = Libs/opencv/opencv
 	url = git@github.com:opencv/opencv.git
+[submodule "Libs/mavsdk/MAVSDK"]
+	path = Libs/mavsdk/MAVSDK
+	url = git@github.com:mavlink/MAVSDK.git
+[submodule "Libs/jsoncpp/jsoncpp"]
+	path = Libs/jsoncpp/jsoncpp
+	url = git@github.com:open-source-parsers/jsoncpp.git
+[submodule "Libs/tinyxml2/tinyxml2"]
+	path = Libs/tinyxml2/tinyxml2
+	url = git@github.com:leethomason/tinyxml2.git
