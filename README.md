@@ -21,26 +21,29 @@ W : Windows x86_64
 L : Linux x86_64
 La64 : Linux aarch64
 
-|       | name        | submodule? | platforms | custom cmake?             | version/tag      | dependency           | link                                                        |
-|-------|-------------|------------|-----------|---------------------------|------------------|----------------------|-------------------------------------------------------------|
-| `X`   | debugbreak  | `X`        | n/a       | missing                   | 1.0              |                      | [github](https://github.com/scottt/debugbreak)              |
-| `X`   | entt        | `X`        | n/a       |                           | 3.11.1           |                      | [github](https://github.com/skypjack/entt)                  |
-| `X`   | magic_enum  | `X`        | n/a       |                           | 0.8.2            |                      | [github](https://github.com/Neargye/magic_enum)             |
-| `X`   | stb_image   | `0`        | n/a       | missing                   | 2.28             |                      | [github](https://github.com/nothings/stb)                   |
-|       |             |            |           |                           |                  |                      |                                                             |
-| `X`   | fmt         | `X`        | W L La64  |                           | 10.0.0           |                      | [github](https://github.com/fmtlib/fmt)                     |
-| `X`   | glad        | `0`        | W L La64  | missing                   | 0.1.36           |                      | [glad](https://glad.dav1d.de/)                              |
-| `X`   | glfw        | `X`        | W L La64  |                           | 3.3.8            |                      | [github](https://github.com/glfw/glfw)                      |
-| `X`   | glm         | `X`        | W L La64  | replaced                  | 0.9.9.8          |                      | [github](https://github.com/g-truc/glm)                     |
-| `X`   | googletest  | `X`        | W L La64  |                           | 1.13.0           |                      | [github](https://github.com/google/googletest)              |
-| `X`   | imgui       | `X`        | W L La64  | missing                   | docking (branch) | glfw                 | [github](https://github.com/ocornut/imgui)                  |
-| `X`   | imguizmo    | `X`        | W L La64  | missing                   | 1.84             | imgui                | [github](https://github.com/CedricGuillemet/ImGuizmo)       |
-| `X`   | nfd         | `X`        | W L La64  |                           | 1.0.1            |                      | [github](https://github.com/btzy/nativefiledialog-extended) |
-| `X`   | opencv      | `X`        |           |                           | 4.8.0            |                      | [github](https://github.com/opencv/opencv)                  |
-| `X`   | shaderc     | `X`        | W L La64  | many modifs for packaging | v2023.2          | spirv-tools, glslang | [github](https://github.com/google/shaderc/)                |
-| `X`   | spdlog      | `X`        | W L La64  |                           | 1.11.0           | fmt                  | [github](https://github.com/gabime/spdlog)                  |
-| `X`   | SPIRV-Cross | `X`        | W L La64  |                           | sdk-1.3.243.0    |                      | [github](https://github.com/KhronosGroup/SPIRV-Cross)       |
-| `X`   | yaml-cpp    | `X`        | W L La64  |                           | 0.70             |                      | [github](https://github.com/jbeder/yaml-cpp)                |
+|     | name        | submodule? | platforms | custom cmake?             | version/tag      | dependency           | link                                                        |
+|-----|-------------|------------|-----------|---------------------------|------------------|----------------------|-------------------------------------------------------------|
+| `X` | debugbreak  | `X`        | n/a       | missing                   | 1.0              |                      | [github](https://github.com/scottt/debugbreak)              |
+| `X` | entt        | `X`        | n/a       |                           | 3.11.1           |                      | [github](https://github.com/skypjack/entt)                  |
+| `X` | magic_enum  | `X`        | n/a       |                           | 0.8.2            |                      | [github](https://github.com/Neargye/magic_enum)             |
+| `X` | stb_image   | `0`        | n/a       | missing                   | 2.28             |                      | [github](https://github.com/nothings/stb)                   |
+|     |             |            |           |                           |                  |                      |                                                             |
+| `X` | fmt         | `X`        | W L La64  |                           | 10.0.0           |                      | [github](https://github.com/fmtlib/fmt)                     |
+| `X` | glad        | `0`        | W L La64  | missing                   | 0.1.36           |                      | [glad](https://glad.dav1d.de/)                              |
+| `X` | glfw        | `X`        | W L La64  |                           | 3.3.8            |                      | [github](https://github.com/glfw/glfw)                      |
+| `X` | glm         | `X`        | W L La64  | replaced                  | 0.9.9.8          |                      | [github](https://github.com/g-truc/glm)                     |
+| `X` | googletest  | `X`        | W L La64  |                           | 1.13.0           |                      | [github](https://github.com/google/googletest)              |
+| `X` | imgui       | `X`        | W L La64  | missing                   | docking (branch) | glfw                 | [github](https://github.com/ocornut/imgui)                  |
+| `X` | imguizmo    | `X`        | W L La64  | missing                   | 1.84             | imgui                | [github](https://github.com/CedricGuillemet/ImGuizmo)       |
+| `X` | jsoncpp     | `X`        | W L La64  |                           | 1.9.5            |                      | [github](https://github.com/open-source-parsers/jsoncpp)    |
+| `X` | mavsdk      | `X`        | W L La64  |                           | 1.4.17           | jsoncpp tinyxml2     | [github](https://github.com/mavlink/MAVSDK)                 |
+| `X` | nfd         | `X`        | W L La64  |                           | 1.0.1            |                      | [github](https://github.com/btzy/nativefiledialog-extended) |
+| `X` | opencv      | `X`        |           |                           | 4.8.0            |                      | [github](https://github.com/opencv/opencv)                  |
+| `X` | shaderc     | `X`        | W L La64  | many modifs for packaging | v2023.2          | spirv-tools, glslang | [github](https://github.com/google/shaderc/)                |
+| `X` | spdlog      | `X`        | W L La64  |                           | 1.11.0           | fmt                  | [github](https://github.com/gabime/spdlog)                  |
+| `X` | SPIRV-Cross | `X`        | W L La64  |                           | sdk-1.3.243.0    |                      | [github](https://github.com/KhronosGroup/SPIRV-Cross)       |
+| `X` | tinyxml2    | `X`        | W L La64  |                           | 9.0.0            |                      | [github](https://github.com/leethomason/tinyxml2)           |
+| `X` | yaml-cpp    | `X`        | W L La64  |                           | 0.70             |                      | [github](https://github.com/jbeder/yaml-cpp)                |
 |
 ## header-only
 
@@ -120,6 +123,20 @@ Version: 1.84
 Depends: imgui
 Source : [github](https://github.com/CedricGuillemet/ImGuizmo)
 
+### jsoncpp
+
+use of a git submodule
+Version: 1.9.5
+Depends: 
+Source : [github](https://github.com/CedricGuillemet/ImGuizmo)
+
+### mavsdk
+
+use of a git submodule
+Version: 1.4.17
+Depends: jsoncpp tinywml2
+Source : [github](https://github.com/mavlink/MAVSDK)
+
 ### nfd
 
 We use the 'extended' version which is a fork of the original one not maintained. 
@@ -151,6 +168,12 @@ Source : [github](https://github.com/gabime/spdlog)
 Version:
 Depends:
 Source : [github](https://github.com/KhronosGroup/SPIRV-Tools)
+
+### tinywml2
+
+Version: 9.0.0
+Depends:
+Source : [github](https://github.com/leethomason/tinyxml2)
 
 ### yaml-cpp
 
