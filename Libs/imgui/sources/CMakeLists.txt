@@ -37,6 +37,20 @@ target_sources(${PROJECT_ID} PRIVATE
 install(FILES ${PROJECT_ROOT}/backends/imgui_impl_glfw.h
         DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/backends)
 
+# Vulkan dependency
+find_package(Vulkan REQUIRED)
+target_compile_definitions(${PROJECT_ID} PUBLIC IMGUI_IMPL_OPENGL_LOADER_GLAD)
+target_sources(${PROJECT_ID} PRIVATE
+        ${PROJECT_ROOT}/backends/imgui_impl_vulkan.cpp
+        ${PROJECT_ROOT}/backends/imgui_impl_vulkan.h)
+install(FILES
+        ${PROJECT_ROOT}/backends/imgui_impl_vulkan.h
+        DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/backends)
+install(DIRECTORY
+        ${PROJECT_ROOT}/backends/vulkan
+        DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/backends)
+target_link_libraries(${PROJECT_ID} PRIVATE Vulkan::Vulkan)
+
 # opengl 3 dependency
 target_compile_definitions(${PROJECT_ID} PUBLIC IMGUI_IMPL_OPENGL_LOADER_GLAD)
 target_sources(${PROJECT_ID} PRIVATE
