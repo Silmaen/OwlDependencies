@@ -38,6 +38,7 @@ target_include_directories(${PROJECT_ID} PUBLIC
 set(version_config ${PROJECT_BINARY_DIR}/${PROJECT_ID}-config-version.cmake)
 set(project_config ${PROJECT_BINARY_DIR}/${PROJECT_ID}-config.cmake)
 set(targets_export_name ${PROJECT_ID}-targets)
+
 include(CMakePackageConfigHelpers)
 write_basic_package_version_file(
         ${version_config}
@@ -53,6 +54,7 @@ install(TARGETS ${PROJECT_ID} EXPORT ${targets_export_name}-$<CONFIG>
         PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/${PROJECT_ID}
         PRIVATE_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/${PROJECT_ID}
         RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}/$<CONFIG>
+        FRAMEWORK DESTINATION ${CMAKE_INSTALL_BINDIR}/$<CONFIG>
         CONFIGURATIONS $<CONFIG>
 )
 

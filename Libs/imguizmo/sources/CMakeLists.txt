@@ -27,6 +27,9 @@ target_include_directories(${PROJECT_ID} SYSTEM INTERFACE
         )
 
 # imgui dependency
+if (NOT ${PRJPREFIX}_BUILD_SHARED)
+        find_package(Vulkan REQUIRED)
+endif ()
 find_package(imgui REQUIRED)
 target_link_libraries(${PROJECT_ID} PRIVATE imgui::imgui)
 target_include_directories(${PROJECT_ID} PRIVATE ${imgui_INCLUDE_DIRS}/imgui)
@@ -53,23 +56,24 @@ configure_package_config_file(
         ${project_config}
         INSTALL_DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/${PROJECT_ID})
 
-install(TARGETS ${PROJECT_ID} EXPORT ${targets_export_name}
-        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
-        ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+install(TARGETS ${PROJECT_ID} EXPORT ${targets_export_name}-$<CONFIG>
+        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}/$<CONFIG>
+        ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}/$<CONFIG>
         PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
         PRIVATE_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
-        RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
-# Use a namespace because CMake provides better diagnostics for namespaced
-# imported targets.
-export(TARGETS ${PROJECT_ID} NAMESPACE ${PROJECT_ID}::
-        FILE ${PROJECT_BINARY_DIR}/${targets_export_name}.cmake)
+        RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}/$<CONFIG>
+        FRAMEWORK DESTINATION ${CMAKE_INSTALL_BINDIR}/$<CONFIG>
+        CONFIGURATIONS $<CONFIG>
+)
 
 # Install version, config and target files.
 install(
         FILES ${project_config} ${version_config}
         DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/${PROJECT_ID}
 )
-install(EXPORT ${targets_export_name} DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/${PROJECT_ID}
+install(EXPORT ${targets_export_name}-$<CONFIG>
+        FILE ${targets_export_name}.cmake
+        DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/${PROJECT_ID}
         NAMESPACE ${PROJECT_ID}::)
 
 
