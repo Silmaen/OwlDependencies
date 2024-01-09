@@ -10,6 +10,13 @@ This project requires that DepManager is installed on the system and available
 from PATH. Check it git repository: [DepManager](https://github.com/Silmaen/DepManager)
 for more details.
 
+## Get or Update submodules
+
+After cloning this repository, if you don't have clone with the recursive option,
+or if you need to update the repository, just run this command:
+
+`git submodule update --init --recursive`
+
 ## Rebuild Package
 
 Regenerate all the dependencies by running script:
@@ -38,7 +45,6 @@ La64 : Linux aarch64
 | `X` | jsoncpp     | `X`        | W L La64  |                           | 1.9.5            |                      | [github](https://github.com/open-source-parsers/jsoncpp)    |
 | `X` | mavsdk      | `X`        | W L La64  |                           | 1.4.17           | jsoncpp tinyxml2     | [github](https://github.com/mavlink/MAVSDK)                 |
 | `X` | nfd         | `X`        | W L La64  |                           | 1.0.1            |                      | [github](https://github.com/btzy/nativefiledialog-extended) |
-| `X` | opencv      | `X`        |           |                           | 4.8.0            |                      | [github](https://github.com/opencv/opencv)                  |
 | `X` | shaderc     | `X`        | W L La64  | many modifs for packaging | v2023.2          | spirv-tools, glslang | [github](https://github.com/google/shaderc/)                |
 | `X` | spdlog      | `X`        | W L La64  |                           | 1.11.0           | fmt                  | [github](https://github.com/gabime/spdlog)                  |
 | `X` | SPIRV-Cross | `X`        | W L La64  |                           | sdk-1.3.243.0    |                      | [github](https://github.com/KhronosGroup/SPIRV-Cross)       |
