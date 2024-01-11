@@ -9,15 +9,19 @@ class CppTraceShared(Recipe):
     """
     Shared version
     """
+
     name = "cpptrace"
     version = "0.3.1"
     source_dir = "cpptrace"
     kind = "shared"
-    config = ["Release"]
+
+    def configure(self):
+        self.cache_variables["CMAKE_DEBUG_POSTFIX"] = "d"
 
 
 class CppTraceStatic(CppTraceShared):
     """
     Shared version
     """
+
     kind = "static"

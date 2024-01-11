@@ -17,17 +17,11 @@ class GoogleTestShared(Recipe):
     def configure(self):
         self.cache_variables["BUILD_GMOCK"] = "OFF"
         self.cache_variables["INSTALL_GTEST"] = "ON"
+        self.cache_variables["CMAKE_DEBUG_POSTFIX"] = "d"
 
 
-class GoogleTestStatic(Recipe):
+class GoogleTestStatic(GoogleTestShared):
     """
-    Shared version
+    Static version
     """
-    name = "googletest"
-    version = "1.14.0"
-    source_dir = "googletest"
     kind = "static"
-
-    def configure(self):
-        self.cache_variables["BUILD_GMOCK"] = "OFF"
-        self.cache_variables["INSTALL_GTEST"] = "ON"

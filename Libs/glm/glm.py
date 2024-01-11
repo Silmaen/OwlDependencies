@@ -17,20 +17,18 @@ class GlmShared(Recipe):
     kind = "shared"
 
     def configure(self):
-        self.cache_variables["BUILD_STATIC_LIBS"] = "OFF"
         self.cache_variables["BUILD_TESTING"] = "OFF"
+        self.cache_variables["CMAKE_DEBUG_POSTFIX"] = "d"
 
 
-class GlmStatic(Recipe):
+class GlmStatic(GlmShared):
     """
-    Shared version
+    Static version
     """
-    name = "glm"
-    version = "0.9.9.9"
-    source_dir = "sources/glm"
     kind = "static"
 
     def configure(self):
-        self.cache_variables["BUILD_STATIC_LIBS"] = "ON"
         self.cache_variables["BUILD_TESTING"] = "OFF"
+        self.cache_variables["CMAKE_DEBUG_POSTFIX"] = "d"
+
 

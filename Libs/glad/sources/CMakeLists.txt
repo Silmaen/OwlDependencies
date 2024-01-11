@@ -5,11 +5,7 @@
 cmake_minimum_required(VERSION 3.20)
 set(PROJECT_ID glad)
 
-if (GLAD_VERSION_1)
-    set(PROJECT_VERSION "0.1.36")
-else ()
-    set(PROJECT_VERSION "2.0.4")
-endif ()
+set(PROJECT_VERSION "2.0.4")
 
 project(glad LANGUAGES C VERSION ${PROJECT_VERSION})
 include(GNUInstallDirs)
@@ -18,13 +14,10 @@ set(PROJECT_ROOT ${PROJECT_SOURCE_DIR}/${PROJECT_ID}-${PROJECT_VERSION})
 if (WIN32)
     set(CMAKE_DEBUG_POSTFIX "d")
 endif ()
-if (GLAD_VERSION_1)
-    set(SRCS ${PROJECT_ROOT}/src/glad.c)
-    set(HDRS ${PROJECT_ROOT}/include/glad/glad.h ${PROJECT_ROOT}/include/KHR/khrplatform.h)
-else ()
-    set(SRCS ${PROJECT_ROOT}/src/gl.c ${PROJECT_ROOT}/src/vulkan.c)
-    set(HDRS ${PROJECT_ROOT}/include/vk_platform.h ${PROJECT_ROOT}/include/glad/gl.h ${PROJECT_ROOT}/include/glad/vulkan.h ${PROJECT_ROOT}/include/KHR/khrplatform.h)
-endif ()
+
+set(SRCS ${PROJECT_ROOT}/src/gl.c ${PROJECT_ROOT}/src/vulkan.c)
+set(HDRS ${PROJECT_ROOT}/include/vk_platform.h ${PROJECT_ROOT}/include/glad/gl.h ${PROJECT_ROOT}/include/glad/vulkan.h ${PROJECT_ROOT}/include/KHR/khrplatform.h)
+
 
 
 add_library(${PROJECT_ID} ${SRCS})

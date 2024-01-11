@@ -11,6 +11,7 @@ class TinyXML2Shared(Recipe):
     """
     Shared version
     """
+
     name = "tinyxml2"
     version = "10.0.0"
     source_dir = "tinyxml2"
@@ -21,15 +22,9 @@ class TinyXML2Shared(Recipe):
             self.cache_variables[ignore] = "OFF"
 
 
-class TinyXML2Static(Recipe):
+class TinyXML2Static(TinyXML2Shared):
     """
-    Shared version
+    Static version
     """
-    name = "tinyxml2"
-    version = "10.0.0"
-    source_dir = "tinyxml2"
-    kind = "static"
 
-    def configure(self):
-        for ignore in ignore_list:
-            self.cache_variables[ignore] = "OFF"
+    kind = "static"
