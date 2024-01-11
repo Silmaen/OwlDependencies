@@ -10,7 +10,7 @@ class GoogleTestShared(Recipe):
     Shared version
     """
     name = "googletest"
-    version = "1.13.0"
+    version = "1.14.0"
     source_dir = "googletest"
     kind = "shared"
 
@@ -24,7 +24,7 @@ class GoogleTestStatic(Recipe):
     Shared version
     """
     name = "googletest"
-    version = "1.13.0"
+    version = "1.14.0"
     source_dir = "googletest"
     kind = "static"
 

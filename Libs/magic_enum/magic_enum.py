@@ -10,7 +10,7 @@ class MagicEnumHeader(Recipe):
     Header-only version
     """
     name = "magic_enum"
-    version = "0.8.2"
+    version = "0.9.5"
     source_dir = "magic_enum"
     kind = "header"
 
