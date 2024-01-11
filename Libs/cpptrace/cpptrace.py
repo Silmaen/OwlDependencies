@@ -10,16 +10,14 @@ class CppTraceShared(Recipe):
     Shared version
     """
     name = "cpptrace"
-    version = "0.1"
+    version = "0.3.1"
     source_dir = "cpptrace"
     kind = "shared"
+    config = ["Release"]
 
 
-class CppTraceStatic(Recipe):
+class CppTraceStatic(CppTraceShared):
     """
     Shared version
     """
-    name = "cpptrace"
-    version = "0.1"
-    source_dir = "cpptrace"
     kind = "static"

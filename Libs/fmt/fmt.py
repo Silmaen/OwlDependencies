@@ -10,7 +10,7 @@ class FmtShared(Recipe):
     Shared version
     """
     name = "fmt"
-    version = "10.1.1"
+    version = "10.2.1"
     source_dir = "fmt"
     kind = "shared"
 
@@ -20,16 +20,8 @@ class FmtShared(Recipe):
         self.cache_variables["FMT_SYSTEM_HEADERS"] = "ON"
 
 
-class FmtStatic(Recipe):
+class FmtStatic(FmtShared):
     """
     Shared version
     """
-    name = "fmt"
-    version = "10.1.1"
-    source_dir = "fmt"
     kind = "static"
-
-    def configure(self):
-        self.cache_variables["FMT_TEST"] = "OFF"
-        self.cache_variables["FMT_DOC"] = "OFF"
-        self.cache_variables["FMT_SYSTEM_HEADERS"] = "ON"

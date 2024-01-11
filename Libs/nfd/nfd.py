@@ -14,7 +14,7 @@ class NfdShared(Recipe):
     Shared version
     """
     name = "nfd"
-    version = "1.0.2"
+    version = "1.1.1"
     source_dir = "nativefiledialog-extended"
     kind = "shared"
 
@@ -46,7 +46,7 @@ class NfdStatic(Recipe):
     Shared version
     """
     name = "nfd"
-    version = "1.0.2"
+    version = "1.1.1"
     source_dir = "nativefiledialog-extended"
     kind = "static"
 
