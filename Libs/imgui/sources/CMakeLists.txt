@@ -11,10 +11,10 @@ set(PROJECT_ROOT ${PROJECT_SOURCE_DIR}/${PROJECT_ID})
 
 file(GLOB SRCS
         ${PROJECT_ROOT}/*.cpp
-        )
+)
 file(GLOB HDRS
         ${PROJECT_ROOT}/*.h
-        )
+)
 
 add_library(${PROJECT_ID} ${SRCS} ${HDRS})
 add_library(${PROJECT_ID}::${PROJECT_ID} ALIAS ${PROJECT_ID})
@@ -26,7 +26,7 @@ target_compile_definitions(${PROJECT_ID} INTERFACE IMGUI_IMPL_HAS_DOCKING)
 target_include_directories(${PROJECT_ID} SYSTEM INTERFACE
         $<BUILD_INTERFACE:${PROJECT_ROOT}>
         $<INSTALL_INTERFACE:include>
-        )
+)
 
 # glfw dependency
 find_package(glfw3 REQUIRED)
@@ -38,7 +38,7 @@ install(FILES ${PROJECT_ROOT}/backends/imgui_impl_glfw.h
         DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/backends)
 
 # Vulkan dependency
-find_package(Vulkan REQUIRED)
+find_package(VulkanHeaders REQUIRED)
 target_sources(${PROJECT_ID} PRIVATE
         ${PROJECT_ROOT}/backends/imgui_impl_vulkan.cpp
         ${PROJECT_ROOT}/backends/imgui_impl_vulkan.h)
@@ -48,7 +48,7 @@ install(FILES
 install(DIRECTORY
         ${PROJECT_ROOT}/backends/vulkan
         DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/backends)
-target_link_libraries(${PROJECT_ID} PRIVATE Vulkan::Vulkan)
+target_link_libraries(${PROJECT_ID} PRIVATE Vulkan::Headers)
 
 # opengl 3 dependency
 target_sources(${PROJECT_ID} PRIVATE
@@ -69,9 +69,9 @@ install(FILES
         DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/backends)
 if (${CMAKE_SYSTEM_NAME} MATCHES "Windows")
     target_link_libraries(${PROJECT_ID} PRIVATE opengl32)
-else()
+else ()
     target_link_libraries(${PROJECT_ID} PRIVATE GL)
-endif()
+endif ()
 
 # windows
 if (${CMAKE_SYSTEM_NAME} MATCHES "Windows")
@@ -86,11 +86,11 @@ endif ()
 
 file(GLOB PUBLIC_HEADERS
         ${PROJECT_ROOT}/*.h
-        )
+)
 
 set_target_properties(${PROJECT_ID} PROPERTIES
         PUBLIC_HEADER "${PUBLIC_HEADERS}"
-        )
+)
 
 set(version_config ${PROJECT_BINARY_DIR}/${PROJECT_ID}-config-version.cmake)
 set(project_config ${PROJECT_BINARY_DIR}/${PROJECT_ID}-config.cmake)

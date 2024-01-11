@@ -61,3 +61,9 @@
 [submodule "Libs/tinyxml2/tinyxml2"]
 	path = Libs/tinyxml2/tinyxml2
 	url = git@github.com:leethomason/tinyxml2.git
+[submodule "Libs/vulkan/source/Vulkan-Headers"]
+	path = Libs/vulkan/source/Vulkan-Headers
+	url = git@github.com:KhronosGroup/Vulkan-Headers.git
+[submodule "Libs/vulkan/source/Vulkan-Loader"]
+	path = Libs/vulkan/source/Vulkan-Loader
+	url = git@github.com:KhronosGroup/Vulkan-Loader.git

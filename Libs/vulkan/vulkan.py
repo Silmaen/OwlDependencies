@@ -1,29 +1,28 @@
 """
 Depmanager recipes
 """
-from pathlib import Path
 
 from depmanager.api.recipe import Recipe
 
-here = Path(__file__).parent
+ignore_list = ["BUILD_TESTING"]
 
 
-class GlmShared(Recipe):
+class VulkanShared(Recipe):
     """
     Shared version
     """
 
-    name = "glm"
-    version = "0.9.9.9"
-    source_dir = "sources/glm"
+    name = "vulkan"
+    version = "1.3.275"
+    source_dir = "source"
     kind = "shared"
 
     def configure(self):
-        self.cache_variables["GLM_BUILD_TESTS"] = "OFF"
+        self.cache_variables["VK_VERSION_STRING"] = f"{self.version}"
         self.cache_variables["CMAKE_DEBUG_POSTFIX"] = "d"
 
 
-class GlmStatic(GlmShared):
+class VulkanStatic(VulkanShared):
     """
     Static version
     """

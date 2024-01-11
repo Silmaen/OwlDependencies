@@ -9,19 +9,24 @@ class ImguiShared(Recipe):
     """
     Shared version
     """
+
     name = "imgui"
     version = "1.90.1-docking"
     source_dir = "sources"
     kind = "shared"
-    dependencies = [{"name": "glfw", "kind": "shared"}]
+    dependencies = [
+        {"name": "glfw", "kind": "shared"},
+        {"name": "vulkan", "kind": "shared"},
+    ]
 
 
-class ImguiStatic(Recipe):
+class ImguiStatic(ImguiShared):
     """
-    Shared version
+    Static version
     """
-    name = "imgui"
-    version = "1.90.1-docking"
-    source_dir = "sources"
+
     kind = "static"
-    dependencies = [{"name": "glfw", "kind": "static"}]
+    dependencies = [
+        {"name": "glfw", "kind": "static"},
+        {"name": "vulkan", "kind": "static"},
+    ]
