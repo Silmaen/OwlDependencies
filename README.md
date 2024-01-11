@@ -40,17 +40,18 @@ La64 : Linux aarch64
 | `X` | glfw        | `X`        | W L La64  |                           | 3.3.8            |                      | [github](https://github.com/glfw/glfw)                      |
 | `X` | glm         | `X`        | W L La64  | replaced                  | 0.9.9.8          |                      | [github](https://github.com/g-truc/glm)                     |
 | `X` | googletest  | `X`        | W L La64  |                           | 1.13.0           |                      | [github](https://github.com/google/googletest)              |
-| `X` | imgui       | `X`        | W L La64  | missing                   | docking (branch) | glfw                 | [github](https://github.com/ocornut/imgui)                  |
-| `X` | imguizmo    | `X`        | W L La64  | missing                   | 1.84             | imgui                | [github](https://github.com/CedricGuillemet/ImGuizmo)       |
+| `.` | imgui       | `X`        | W L La64  | missing                   | docking (branch) | glfw                 | [github](https://github.com/ocornut/imgui)                  |
+| `.` | imguizmo    | `X`        | W L La64  | missing                   | 1.84             | imgui                | [github](https://github.com/CedricGuillemet/ImGuizmo)       |
 | `X` | jsoncpp     | `X`        | W L La64  |                           | 1.9.5            |                      | [github](https://github.com/open-source-parsers/jsoncpp)    |
-| `X` | mavsdk      | `X`        | W L La64  |                           | 1.4.17           | jsoncpp tinyxml2     | [github](https://github.com/mavlink/MAVSDK)                 |
+| `.` | mavsdk      | `X`        | W L La64  |                           | 1.4.17           | jsoncpp tinyxml2     | [github](https://github.com/mavlink/MAVSDK)                 |
 | `X` | nfd         | `X`        | W L La64  |                           | 1.0.1            |                      | [github](https://github.com/btzy/nativefiledialog-extended) |
-| `X` | shaderc     | `X`        | W L La64  | many modifs for packaging | v2023.2          | spirv-tools, glslang | [github](https://github.com/google/shaderc/)                |
+| `.` | shaderc     | `X`        | W L La64  | many modifs for packaging | v2023.2          | spirv-tools, glslang | [github](https://github.com/google/shaderc/)                |
 | `X` | spdlog      | `X`        | W L La64  |                           | 1.11.0           | fmt                  | [github](https://github.com/gabime/spdlog)                  |
-| `X` | SPIRV-Cross | `X`        | W L La64  |                           | sdk-1.3.243.0    |                      | [github](https://github.com/KhronosGroup/SPIRV-Cross)       |
+| `.` | SPIRV-Cross | `X`        | W L La64  |                           | sdk-1.3.243.0    |                      | [github](https://github.com/KhronosGroup/SPIRV-Cross)       |
 | `X` | tinyxml2    | `X`        | W L La64  |                           | 9.0.0            |                      | [github](https://github.com/leethomason/tinyxml2)           |
+| ` ` | vulkan      | `X`        |           |                           |                  |                      |                                                             |
 | `X` | yaml-cpp    | `X`        | W L La64  |                           | 0.70             |                      | [github](https://github.com/jbeder/yaml-cpp)                |
-|
+
 ## header-only
 
 ### DebugBreak
@@ -133,7 +134,7 @@ Source : [github](https://github.com/CedricGuillemet/ImGuizmo)
 
 use of a git submodule
 Version: 1.9.5
-Depends: 
+Depends:
 Source : [github](https://github.com/CedricGuillemet/ImGuizmo)
 
 ### mavsdk
@@ -145,7 +146,7 @@ Source : [github](https://github.com/mavlink/MAVSDK)
 
 ### nfd
 
-We use the 'extended' version which is a fork of the original one not maintained. 
+We use the 'extended' version which is a fork of the original one not maintained.
 Version: 1.0.1
 Depends:
 Source : [github](https://github.com/btzy/nativefiledialog-extended)

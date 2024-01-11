@@ -5,21 +5,20 @@ Depmanager recipes
 from depmanager.api.recipe import Recipe
 
 
-class GladSharedNew(Recipe):
+class GladShared(Recipe):
     """
     Shared version
     """
+
     name = "glad"
     version = "2.0.4"
     source_dir = "sources"
     kind = "shared"
 
 
-class GladStaticNew(Recipe):
+class GladStatic(GladShared):
     """
-    Shared version
+    Static version
     """
-    name = "glad"
-    version = "2.0.4"
-    source_dir = "sources"
+
     kind = "static"

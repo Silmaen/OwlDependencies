@@ -9,6 +9,7 @@ class GlfwShared(Recipe):
     """
     Shared version
     """
+
     name = "glfw"
     version = "3.3.9"
     source_dir = "glfw"
@@ -23,8 +24,7 @@ class GlfwShared(Recipe):
 
 class GlfwStatic(GlfwShared):
     """
-    Shared version
+    Static version
     """
+
     kind = "static"
-
-

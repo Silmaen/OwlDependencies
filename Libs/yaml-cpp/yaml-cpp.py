@@ -9,6 +9,7 @@ class YamlCppShared(Recipe):
     """
     Shared version
     """
+
     name = "yaml-cpp"
     version = "0.8.0"
     source_dir = "yaml-cpp"
@@ -24,4 +25,5 @@ class YamlCppStatic(YamlCppShared):
     """
     Static version
     """
+
     kind = "static"

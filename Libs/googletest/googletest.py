@@ -9,6 +9,7 @@ class GoogleTestShared(Recipe):
     """
     Shared version
     """
+
     name = "googletest"
     version = "1.14.0"
     source_dir = "googletest"
@@ -24,4 +25,5 @@ class GoogleTestStatic(GoogleTestShared):
     """
     Static version
     """
+
     kind = "static"
