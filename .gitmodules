@@ -52,8 +52,8 @@
 [submodule "Libs/cpptrace/cpptrace"]
 	path = Libs/cpptrace/cpptrace
 	url = git@github.com:jeremy-rifkin/cpptrace.git
-[submodule "Libs/mavsdk/MAVSDK"]
-	path = Libs/mavsdk/MAVSDK
+[submodule "Libs/mavsdk/sources/MAVSDK"]
+	path = Libs/mavsdk/sources/MAVSDK
 	url = git@github.com:mavlink/MAVSDK.git
 [submodule "Libs/jsoncpp/jsoncpp"]
 	path = Libs/jsoncpp/jsoncpp

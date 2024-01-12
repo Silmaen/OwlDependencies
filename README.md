@@ -44,7 +44,7 @@ La64 : Linux aarch64
 | `X` | imgui       | `X`        | W L       | missing       | 1.90.1-docking | glfw vulkan                         | [github](https://github.com/ocornut/imgui)                  |
 | `X` | imguizmo    | `X`        | W L       | missing       | 1.90.1         | imgui                               | [github](https://github.com/CedricGuillemet/ImGuizmo)       |
 | `X` | jsoncpp     | `X`        | W L       |               | 1.9.5          |                                     | [github](https://github.com/open-source-parsers/jsoncpp)    |
-| `.` | mavsdk      | `X`        | W L       |               | 1.4.17         | jsoncpp tinyxml2                    | [github](https://github.com/mavlink/MAVSDK)                 |
+| `.` | mavsdk      | `X`        | W L       |               | 2.0.1          | jsoncpp tinyxml2                    | [github](https://github.com/mavlink/MAVSDK)                 |
 | `X` | nfd         | `X`        | W L       |               | 1.1.1          |                                     | [github](https://github.com/btzy/nativefiledialog-extended) |
 | `X` | spdlog      | `X`        | W L       |               | 1.12.0         | fmt                                 | [github](https://github.com/gabime/spdlog)                  |
 | `X` | tinyxml2    | `X`        | W L       |               | 10.0.0         |                                     | [github](https://github.com/leethomason/tinyxml2)           |
