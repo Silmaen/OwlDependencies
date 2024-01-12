@@ -27,7 +27,5 @@ add_subdirectory(Libs/tinyxml2)
 # compiled with dependency
 add_subdirectory(Libs/mavsdk) # depends on tinyxml2 & jsoncpp
 add_subdirectory(Libs/spdlog) # depends on fmt
-add_subdirectory(Libs/imgui) # depends on glfw
+add_subdirectory(Libs/imgui) # depends on glfw & vulkan
 add_subdirectory(Libs/imguizmo) # depends on imgui
-
-message(FATAL_ERROR)
