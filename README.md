@@ -44,11 +44,11 @@ La64 : Linux aarch64
 | `X` | imgui       | `X`        | W L       | missing       | 1.90.1-docking | glfw vulkan                         | [github](https://github.com/ocornut/imgui)                  |
 | `X` | imguizmo    | `X`        | W L       | missing       | 1.90.1         | imgui                               | [github](https://github.com/CedricGuillemet/ImGuizmo)       |
 | `X` | jsoncpp     | `X`        | W L       |               | 1.9.5          |                                     | [github](https://github.com/open-source-parsers/jsoncpp)    |
-| `.` | mavsdk      | `X`        | W L       |               | 2.0.1          | jsoncpp tinyxml2                    | [github](https://github.com/mavlink/MAVSDK)                 |
+| `X` | mavsdk      | `X`        | W L       |               | 2.0.1          | jsoncpp tinyxml2                    | [github](https://github.com/mavlink/MAVSDK)                 |
 | `X` | nfd         | `X`        | W L       |               | 1.1.1          |                                     | [github](https://github.com/btzy/nativefiledialog-extended) |
 | `X` | spdlog      | `X`        | W L       |               | 1.12.0         | fmt                                 | [github](https://github.com/gabime/spdlog)                  |
 | `X` | tinyxml2    | `X`        | W L       |               | 10.0.0         |                                     | [github](https://github.com/leethomason/tinyxml2)           |
 | `X` | yaml-cpp    | `X`        | W L       |               | 0.8.0          |                                     | [github](https://github.com/jbeder/yaml-cpp)                |
-| `X` | vulkan      | `X`        | W L       |               | 1.3.275        |                                     |                                                             |
+| `X` | vulkan      | `X`        | W L       |               | 1.3.275        |                                     | [github](https://github.com/KhronosGroup/Vulkan-Loader)     |
 | `X` | SPIRV-Cross | `X`        | W L       |               | 1.3.275        |                                     | [github](https://github.com/KhronosGroup/SPIRV-Cross)       |
 | `X` | shaderc     | `X`        | W L       |               | 1.3.275        | spirv-tools, spirv-headers, glslang | [github](https://github.com/google/shaderc/)                |

@@ -19,7 +19,7 @@ class MavSDKShared(Recipe):
 
     name = "mavsdk"
     version = "2.0.1"
-    source_dir = "MAVSDK"
+    source_dir = "sources"
     kind = "shared"
     dependencies = [
         {"name": "jsoncpp", "kind": kind},

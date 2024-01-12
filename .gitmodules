@@ -64,3 +64,6 @@
 [submodule "Libs/vulkan/source/Vulkan-Loader"]
 	path = Libs/vulkan/source/Vulkan-Loader
 	url = git@github.com:KhronosGroup/Vulkan-Loader.git
+[submodule "Libs/mavsdk/sources/MAVSDK"]
+	path = Libs/mavsdk/sources/MAVSDK
+	url = git@github.com:mavlink/MAVSDK.git
