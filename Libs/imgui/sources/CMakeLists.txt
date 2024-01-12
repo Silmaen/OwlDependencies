@@ -39,6 +39,7 @@ install(FILES ${PROJECT_ROOT}/backends/imgui_impl_glfw.h
 
 # Vulkan dependency
 find_package(VulkanHeaders REQUIRED)
+find_package(VulkanLoader REQUIRED)
 target_sources(${PROJECT_ID} PRIVATE
         ${PROJECT_ROOT}/backends/imgui_impl_vulkan.cpp
         ${PROJECT_ROOT}/backends/imgui_impl_vulkan.h)
@@ -48,7 +49,7 @@ install(FILES
 install(DIRECTORY
         ${PROJECT_ROOT}/backends/vulkan
         DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/backends)
-target_link_libraries(${PROJECT_ID} PRIVATE Vulkan::Headers)
+target_link_libraries(${PROJECT_ID} PRIVATE Vulkan::Headers Vulkan::Loader)
 
 # opengl 3 dependency
 target_sources(${PROJECT_ID} PRIVATE
