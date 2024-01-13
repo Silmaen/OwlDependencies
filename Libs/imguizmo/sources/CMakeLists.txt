@@ -11,10 +11,10 @@ set(PROJECT_ROOT ${PROJECT_SOURCE_DIR}/${PROJECT_ID})
 
 file(GLOB SRCS
         ${PROJECT_ROOT}/*.cpp
-        )
+)
 file(GLOB HDRS
         ${PROJECT_ROOT}/*.h
-        )
+)
 
 
 add_library(${PROJECT_ID} ${SRCS} ${HDRS})
@@ -24,11 +24,11 @@ add_library(${PROJECT_ID}::${PROJECT_ID} ALIAS ${PROJECT_ID})
 target_include_directories(${PROJECT_ID} SYSTEM INTERFACE
         $<BUILD_INTERFACE:${PROJECT_ROOT}>
         $<INSTALL_INTERFACE:include>
-        )
+)
 
 # imgui dependency
-if (NOT ${PRJPREFIX}_BUILD_SHARED)
-        find_package(Vulkan REQUIRED)
+if (NOT BUILD_SHARED_LIBS)
+    find_package(VulkanHeaders REQUIRED)
 endif ()
 find_package(imgui REQUIRED)
 target_link_libraries(${PROJECT_ID} PRIVATE imgui::imgui)
@@ -36,11 +36,11 @@ target_include_directories(${PROJECT_ID} PRIVATE ${imgui_INCLUDE_DIRS}/imgui)
 
 file(GLOB PUBLIC_HEADERS
         ${PROJECT_ROOT}/*.h
-        )
+)
 
 set_target_properties(${PROJECT_ID} PROPERTIES
         PUBLIC_HEADER "${PUBLIC_HEADERS}"
-        )
+)
 
 set(version_config ${PROJECT_BINARY_DIR}/${PROJECT_ID}-config-version.cmake)
 set(project_config ${PROJECT_BINARY_DIR}/${PROJECT_ID}-config.cmake)

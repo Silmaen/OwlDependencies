@@ -9,6 +9,7 @@ class GlfwShared(Recipe):
     """
     Shared version
     """
+
     name = "glfw"
     version = "3.3.9"
     source_dir = "glfw"
@@ -18,19 +19,12 @@ class GlfwShared(Recipe):
         self.cache_variables["GLFW_BUILD_EXAMPLES"] = "OFF"
         self.cache_variables["GLFW_BUILD_TESTS"] = "OFF"
         self.cache_variables["GLFW_BUILD_DOCS"] = "OFF"
+        self.cache_variables["CMAKE_DEBUG_POSTFIX"] = "d"
 
 
-class GlfwStatic(Recipe):
+class GlfwStatic(GlfwShared):
     """
-    Shared version
+    Static version
     """
-    name = "glfw"
-    version = "3.3.9"
-    source_dir = "glfw"
+
     kind = "static"
-
-    def configure(self):
-        self.cache_variables["GLFW_BUILD_EXAMPLES"] = "OFF"
-        self.cache_variables["GLFW_BUILD_TESTS"] = "OFF"
-        self.cache_variables["GLFW_BUILD_DOCS"] = "OFF"
-

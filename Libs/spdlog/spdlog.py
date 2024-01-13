@@ -2,8 +2,9 @@
 Depmanager recipes
 """
 
-from depmanager.api.recipe import Recipe
 from pathlib import Path
+
+from depmanager.api.recipe import Recipe
 
 here = Path(__file__).parent
 
@@ -12,8 +13,9 @@ class SpdlogShared(Recipe):
     """
     Shared version
     """
+
     name = "spdlog"
-    version = "1.12.0"
+    version = "1.13.0"
     source_dir = "spdlog"
     kind = "shared"
     dependencies = [{"name": "fmt", "kind": "shared"}]
@@ -29,13 +31,11 @@ class SpdlogShared(Recipe):
             self.cache_variables["SPDLOG_WCHAR_FILENAMES"] = "ON"
 
 
-class SpdlogStatic(Recipe):
+class SpdlogStatic(SpdlogShared):
     """
-    Shared version
+    Static  version
     """
-    name = "spdlog"
-    version = "1.12.0"
-    source_dir = "spdlog"
+
     kind = "static"
     dependencies = [{"name": "fmt", "kind": "static"}]
 
