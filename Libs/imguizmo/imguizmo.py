@@ -9,6 +9,7 @@ class ImguizmoShared(Recipe):
     """
     Shared version
     """
+
     name = "imguizmo"
     version = "1.90.1"
     source_dir = "sources"
@@ -16,12 +17,13 @@ class ImguizmoShared(Recipe):
     dependencies = [{"name": "imgui", "kind": "shared"}]
 
 
-class ImguizmoStatic(Recipe):
+class ImguizmoStatic(ImguizmoShared):
     """
     Shared version
     """
-    name = "imguizmo"
-    version = "1.90.1"
-    source_dir = "sources"
+
     kind = "static"
-    dependencies = [{"name": "imgui", "kind": "static"}]
+    dependencies = [
+        {"name": "imgui", "kind": "static"},
+        {"name": "vulkan", "kind": "static"},
+    ]

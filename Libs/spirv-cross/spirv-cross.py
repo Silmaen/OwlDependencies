@@ -10,7 +10,7 @@ class SPIRVCrossShared(Recipe):
     Shared version
     """
     name = "spirv-cross"
-    version = "1.3.250"
+    version = "1.3.275"
     source_dir = "SPIRV-Cross"
     kind = "any"
 

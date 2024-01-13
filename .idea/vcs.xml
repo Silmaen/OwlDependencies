@@ -3,6 +3,7 @@
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Libs/cpptrace/cpptrace" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Libs/curl/curl" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Libs/debugbreak/sources/debugbreak" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Libs/entt/entt" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Libs/fmt/fmt" vcs="Git" />
@@ -13,11 +14,11 @@
     <mapping directory="$PROJECT_DIR$/Libs/imguizmo/sources/imguizmo" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Libs/jsoncpp/jsoncpp" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Libs/magic_enum/magic_enum" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/Libs/mavsdk/MAVSDK" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/Libs/mavsdk/MAVSDK/proto" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/Libs/mavsdk/MAVSDK/src/third_party/gtest" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Libs/mavsdk/sources/MAVSDK" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Libs/mavsdk/sources/MAVSDK/proto" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Libs/mavsdk/sources/MAVSDK/src/third_party/gtest" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Libs/mavsdk/sources/mavlink" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Libs/nfd/nativefiledialog-extended" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/Libs/opencv/opencv" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Libs/shaderc/sources/SPIRV-Headers" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Libs/shaderc/sources/SPIRV-Tools" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Libs/shaderc/sources/glslang" vcs="Git" />
@@ -25,6 +26,8 @@
     <mapping directory="$PROJECT_DIR$/Libs/spdlog/spdlog" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Libs/spirv-cross/SPIRV-Cross" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Libs/tinyxml2/tinyxml2" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Libs/vulkan/source/Vulkan-Headers" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Libs/vulkan/source/Vulkan-Loader" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Libs/yaml-cpp/yaml-cpp" vcs="Git" />
   </component>
 </project>
