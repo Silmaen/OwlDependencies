@@ -67,3 +67,9 @@
 [submodule "Libs/mavsdk/sources/MAVSDK"]
 	path = Libs/mavsdk/sources/MAVSDK
 	url = git@github.com:mavlink/MAVSDK.git
+[submodule "Libs/curl/curl"]
+	path = Libs/curl/curl
+	url = git@github.com:curl/curl.git
+[submodule "Libs/mavsdk/sources/mavlink"]
+	path = Libs/mavsdk/sources/mavlink
+	url = git@github.com:mavlink/mavlink.git

@@ -34,8 +34,10 @@ La64 : Linux aarch64
 | `X` | entt        | `X`        | n/a       |               | 3.12.2         |                                     | [github](https://github.com/skypjack/entt)                  |
 | `X` | magic_enum  | `X`        | n/a       |               | 0.9.5          |                                     | [github](https://github.com/Neargye/magic_enum)             |
 | `X` | stb_image   | `0`        | n/a       | missing       | 2.28           |                                     | [github](https://github.com/nothings/stb)                   |
+| `X` | mavlink     | `X`        | n/a       |               | 2.0.1          |                                     | [github](https://github.com/mavlink/mavlink)                |
 |     |             |            |           |               |                |                                     |                                                             |
 | `X` | cpptrace    | `X`        | W L       |               | 0.3.1          |                                     | [github](https://github.com/jeremy-rifkin/cpptrace)         |
+| `X` | curl        | `X`        | W L       |               | 8.5.0          |                                     | [github](https://github.com/curl/curl)                      |
 | `X` | fmt         | `X`        | W L       |               | 10.2.1         |                                     | [github](https://github.com/fmtlib/fmt)                     |
 | `X` | glad        | `0`        | W L       | missing       | 2.0.4          |                                     | [glad](https://glad.dav1d.de/)                              |
 | `X` | glfw        | `X`        | W L       |               | 3.3.9          |                                     | [github](https://github.com/glfw/glfw)                      |
@@ -44,9 +46,9 @@ La64 : Linux aarch64
 | `X` | imgui       | `X`        | W L       | missing       | 1.90.1-docking | glfw vulkan                         | [github](https://github.com/ocornut/imgui)                  |
 | `X` | imguizmo    | `X`        | W L       | missing       | 1.90.1         | imgui                               | [github](https://github.com/CedricGuillemet/ImGuizmo)       |
 | `X` | jsoncpp     | `X`        | W L       |               | 1.9.5          |                                     | [github](https://github.com/open-source-parsers/jsoncpp)    |
-| `X` | mavsdk      | `X`        | W L       |               | 2.0.1          | jsoncpp tinyxml2                    | [github](https://github.com/mavlink/MAVSDK)                 |
+| `X` | mavsdk      | `X`        | W L       |               | 2.0.1          | jsoncpp tinyxml2 curl mavlink       | [github](https://github.com/mavlink/MAVSDK)                 |
 | `X` | nfd         | `X`        | W L       |               | 1.1.1          |                                     | [github](https://github.com/btzy/nativefiledialog-extended) |
-| `X` | spdlog      | `X`        | W L       |               | 1.12.0         | fmt                                 | [github](https://github.com/gabime/spdlog)                  |
+| `X` | spdlog      | `X`        | W L       |               | 1.13.0         | fmt                                 | [github](https://github.com/gabime/spdlog)                  |
 | `X` | tinyxml2    | `X`        | W L       |               | 10.0.0         |                                     | [github](https://github.com/leethomason/tinyxml2)           |
 | `X` | yaml-cpp    | `X`        | W L       |               | 0.8.0          |                                     | [github](https://github.com/jbeder/yaml-cpp)                |
 | `X` | vulkan      | `X`        | W L       |               | 1.3.275        |                                     | [github](https://github.com/KhronosGroup/Vulkan-Loader)     |
