@@ -21,8 +21,8 @@ class MavLink(Recipe):
     source_dir = "sources/mavlink"
     kind = "header"
 
-    def __init__(self, possible: bool = True):
-        super().__init__(possible)
+    def __init__(self, path: Path = None, possible: bool = True):
+        super().__init__(path, possible)
         self.reqSave = None
 
     def source(self):
