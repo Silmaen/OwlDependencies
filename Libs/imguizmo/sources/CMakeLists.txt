@@ -27,9 +27,8 @@ target_include_directories(${PROJECT_ID} SYSTEM INTERFACE
 )
 
 # imgui dependency
-if (NOT BUILD_SHARED_LIBS)
-    find_package(VulkanHeaders REQUIRED)
-endif ()
+find_package(VulkanHeaders REQUIRED)
+find_package(VulkanLoader REQUIRED)
 find_package(imgui REQUIRED)
 target_link_libraries(${PROJECT_ID} PRIVATE imgui::imgui)
 target_include_directories(${PROJECT_ID} PRIVATE ${imgui_INCLUDE_DIRS}/imgui)
