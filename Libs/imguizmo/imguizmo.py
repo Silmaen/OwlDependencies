@@ -14,7 +14,8 @@ class ImguizmoShared(Recipe):
     version = "1.90.1"
     source_dir = "sources"
     kind = "shared"
-    dependencies = [{"name": "imgui", "kind": "shared"}]
+    dependencies = [{"name": "imgui", "kind": "shared"},
+                    {"name": "vulkan", "kind": "shared"},]
 
 
 class ImguizmoStatic(ImguizmoShared):
