@@ -1,9 +1,8 @@
-
 cmake_minimum_required(VERSION 3.24)
-project(shaderc-dep)
 
-set(SHADERC_GLSLANG_DIR "${CMAKE_CURRENT_SOURCE_DIR}/glslang" CACHE STRING "")
-set(SHADERC_SPIRV_TOOLS_DIR "${CMAKE_CURRENT_SOURCE_DIR}/SPIRV-Tools" CACHE STRING "")
-set(SHADERC_SPIRV_HEADERS_DIR "${CMAKE_CURRENT_SOURCE_DIR}/SPIRV-Headers" CACHE STRING "")
+project(shaderc_merged VERSION ${pack_version})
 
+add_subdirectory(SPIRV-Headers)
+add_subdirectory(SPIRV-Tools)
+add_subdirectory(glslang)
 add_subdirectory(shaderc)
