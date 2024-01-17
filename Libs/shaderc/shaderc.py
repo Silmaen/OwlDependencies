@@ -42,8 +42,12 @@ class ShadercShared(Recipe):
     kind = "shared"
 
     def source(self):
-        print(f"Do copytree {self.path / self.source_dir / 'modif'} -> {self.path / self.source_dir}")
-        copy_tree_overwrite(self.path / self.source_dir / "modif", self.path / self.source_dir)
+        print(
+            f"Do copytree {self.path / self.source_dir / 'modif'} -> {self.path / self.source_dir}"
+        )
+        copy_tree_overwrite(
+            self.path / self.source_dir / "modif", self.path / self.source_dir
+        )
 
     def common_configure(self):
         self.cache_variables["pack_version"] = self.version
@@ -55,20 +59,24 @@ class ShadercShared(Recipe):
         self.cache_variables["ENABLE_SPVREMAPPER"] = "OFF"
         self.cache_variables["SPIRV_SKIP_EXECUTABLES"] = "ON"
         self.cache_variables["SPIRV_SKIP_TESTS"] = "ON"
-        self.cache_variables["SPIRV_TOOLS_BUILD_STATIC"] = "OFF"
-        self.cache_variables["BUILD_SHARED_LIBS"] = "OFF"
+        self.cache_variables["SPIRV_TOOLS_BUILD_STATIC"] = "ON"
         self.cache_variables["CMAKE_DEBUG_POSTFIX"] = "d"
         self.cache_variables["PYTHON_EXECUTABLE"] = executable
 
     def configure(self):
         self.common_configure()
-        self.cache_variables["SPIRV_TOOLS_BUILD_STATIC"] = "OFF"
         self.cache_variables["BUILD_SHARED_LIBS"] = "ON"
 
     def clean(self):
         print("Do clean by git reset!")
-        subprocess.run("git reset --hard", shell=True, cwd=self.path/self.source_dir/"glslang")
-        subprocess.run("git reset --hard", shell=True, cwd=self.path/self.source_dir/"SPIRV-Headers")
+        subprocess.run(
+            "git reset --hard", shell=True, cwd=self.path / self.source_dir / "glslang"
+        )
+        subprocess.run(
+            "git reset --hard",
+            shell=True,
+            cwd=self.path / self.source_dir / "SPIRV-Headers",
+        )
 
 
 class ShadercStatic(ShadercShared):
@@ -80,5 +88,4 @@ class ShadercStatic(ShadercShared):
 
     def configure(self):
         self.common_configure()
-        self.cache_variables["SPIRV_TOOLS_BUILD_STATIC"] = "ON"
         self.cache_variables["BUILD_SHARED_LIBS"] = "OFF"
