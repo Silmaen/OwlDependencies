@@ -69,14 +69,9 @@ class ShadercShared(Recipe):
 
     def clean(self):
         print("Do clean by git reset!")
-        subprocess.run(
-            "git reset --hard", shell=True, cwd=self.path / self.source_dir / "glslang"
-        )
-        subprocess.run(
-            "git reset --hard",
-            shell=True,
-            cwd=self.path / self.source_dir / "SPIRV-Headers",
-        )
+        subprocess.run("git reset --hard", shell=True, cwd=self.path/self.source_dir/"glslang")
+        subprocess.run("git reset --hard", shell=True, cwd=self.path/self.source_dir/"SPIRV-Headers")
+        subprocess.run("git reset --hard", shell=True, cwd=self.path/self.source_dir/"shaderc")
 
 
 class ShadercStatic(ShadercShared):
