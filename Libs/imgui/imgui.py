@@ -19,6 +19,9 @@ class ImguiShared(Recipe):
         {"name": "vulkan", "kind": "shared"},
     ]
 
+    def configure(self):
+        self.cache_variables["PROJECT_VERSION"] = self.version.split("-")[0]
+
 
 class ImguiStatic(ImguiShared):
     """

@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.20 FATAL_ERROR)
 
-set(PROJECT_VERSION "1.84")
+if (NOT PROJECT_VERSION)
+    set(PROJECT_VERSION "0.1")
+endif ()
 set(PROJECT_ID imguizmo)
 
 
