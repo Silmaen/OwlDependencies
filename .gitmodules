@@ -73,3 +73,6 @@
 [submodule "Libs/mavsdk/sources/mavlink"]
 	path = Libs/mavsdk/sources/mavlink
 	url = git@github.com:mavlink/mavlink.git
+[submodule "Libs/tinyobjloader/tinyobjloader"]
+	path = Libs/tinyobjloader/tinyobjloader
+	url = git@github.com:tinyobjloader/tinyobjloader.git
