@@ -25,27 +25,12 @@
 [submodule "Libs/nfd/nativefiledialog-extended"]
 	path = Libs/nfd/nativefiledialog-extended
 	url = git@github.com:btzy/nativefiledialog-extended.git
-[submodule "Libs/shaderc/sources/shaderc"]
-	path = Libs/shaderc/sources/shaderc
-	url = git@github.com:google/shaderc.git
 [submodule "Libs/spdlog/spdlog"]
 	path = Libs/spdlog/spdlog
 	url = git@github.com:gabime/spdlog.git
-[submodule "Libs/spirv-cross/SPIRV-Cross"]
-	path = Libs/spirv-cross/SPIRV-Cross
-	url = git@github.com:KhronosGroup/SPIRV-Cross.git
 [submodule "Libs/yaml-cpp/yaml-cpp"]
 	path = Libs/yaml-cpp/yaml-cpp
 	url = git@github.com:jbeder/yaml-cpp.git
-[submodule "Libs/shaderc/sources/glslang"]
-	path = Libs/shaderc/sources/glslang
-	url = git@github.com:KhronosGroup/glslang.git
-[submodule "Libs/shaderc/sources/SPIRV-Tools"]
-	path = Libs/shaderc/sources/SPIRV-Tools
-	url = git@github.com:KhronosGroup/SPIRV-Tools.git
-[submodule "Libs/shaderc/sources/SPIRV-Headers"]
-	path = Libs/shaderc/sources/SPIRV-Headers
-	url = git@github.com:KhronosGroup/SPIRV-Headers.git
 [submodule "Libs/imguizmo/sources/imguizmo"]
 	path = Libs/imguizmo/sources/imguizmo
 	url = git@github.com:CedricGuillemet/ImGuizmo.git
@@ -58,12 +43,6 @@
 [submodule "Libs/tinyxml2/tinyxml2"]
 	path = Libs/tinyxml2/tinyxml2
 	url = git@github.com:leethomason/tinyxml2.git
-[submodule "Libs/vulkan/source/Vulkan-Headers"]
-	path = Libs/vulkan/source/Vulkan-Headers
-	url = git@github.com:KhronosGroup/Vulkan-Headers.git
-[submodule "Libs/vulkan/source/Vulkan-Loader"]
-	path = Libs/vulkan/source/Vulkan-Loader
-	url = git@github.com:KhronosGroup/Vulkan-Loader.git
 [submodule "Libs/mavsdk/sources/MAVSDK"]
 	path = Libs/mavsdk/sources/MAVSDK
 	url = git@github.com:mavlink/MAVSDK.git
@@ -76,3 +55,39 @@
 [submodule "Libs/tinyobjloader/tinyobjloader"]
 	path = Libs/tinyobjloader/tinyobjloader
 	url = git@github.com:tinyobjloader/tinyobjloader.git
+[submodule "Libs/vulkan_sdk/source/Vulkan-Headers"]
+	path = Libs/vulkan_sdk/source/Vulkan-Headers
+	url = git@github.com:KhronosGroup/Vulkan-Headers.git
+[submodule "Libs/vulkan_sdk/source/Vulkan-Loader"]
+	path = Libs/vulkan_sdk/source/Vulkan-Loader
+	url = git@github.com:KhronosGroup/Vulkan-Loader.git
+[submodule "Libs/vulkan_sdk/source/Vulkan-ValidationLayers"]
+	path = Libs/vulkan_sdk/source/Vulkan-ValidationLayers
+	url = git@github.com:KhronosGroup/Vulkan-ValidationLayers.git
+[submodule "Libs/vulkan_sdk/source/Vulkan-ExtensionLayer"]
+	path = Libs/vulkan_sdk/source/Vulkan-ExtensionLayer
+	url = git@github.com:KhronosGroup/Vulkan-ExtensionLayer.git
+[submodule "Libs/vulkan_sdk/source/SPIRV-Headers"]
+	path = Libs/vulkan_sdk/source/SPIRV-Headers
+	url = git@github.com:KhronosGroup/SPIRV-Headers.git
+[submodule "Libs/vulkan_sdk/source/SPIRV-Reflect"]
+	path = Libs/vulkan_sdk/source/SPIRV-Reflect
+	url = git@github.com:KhronosGroup/SPIRV-Reflect.git
+[submodule "Libs/vulkan_sdk/source/SPIRV-Cross"]
+	path = Libs/vulkan_sdk/source/SPIRV-Cross
+	url = git@github.com:KhronosGroup/SPIRV-Cross.git
+[submodule "Libs/vulkan_sdk/source/SPIRV-Tools"]
+	path = Libs/vulkan_sdk/source/SPIRV-Tools
+	url = git@github.com:KhronosGroup/SPIRV-Tools.git
+[submodule "Libs/vulkan_sdk/source/glslang"]
+	path = Libs/vulkan_sdk/source/glslang
+	url = git@github.com:KhronosGroup/glslang.git
+[submodule "Libs/vulkan_sdk/source/shaderc"]
+	path = Libs/vulkan_sdk/source/shaderc
+	url = git@github.com:google/shaderc.git
+[submodule "Libs/vulkan_sdk/source/Vulkan-Utility-Libraries"]
+	path = Libs/vulkan_sdk/source/Vulkan-Utility-Libraries
+	url = git@github.com:KhronosGroup/Vulkan-Utility-Libraries.git
+[submodule "Libs/vulkan_sdk/source/Vulkan-Tools"]
+	path = Libs/vulkan_sdk/source/Vulkan-Tools
+	url = git@github.com:KhronosGroup/Vulkan-Tools.git

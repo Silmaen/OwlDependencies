@@ -20,11 +20,9 @@ add_subdirectory(Libs/glm)
 add_subdirectory(Libs/googletest)
 add_subdirectory(Libs/jsoncpp)
 add_subdirectory(Libs/nfd)
-add_subdirectory(Libs/spirv-cross)
 add_subdirectory(Libs/yaml-cpp)
-add_subdirectory(Libs/vulkan)
-add_subdirectory(Libs/shaderc)
 add_subdirectory(Libs/tinyxml2)
+add_subdirectory(Libs/vulkan_sdk)
 # compiled with dependency
 add_subdirectory(Libs/mavsdk) # depends on tinyxml2 & jsoncpp
 add_subdirectory(Libs/spdlog) # depends on fmt
