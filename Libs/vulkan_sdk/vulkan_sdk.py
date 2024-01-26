@@ -9,7 +9,10 @@ ignore_list = ["BUILD_TESTING"]
 cmakelists_modif = [
     "Vulkan-ValidationLayers/CMakeLists.txt",
     "Vulkan-ExtensionLayer/CMakeLists.txt",
+    "shaderc/libshaderc/CMakeLists.txt",
+    "shaderc/libshaderc_util/CMakeLists.txt"
 ]
+
 
 class VulkanSdk(Recipe):
     """
@@ -31,6 +34,7 @@ class VulkanSdk(Recipe):
             with open(path, "rb") as fp:
                 lines = fp.read()
             lines = lines.replace(b"\nfind_package", b"\n#find_package")
+            lines = lines.replace(b"PUBLIC include", b"PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include> $<INSTALL_INTERFACE:include>")
             with open(path, "wb") as fp:
                 fp.write(lines)
             print(f"***** File {cmakelists} @ {path} found and modified.")
@@ -44,6 +48,7 @@ class VulkanSdk(Recipe):
             with open(path, "rb") as fp:
                 lines = fp.read()
             lines = lines.replace(b"\n#find_package", b"\nfind_package")
+            lines = lines.replace(b"PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include> $<INSTALL_INTERFACE:include>", b"PUBLIC include")
             with open(path, "wb") as fp:
                 fp.write(lines)
             print(f"***** File {cmakelists} @ {path} restored.")
