@@ -351,9 +351,6 @@ endif ()
 message(STATUS "-- -- glslang")
 # ================ glslang ==================================
 
-
-set(SKIP_FIND_PACKAGE ON)
-dump_cmake_variables("_DIR")
 # ======== Vulkan-ValidationLayers ==========================
 add_subdirectory(Vulkan-ValidationLayers)
 set(VULKAN_VALIDATIONLAYERS_INSTALL_DIR "${cmake_full_install_dir}")
@@ -382,10 +379,66 @@ message(STATUS "-- -- SPIRV-Reflect")
 # ============= SPIRV-Reflect ===============================
 
 # ================ shaderc ==================================
-set(SHADERC_SKIP_INSTALL OFF)
+if (SDK_INSTALL)
+    set(SHADERC_SKIP_INSTALL OFF)
+else ()
+    set(SHADERC_SKIP_INSTALL ON)
+endif ()
 set(SHADERC_SKIP_TESTS ON)
 set(SHADERC_SKIP_EXAMPLES ON)
 set(SHADERC_SKIP_COPYRIGHT_CHECK ON)
 add_subdirectory(shaderc)
+if (SDK_INSTALL)
+    set(SHADERC_SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/shaderc")
+    set(SHADERC_BINARY_DIR "${CMAKE_CURRENT_BINARY_DIR}/shaderc")
+
+    foreach (target IN ITEMS shaderc shaderc_util shaderc_shared shaderc_static shaderc_combined)
+        if (TARGET ${target})
+            #set_target_properties(${target} PROPERTIES EXPORT_NAME "shaderc-targets")
+            install(TARGETS ${target} EXPORT shaderc-targets
+                    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+                    RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+                    BUNDLE DESTINATION ${CMAKE_INSTALL_BINDIR}
+                    ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR})
+        else ()
+            message(STATUS "Target ${target} not found")
+        endif ()
+    endforeach ()
+
+
+    file(WRITE "${SHADERC_BINARY_DIR}/shaderc-config.cmake.in" [=[
+        @PACKAGE_INIT@
+        include("@PACKAGE_PATH_EXPORT_TARGETS@")
+    ]=])
+    set(PATH_EXPORT_TARGETS "${CMAKE_INSTALL_LIBDIR}/cmake/${PROJECT_NAME}/shaderc-targets.cmake")
+    configure_package_config_file(
+            "${SHADERC_BINARY_DIR}/shaderc-config.cmake.in"
+            "${SHADERC_BINARY_DIR}/shaderc-config.cmake"
+            PATH_VARS
+            PATH_EXPORT_TARGETS
+            INSTALL_DESTINATION ${cmake_install_dir}
+    )
+
+    write_basic_package_version_file("${SHADERC_BINARY_DIR}/shaderc-config-version.cmake"
+            VERSION ${pack_version}
+            COMPATIBILITY SameMajorVersion
+    )
+
+    install(
+            EXPORT shaderc-targets
+            NAMESPACE "shaderc::"
+            DESTINATION "${cmake_install_dir}"
+    )
+
+    install(
+            FILES
+            "${SHADERC_BINARY_DIR}/shaderc-config.cmake"
+            "${SHADERC_BINARY_DIR}/shaderc-config-version.cmake"
+            DESTINATION
+            "${cmake_install_dir}"
+    )
+
+    set(SHADERC_INSTALL_DIR "${cmake_full_install_dir}")
+endif ()
 message(STATUS "-- -- shaderc")
 # ================ shaderc ==================================
