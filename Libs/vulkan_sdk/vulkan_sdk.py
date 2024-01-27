@@ -8,6 +8,8 @@ ignore_list = ["BUILD_TESTING"]
 
 cmakelists_modif = [
     "Vulkan-Loader/loader/CMakeLists.txt",
+    "Vulkan-Loader/CMakeLists.txt",
+    "Vulkan-Utility-Libraries/loader/CMakeLists.txt",
     "SPIRV-Headers/CMakeLists.txt",
     "SPIRV-Tools/CMakeLists.txt",
     "Vulkan-ValidationLayers/CMakeLists.txt",
@@ -18,13 +20,13 @@ cmakelists_modif = [
 ]
 
 corrections = [
-    [b"${CMAKE_INSTALL_LIBDIR}/cmake/VulkanLoader", b'"${cmake_install_dir}"',"Vulkan-Loader/loader/CMakeLists.txt",],
-    [b"\nfind_package", b"\n#find_package",None],
-    [b"PUBLIC include", b"PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include> $<INSTALL_INTERFACE:include>",None],
-    [b"${CMAKE_INSTALL_DATADIR}/pkgconfig", b"${cmake_install_dir}/pkgconfig",None],
-    [b"set(${PATH} ${TARGET}/cmake)", b"set(${PATH} ${cmake_install_dir})",None],
-    [b"set(${PATH} ${CMAKE_INSTALL_LIBDIR}/cmake/${TARGET})", b"set(${PATH} ${cmake_install_dir} )",None],
-    [b"EXPORT ${config_name}Config DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/${config_name}/cmake", b"EXPORT ${config_name}Config DESTINATION ${cmake_install_dir}",None],
+    [b"${CMAKE_INSTALL_LIBDIR}/cmake/VulkanLoader", b'"${cmake_install_dir}"', "Vulkan-Loader/loader/CMakeLists.txt"],
+    [b"\nfind_package", b"\n#find_package", None],
+    [b"PUBLIC include", b"PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include> $<INSTALL_INTERFACE:include>", None],
+    [b"${CMAKE_INSTALL_DATADIR}/pkgconfig", b"${cmake_install_dir}/pkgconfig", None],
+    [b"set(${PATH} ${TARGET}/cmake)", b"set(${PATH} ${cmake_install_dir})", None],
+    [b"set(${PATH} ${CMAKE_INSTALL_LIBDIR}/cmake/${TARGET})", b"set(${PATH} ${cmake_install_dir} )", None],
+    [b"EXPORT ${config_name}Config DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/${config_name}/cmake", b"EXPORT ${config_name}Config DESTINATION ${cmake_install_dir}", None],
 ]
 
 
@@ -68,7 +70,8 @@ class VulkanSdk(Recipe):
                 if correction[2] not in [None, ""]:
                     if correction[2] != cmakelists:
                         continue
-                lines = lines.replace(correction[1], correction[0])
+                # lines = lines.replace(correction[1], correction[0])
+                pass
             with open(path, "wb") as fp:
                 fp.write(lines)
             print(f"***** File {cmakelists} @ {path} restored.")
