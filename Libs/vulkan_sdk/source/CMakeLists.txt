@@ -55,7 +55,7 @@ message(STATUS "-- -- Vulkan-Headers Configured")
 
 # ============ Vulkan-Loader ================================
 add_subdirectory(Vulkan-Loader)
-set(VULKAN_LOADER_INSTALL_DIR "${cmake_full_install_dir}/VulkanLoader")
+set(VULKAN_LOADER_INSTALL_DIR "${cmake_full_install_dir}")
 message(STATUS "-- -- Vulkan-Loader Configured")
 # ============ Vulkan-Loader ================================
 
@@ -138,7 +138,7 @@ if (SDK_INSTALL)
         set(SPIRV_HEADERS_PKGCONFIG_INCLUDE_DIR ${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_INCLUDEDIR})
     endif ()
     configure_file(${SPIRV_HEADERS_SOURCE_DIR}/cmake/SPIRV-Headers.pc.in ${SPIRV_HEADERS_BINARY_DIR}/SPIRV-Headers.pc @ONLY)
-    install(FILES "${SPIRV_HEADERS_BINARY_DIR}/SPIRV-Headers.pc" DESTINATION ${CMAKE_INSTALL_DATADIR}/pkgconfig)
+    install(FILES "${SPIRV_HEADERS_BINARY_DIR}/SPIRV-Headers.pc" DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig)
 
     set(SPIRV_HEADERS_INSTALL_DIR "${cmake_full_install_dir}")
 endif ()
@@ -149,7 +149,7 @@ message(STATUS "-- -- SPIRV-Headers")
 set(SPIRV_SKIP_TEST ON)
 set(SKIP_SPIRV_TOOLS_INSTALL OFF)
 add_subdirectory(SPIRV-Tools)
-set(SPIRV_TOOLS_INSTALL_DIR "${cmake_full_install_dir}/SPIRV-Tools")
+set(SPIRV_TOOLS_INSTALL_DIR "${cmake_full_install_dir}")
 message(STATUS "-- -- SPIRV-Tools")
 # ============== SPIRV-Tools ================================
 
@@ -367,14 +367,13 @@ message(STATUS "-- -- Vulkan-ExtensionLayer")
 set(SPIRV_CROSS_SHARED ON CACHE BOOL "")
 set(SPIRV_CROSS_ENABLE_TESTS OFF CACHE BOOL "")
 add_subdirectory(SPIRV-Cross)
-set(SPIRV_CROSS_INSTALL_DIR "${cmake_full_install_dir}/spirv_cross")
+set(SPIRV_CROSS_INSTALL_DIR "${cmake_full_install_dir}")
 message(STATUS "-- -- SPIRV-Cross")
 # ============== SPIRV-Cross ================================
 
 # ============= SPIRV-Reflect ===============================
 set(SPIRV_REFLECT_STATIC_LIB ON CACHE BOOL "")
 add_subdirectory(SPIRV-Reflect)
-set(SPIRV_REFLECT_INSTALL_DIR "${cmake_full_install_dir}/spirv_reflect")
 message(STATUS "-- -- SPIRV-Reflect")
 # ============= SPIRV-Reflect ===============================
 
@@ -394,7 +393,6 @@ if (SDK_INSTALL)
 
     foreach (target IN ITEMS shaderc shaderc_util shaderc_shared shaderc_static shaderc_combined)
         if (TARGET ${target})
-            #set_target_properties(${target} PROPERTIES EXPORT_NAME "shaderc-targets")
             install(TARGETS ${target} EXPORT shaderc-targets
                     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
                     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
@@ -410,7 +408,7 @@ if (SDK_INSTALL)
         @PACKAGE_INIT@
         include("@PACKAGE_PATH_EXPORT_TARGETS@")
     ]=])
-    set(PATH_EXPORT_TARGETS "${CMAKE_INSTALL_LIBDIR}/cmake/${PROJECT_NAME}/shaderc-targets.cmake")
+    set(PATH_EXPORT_TARGETS "${CMAKE_INSTALL_LIBDIR}/cmake/shaderc-targets.cmake")
     configure_package_config_file(
             "${SHADERC_BINARY_DIR}/shaderc-config.cmake.in"
             "${SHADERC_BINARY_DIR}/shaderc-config.cmake"
