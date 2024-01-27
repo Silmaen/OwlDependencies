@@ -21,6 +21,7 @@
     <mapping directory="$PROJECT_DIR$/Libs/mavsdk/sources/mavlink/pymavlink" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Libs/nfd/nativefiledialog-extended" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Libs/spdlog/spdlog" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Libs/tinyobjloader/tinyobjloader" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Libs/tinyxml2/tinyxml2" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Libs/vulkan_sdk/source/SPIRV-Cross" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Libs/vulkan_sdk/source/SPIRV-Headers" vcs="Git" />

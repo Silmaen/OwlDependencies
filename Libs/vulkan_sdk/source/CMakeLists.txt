@@ -55,7 +55,7 @@ message(STATUS "-- -- Vulkan-Headers Configured")
 
 # ============ Vulkan-Loader ================================
 add_subdirectory(Vulkan-Loader)
-set(VULKAN_LOADER_INSTALL_DIR "${cmake_full_install_dir}/VulkanLoader")
+set(VULKAN_LOADER_INSTALL_DIR "${cmake_full_install_dir}")
 message(STATUS "-- -- Vulkan-Loader Configured")
 # ============ Vulkan-Loader ================================
 
@@ -138,7 +138,7 @@ if (SDK_INSTALL)
         set(SPIRV_HEADERS_PKGCONFIG_INCLUDE_DIR ${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_INCLUDEDIR})
     endif ()
     configure_file(${SPIRV_HEADERS_SOURCE_DIR}/cmake/SPIRV-Headers.pc.in ${SPIRV_HEADERS_BINARY_DIR}/SPIRV-Headers.pc @ONLY)
-    install(FILES "${SPIRV_HEADERS_BINARY_DIR}/SPIRV-Headers.pc" DESTINATION ${CMAKE_INSTALL_DATADIR}/pkgconfig)
+    install(FILES "${SPIRV_HEADERS_BINARY_DIR}/SPIRV-Headers.pc" DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig)
 
     set(SPIRV_HEADERS_INSTALL_DIR "${cmake_full_install_dir}")
 endif ()
@@ -149,7 +149,7 @@ message(STATUS "-- -- SPIRV-Headers")
 set(SPIRV_SKIP_TEST ON)
 set(SKIP_SPIRV_TOOLS_INSTALL OFF)
 add_subdirectory(SPIRV-Tools)
-set(SPIRV_TOOLS_INSTALL_DIR "${cmake_full_install_dir}/SPIRV-Tools")
+set(SPIRV_TOOLS_INSTALL_DIR "${cmake_full_install_dir}")
 message(STATUS "-- -- SPIRV-Tools")
 # ============== SPIRV-Tools ================================
 
@@ -351,9 +351,6 @@ endif ()
 message(STATUS "-- -- glslang")
 # ================ glslang ==================================
 
-
-set(SKIP_FIND_PACKAGE ON)
-dump_cmake_variables("_DIR")
 # ======== Vulkan-ValidationLayers ==========================
 add_subdirectory(Vulkan-ValidationLayers)
 set(VULKAN_VALIDATIONLAYERS_INSTALL_DIR "${cmake_full_install_dir}")
@@ -370,22 +367,76 @@ message(STATUS "-- -- Vulkan-ExtensionLayer")
 set(SPIRV_CROSS_SHARED ON CACHE BOOL "")
 set(SPIRV_CROSS_ENABLE_TESTS OFF CACHE BOOL "")
 add_subdirectory(SPIRV-Cross)
-set(SPIRV_CROSS_INSTALL_DIR "${cmake_full_install_dir}/spirv_cross")
+set(SPIRV_CROSS_INSTALL_DIR "${cmake_full_install_dir}")
 message(STATUS "-- -- SPIRV-Cross")
 # ============== SPIRV-Cross ================================
 
 # ============= SPIRV-Reflect ===============================
 set(SPIRV_REFLECT_STATIC_LIB ON CACHE BOOL "")
 add_subdirectory(SPIRV-Reflect)
-set(SPIRV_REFLECT_INSTALL_DIR "${cmake_full_install_dir}/spirv_reflect")
 message(STATUS "-- -- SPIRV-Reflect")
 # ============= SPIRV-Reflect ===============================
 
 # ================ shaderc ==================================
-set(SHADERC_SKIP_INSTALL OFF)
+if (SDK_INSTALL)
+    set(SHADERC_SKIP_INSTALL OFF)
+else ()
+    set(SHADERC_SKIP_INSTALL ON)
+endif ()
 set(SHADERC_SKIP_TESTS ON)
 set(SHADERC_SKIP_EXAMPLES ON)
 set(SHADERC_SKIP_COPYRIGHT_CHECK ON)
 add_subdirectory(shaderc)
+if (SDK_INSTALL)
+    set(SHADERC_SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/shaderc")
+    set(SHADERC_BINARY_DIR "${CMAKE_CURRENT_BINARY_DIR}/shaderc")
+
+    foreach (target IN ITEMS shaderc shaderc_util shaderc_shared shaderc_static shaderc_combined)
+        if (TARGET ${target})
+            install(TARGETS ${target} EXPORT shaderc-targets
+                    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+                    RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+                    BUNDLE DESTINATION ${CMAKE_INSTALL_BINDIR}
+                    ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR})
+        else ()
+            message(STATUS "Target ${target} not found")
+        endif ()
+    endforeach ()
+
+
+    file(WRITE "${SHADERC_BINARY_DIR}/shaderc-config.cmake.in" [=[
+        @PACKAGE_INIT@
+        include("@PACKAGE_PATH_EXPORT_TARGETS@")
+    ]=])
+    set(PATH_EXPORT_TARGETS "${CMAKE_INSTALL_LIBDIR}/cmake/shaderc-targets.cmake")
+    configure_package_config_file(
+            "${SHADERC_BINARY_DIR}/shaderc-config.cmake.in"
+            "${SHADERC_BINARY_DIR}/shaderc-config.cmake"
+            PATH_VARS
+            PATH_EXPORT_TARGETS
+            INSTALL_DESTINATION ${cmake_install_dir}
+    )
+
+    write_basic_package_version_file("${SHADERC_BINARY_DIR}/shaderc-config-version.cmake"
+            VERSION ${pack_version}
+            COMPATIBILITY SameMajorVersion
+    )
+
+    install(
+            EXPORT shaderc-targets
+            NAMESPACE "shaderc::"
+            DESTINATION "${cmake_install_dir}"
+    )
+
+    install(
+            FILES
+            "${SHADERC_BINARY_DIR}/shaderc-config.cmake"
+            "${SHADERC_BINARY_DIR}/shaderc-config-version.cmake"
+            DESTINATION
+            "${cmake_install_dir}"
+    )
+
+    set(SHADERC_INSTALL_DIR "${cmake_full_install_dir}")
+endif ()
 message(STATUS "-- -- shaderc")
 # ================ shaderc ==================================

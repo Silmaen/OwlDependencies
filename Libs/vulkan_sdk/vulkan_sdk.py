@@ -7,9 +7,28 @@ from depmanager.api.recipe import Recipe
 ignore_list = ["BUILD_TESTING"]
 
 cmakelists_modif = [
+    "Vulkan-Loader/loader/CMakeLists.txt",
+    "Vulkan-Loader/CMakeLists.txt",
+    "Vulkan-Utility-Libraries/loader/CMakeLists.txt",
+    "SPIRV-Headers/CMakeLists.txt",
+    "SPIRV-Tools/CMakeLists.txt",
     "Vulkan-ValidationLayers/CMakeLists.txt",
     "Vulkan-ExtensionLayer/CMakeLists.txt",
+    "SPIRV-Cross/CMakeLists.txt",
+    "shaderc/libshaderc/CMakeLists.txt",
+    "shaderc/libshaderc_util/CMakeLists.txt"
 ]
+
+corrections = [
+    [b"${CMAKE_INSTALL_LIBDIR}/cmake/VulkanLoader", b'"${cmake_install_dir}"', "Vulkan-Loader/loader/CMakeLists.txt"],
+    [b"\nfind_package", b"\n#find_package", None],
+    [b"PUBLIC include", b"PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include> $<INSTALL_INTERFACE:include>", None],
+    [b"${CMAKE_INSTALL_DATADIR}/pkgconfig", b"${cmake_install_dir}/pkgconfig", None],
+    [b"set(${PATH} ${TARGET}/cmake)", b"set(${PATH} ${cmake_install_dir})", None],
+    [b"set(${PATH} ${CMAKE_INSTALL_LIBDIR}/cmake/${TARGET})", b"set(${PATH} ${cmake_install_dir} )", None],
+    [b"EXPORT ${config_name}Config DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/${config_name}/cmake", b"EXPORT ${config_name}Config DESTINATION ${cmake_install_dir}", None],
+]
+
 
 class VulkanSdk(Recipe):
     """
@@ -30,7 +49,11 @@ class VulkanSdk(Recipe):
                 continue
             with open(path, "rb") as fp:
                 lines = fp.read()
-            lines = lines.replace(b"\nfind_package", b"\n#find_package")
+            for correction in corrections:
+                if correction[2] not in [None, ""]:
+                    if correction[2] != cmakelists:
+                        continue
+                lines = lines.replace(correction[0], correction[1])
             with open(path, "wb") as fp:
                 fp.write(lines)
             print(f"***** File {cmakelists} @ {path} found and modified.")
@@ -43,7 +66,12 @@ class VulkanSdk(Recipe):
                 continue
             with open(path, "rb") as fp:
                 lines = fp.read()
-            lines = lines.replace(b"\n#find_package", b"\nfind_package")
+            for correction in corrections:
+                if correction[2] not in [None, ""]:
+                    if correction[2] != cmakelists:
+                        continue
+                # lines = lines.replace(correction[1], correction[0])
+                pass
             with open(path, "wb") as fp:
                 fp.write(lines)
             print(f"***** File {cmakelists} @ {path} restored.")
