@@ -16,7 +16,7 @@ class ImguiShared(Recipe):
     kind = "shared"
     dependencies = [
         {"name": "glfw", "kind": "shared"},
-        {"name": "vulkan", "kind": "shared"},
+        {"name": "vulkan_sdk", "kind": "shared"},
     ]
 
     def configure(self):
@@ -31,5 +31,5 @@ class ImguiStatic(ImguiShared):
     kind = "static"
     dependencies = [
         {"name": "glfw", "kind": "static"},
-        {"name": "vulkan", "kind": "static"},
+        {"name": "vulkan_sdk", "kind": "shared"},
     ]

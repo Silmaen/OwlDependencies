@@ -16,7 +16,7 @@ class ImguizmoShared(Recipe):
     kind = "shared"
     dependencies = [
         {"name": "imgui", "kind": "shared"},
-        {"name": "vulkan", "kind": "shared"},
+        {"name": "vulkan_sdk", "kind": "shared"},
     ]
 
     def configure(self):
@@ -31,5 +31,5 @@ class ImguizmoStatic(ImguizmoShared):
     kind = "static"
     dependencies = [
         {"name": "imgui", "kind": "static"},
-        {"name": "vulkan", "kind": "static"},
+        {"name": "vulkan_sdk", "kind": "shared"},
     ]
