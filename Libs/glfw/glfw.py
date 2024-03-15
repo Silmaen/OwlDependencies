@@ -11,7 +11,7 @@ class GlfwShared(Recipe):
     """
 
     name = "glfw"
-    version = "3.3.9"
+    version = "3.4.0"
     source_dir = "glfw"
     kind = "shared"
 
