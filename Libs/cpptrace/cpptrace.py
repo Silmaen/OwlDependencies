@@ -11,7 +11,7 @@ class CppTraceShared(Recipe):
     """
 
     name = "cpptrace"
-    version = "0.3.1"
+    version = "0.4.1"
     source_dir = "cpptrace"
     kind = "shared"
 
