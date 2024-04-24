@@ -10,9 +10,9 @@ class CppTraceShared(Recipe):
     Shared version
     """
 
-    name = "cpptrace"
+    name = "libdwarf"
     version = "0.5.2"
-    source_dir = "cpptrace"
+    source_dir = "libdwarf-code"
     kind = "shared"
 
     def configure(self):

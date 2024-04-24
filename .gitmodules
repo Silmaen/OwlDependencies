@@ -91,3 +91,6 @@
 [submodule "Libs/vulkan_sdk/source/Vulkan-Tools"]
 	path = Libs/vulkan_sdk/source/Vulkan-Tools
 	url = git@github.com:KhronosGroup/Vulkan-Tools.git
+[submodule "Libs/libdwarf/libdwarf-code"]
+	path = Libs/libdwarf/libdwarf-code
+	url = git@github.com:davea42/libdwarf-code.git

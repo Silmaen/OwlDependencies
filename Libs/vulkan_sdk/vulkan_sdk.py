@@ -9,7 +9,7 @@ ignore_list = ["BUILD_TESTING"]
 cmakelists_modif = [
     "Vulkan-Loader/loader/CMakeLists.txt",
     "Vulkan-Loader/CMakeLists.txt",
-    "Vulkan-Utility-Libraries/loader/CMakeLists.txt",
+    "Vulkan-Utility-Libraries/CMakeLists.txt",
     "SPIRV-Headers/CMakeLists.txt",
     "SPIRV-Tools/CMakeLists.txt",
     "Vulkan-ValidationLayers/CMakeLists.txt",
