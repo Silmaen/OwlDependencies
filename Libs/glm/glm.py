@@ -19,6 +19,7 @@ class GlmShared(Recipe):
     kind = "shared"
 
     def configure(self):
+        self.cache_variables["GLM_ENABLE_CXX_20"] = "ON"
         self.cache_variables["GLM_BUILD_TESTS"] = "OFF"
         self.cache_variables["CMAKE_DEBUG_POSTFIX"] = "d"
 

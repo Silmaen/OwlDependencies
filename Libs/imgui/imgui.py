@@ -21,6 +21,7 @@ class ImguiShared(Recipe):
 
     def configure(self):
         self.cache_variables["PROJECT_VERSION"] = self.version.split("-")[0]
+        self.cache_variables["CMAKE_DEBUG_POSTFIX"] = "d"
 
 
 class ImguiStatic(ImguiShared):

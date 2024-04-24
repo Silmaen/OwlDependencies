@@ -21,6 +21,7 @@ class ImguizmoShared(Recipe):
 
     def configure(self):
         self.cache_variables["PROJECT_VERSION"] = self.version
+        self.cache_variables["CMAKE_DEBUG_POSTFIX"] = "d"
 
 
 class ImguizmoStatic(ImguizmoShared):
