@@ -70,7 +70,7 @@ class VulkanSdk(Recipe):
                 if correction[2] not in [None, ""]:
                     if correction[2] != cmakelists:
                         continue
-                # lines = lines.replace(correction[1], correction[0])
+                lines = lines.replace(correction[1], correction[0])
                 pass
             with open(path, "wb") as fp:
                 fp.write(lines)

@@ -94,3 +94,6 @@
 [submodule "Libs/libdwarf/libdwarf-code"]
 	path = Libs/libdwarf/libdwarf-code
 	url = git@github.com:davea42/libdwarf-code.git
+[submodule "Libs/zstd/sources/zstd"]
+	path = Libs/zstd/sources/zstd
+	url = git@github.com:facebook/zstd.git
