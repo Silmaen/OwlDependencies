@@ -9,6 +9,11 @@ if [ ! -d $(pwd)/build/${DOCKER_IMAGE} ]; then
 fi
 if [ ! -d $(pwd)/build/packages ]; then
     mkdir -p $(pwd)/build/packages
+    chmod 777 $(pwd)/build/packages
+fi
+if [ ! -d $(pwd)/build/cache ]; then
+    mkdir -p $(pwd)/build/cache
+    chmod 777 $(pwd)/build/cache
 fi
 docker pull $DOCKER_IMAGE
-docker run --rm --user $(id -u):$(id -g) --entrypoint /sources/CI/build.sh -v $(pwd)/build/packages:/home/user/.edm -v $(pwd):/sources -v $(pwd)/build/${DOCKER_IMAGE}:/build ${DOCKER_IMAGE}
+docker run --rm --user $(id -u):$(id -g) --entrypoint /sources/CI/build.sh -v $(pwd)/build/packages:/.edm  -v $(pwd)/build/cache:/.cache -v $(pwd):/sources -v $(pwd)/build/${DOCKER_IMAGE}:/build ${DOCKER_IMAGE}
