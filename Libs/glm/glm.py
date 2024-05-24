@@ -14,7 +14,7 @@ class GlmShared(Recipe):
     """
 
     name = "glm"
-    version = "1.0.0"
+    version = "1.0.1"
     source_dir = "sources/glm"
     kind = "shared"
 

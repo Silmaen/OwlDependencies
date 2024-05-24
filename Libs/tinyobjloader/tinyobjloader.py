@@ -15,7 +15,7 @@ class TinyObjLoaderShared(Recipe):
     """
 
     name = "tinyobjloader"
-    version = "2.0.0-rc10"
+    version = "2.0.0-rc13"
     source_dir = "tinyobjloader"
     kind = "shared"
 

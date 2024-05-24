@@ -11,7 +11,7 @@ class CurlShared(Recipe):
     """
 
     name = "curl"
-    version = "8.5.0"
+    version = "8.8.0"
     source_dir = "curl"
     kind = "shared"
 
