@@ -22,6 +22,7 @@ add_subdirectory(Libs/nfd)
 add_subdirectory(Libs/yaml-cpp)
 add_subdirectory(Libs/tinyxml2)
 add_subdirectory(Libs/vulkan_sdk)
+add_subdirectory(Libs/zlib)
 add_subdirectory(Libs/zstd)
 # compiled with dependency
 add_subdirectory(Libs/libdwarf) # depends on zstd

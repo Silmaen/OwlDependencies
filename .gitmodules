@@ -97,3 +97,6 @@
 [submodule "Libs/zstd/sources/zstd"]
 	path = Libs/zstd/sources/zstd
 	url = git@github.com:facebook/zstd.git
+[submodule "Libs/zlib/zlib"]
+	path = Libs/zlib/zlib
+	url = git@github.com:madler/zlib.git

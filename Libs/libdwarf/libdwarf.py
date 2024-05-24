@@ -11,10 +11,12 @@ cmakelists_modif = [
     ]
 corrections = [
     [b"find_package(zstd)", b"find_package(zstd CONFIG)", None],
+    [b"find_package(ZLIB)", b"find_package(ZLIB CONFIG)", None],
     [b'install(FILES "${PROJECT_SOURCE_DIR}/cmake/Findzstd.cmake")', b'#install(FILES "${'
                                                                      b'PROJECT_SOURCE_DIR}/cmake/Findzstd.cmake")',
      None],
     [b"find_dependency(zstd)", b"find_dependency(zstd CONFIG)", None],
+    [b"find_dependency(ZLIB)", b"find_dependency(ZLIB CONFIG)", None],
 ]
 
 
@@ -27,7 +29,8 @@ class LibDwarfShared(Recipe):
     version = "0.9.2"
     source_dir = "libdwarf-code"
     kind = "shared"
-    dependencies = [{"name": "zstd", "kind": "shared"}]
+    dependencies = [{"name": "zstd", "kind": "static"},
+                    {"name": "zlib", "kind": "static"}]
 
     def source(self):
         for cmakelists in cmakelists_modif:
@@ -77,7 +80,8 @@ class CppTraceStatic(LibDwarfShared):
     """
 
     kind = "static"
-    dependencies = [{"name": "zstd", "kind": "static"}]
+    dependencies = [{"name": "zstd", "kind": "static"},
+                    {"name": "zlib", "kind": "static"}]
 
     def configure(self):
         self.cache_variables["CMAKE_DEBUG_POSTFIX"] = "d"

@@ -11,16 +11,19 @@ class CppTraceShared(Recipe):
     """
 
     name = "cpptrace"
-    version = "0.5.2"
+    version = "0.5.4"
     source_dir = "cpptrace"
     kind = "shared"
-    dependencies = [{"name": "zstd", "kind": "shared"},
-                    {"name": "libdwarf", "kind": "shared"}]
+    dependencies = [{"name": "zstd", "kind": "static"},
+                    {"name": "libdwarf", "kind": "static"},
+                    {"name": "zlib", "kind": "static"}]
 
     def configure(self):
         self.cache_variables["CMAKE_DEBUG_POSTFIX"] = "d"
         self.cache_variables["CPPTRACE_USE_EXTERNAL_LIBDWARF"] = "ON"
         self.cache_variables["CPPTRACE_USE_EXTERNAL_ZSTD"] = "ON"
+        self.cache_variables["CPPTRACE_VCPKG"] = "ON"
+        self.cache_variables["CPPTRACE_POSITION_INDEPENDENT_CODE"] = "ON"
 
 
 class CppTraceStatic(CppTraceShared):
@@ -30,4 +33,5 @@ class CppTraceStatic(CppTraceShared):
 
     kind = "static"
     dependencies = [{"name": "zstd", "kind": "static"},
-                    {"name": "libdwarf", "kind": "static"}]
+                    {"name": "libdwarf", "kind": "static"},
+                    {"name": "zlib", "kind": "static"}]
