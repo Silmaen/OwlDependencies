@@ -28,17 +28,16 @@ class MavLink(Recipe):
     def source(self):
         path = root_dir / self.source_dir / "pymavlink" / "requirements.txt"
         if path.exists():
-            with open(path, "r") as fp:
+            with open(path, "rb") as fp:
                 self.reqSave = fp.read()
-            with open(path, "w") as fp:
-                fp.write("")
-        self.reqSave = ""
+            with open(path, "wb") as fp:
+                fp.write(b"")
 
     def clean(self):
         if self.reqSave in ["", None]:
             return
         path = root_dir / self.source_dir / "pymavlink" / "requirements.txt"
-        with open(path, "w") as fp:
+        with open(path, "wb") as fp:
             fp.write(self.reqSave)
 
 
