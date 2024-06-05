@@ -13,9 +13,9 @@ cmakelists_modif = [
     "jsoncppConfig.cmake.in"
 ]
 corrections = [
-    [b"cmake_policy(PUSH)", b"find_packag", None],
-    [b"cmake_policy(VERSION 3.0)", b"", None],
-    [b'cmake_policy(POP)', b'', None],
+    [b"cmake_policy(PUSH)", b"#cmake_policy(PUSH)", None],
+    [b"cmake_policy(VERSION 3.0)", b"#cmake_policy(VERSION 3.0)", None],
+    [b'cmake_policy(POP)', b'#cmake_policy(POP)', None],
 ]
 
 

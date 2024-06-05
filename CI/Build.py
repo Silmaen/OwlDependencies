@@ -128,7 +128,7 @@ def reorder_recipes(recipes):
             continue
         new_recipe.append(rec)
     # replace the list
-    return new_recipe
+    return list(set(new_recipe))
 
 
 def main():
@@ -176,6 +176,8 @@ def main():
     recipe_to_build = reorder_recipes(recipe_to_build)
     temp_path = local_manager.get_sys().temp_path / "builder"
     for recipe in recipe_to_build:
+        if parameters.verbosity > 0:
+            print(f"Building: {recipe.to_str()}...")
         if temp_path.exists():
             rmtree(temp_path, ignore_errors=True)
         temp_path.mkdir(parents=True, exist_ok=True)
@@ -186,6 +188,7 @@ def main():
         if not builder.has_recipes():
             print("WARNING Something gone wrong with the recipe!", file=stderr)
             continue
+        builder.build()
     rmtree(temp_path, ignore_errors=True)
     #
     # do the push
@@ -197,9 +200,8 @@ def main():
         if len(packs) == 0:
             print(f"ERROR: recipe {recipe.to_str()} should be built", file=stderr)
             continue
-        for pack in packs:
-            print(f"Pushing {pack.to_str()} to te remote!")
-            # package_manager.add_to_remote(pack, "default")
+        print(f"Pushing {packs[0].properties.get_as_str()} to te remote!")
+        package_manager.add_to_remote(packs[0], "default")
 
 
 if __name__ == "__main__":
