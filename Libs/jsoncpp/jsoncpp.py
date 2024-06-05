@@ -9,6 +9,14 @@ ignore_list = [
     "JSONCPP_WITH_POST_BUILD_UNITTEST",
     "BUILD_OBJECT_LIBS",
 ]
+cmakelists_modif = [
+    "jsoncppConfig.cmake.in"
+]
+corrections = [
+    [b"cmake_policy(PUSH)", b"find_packag", None],
+    [b"cmake_policy(VERSION 3.0)", b"", None],
+    [b'cmake_policy(POP)', b'', None],
+]
 
 
 class JsonCppShared(Recipe):
@@ -17,9 +25,44 @@ class JsonCppShared(Recipe):
     """
 
     name = "jsoncpp"
-    version = "1.9.5"
+    version = "1.9.5.1"
     source_dir = "jsoncpp"
     kind = "shared"
+
+    def source(self):
+        for cmakelists in cmakelists_modif:
+            path = self.path / self.source_dir / cmakelists
+            if not path.exists():
+                print(f"Error: file {cmakelists} @ {path} not found...")
+                continue
+            with open(path, "rb") as fp:
+                lines = fp.read()
+            for correction in corrections:
+                if correction[2] not in [None, ""]:
+                    if correction[2] != cmakelists:
+                        continue
+                lines = lines.replace(correction[0], correction[1])
+            with open(path, "wb") as fp:
+                fp.write(lines)
+            print(f"***** File {cmakelists} @ {path} found and modified.")
+
+    def clean(self):
+        for cmakelists in cmakelists_modif:
+            path = self.path / self.source_dir / cmakelists
+            if not path.exists():
+                print(f"Error: file {cmakelists} @ {path} not found...")
+                continue
+            with open(path, "rb") as fp:
+                lines = fp.read()
+            for correction in corrections:
+                if correction[2] not in [None, ""]:
+                    if correction[2] != cmakelists:
+                        continue
+                lines = lines.replace(correction[1], correction[0])
+                pass
+            with open(path, "wb") as fp:
+                fp.write(lines)
+            print(f"***** File {cmakelists} @ {path} restored.")
 
     def configure(self):
         for ignore in ignore_list:
