@@ -14,7 +14,7 @@ class NfdShared(Recipe):
     """
 
     name = "nfd"
-    version = "1.1.1"
+    version = "1.2.0"
     source_dir = "nativefiledialog-extended"
     kind = "shared"
 

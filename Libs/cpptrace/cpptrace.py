@@ -11,7 +11,7 @@ class CppTraceShared(Recipe):
     """
 
     name = "cpptrace"
-    version = "0.5.4"
+    version = "0.6.2"
     source_dir = "cpptrace"
     kind = "shared"
     dependencies = [{"name": "zstd", "kind": "static"},

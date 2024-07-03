@@ -11,7 +11,7 @@ class FmtShared(Recipe):
     """
 
     name = "fmt"
-    version = "10.2.1"
+    version = "11.0.0"
     source_dir = "fmt"
     kind = "shared"
 
