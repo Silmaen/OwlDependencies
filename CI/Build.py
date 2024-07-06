@@ -19,6 +19,7 @@ class Parameters:
         self.verbosity = 0
         self.do_pull = True
         self.do_push = True
+        self.do_build = True
         self.machine = Machine(True)
         self.cross_info = {"SINGLE_THREAD": False}
 
@@ -28,12 +29,28 @@ parameters = Parameters()
 
 def parse_args():
     from argparse import ArgumentParser
+
     global parameters
     parser = ArgumentParser()
-    parser.add_argument("--verbose", "-v", action="count", default=0, help="The verbosity level.")
+    parser.add_argument(
+        "--verbose", "-v", action="count", default=0, help="The verbosity level."
+    )
+    parser.add_argument(
+        "--dry-run", action="store_true", help="Do nothing print the commands."
+    )
+    parser.add_argument(
+        "--no-push", action="store_true", help="Do not push the results."
+    )
     args = parser.parse_args()
     print(f"verbosity {args.verbose}")
     parameters.verbosity = args.verbose
+    if args.dry_run:
+        parameters.do_pull = False
+        parameters.do_push = False
+        parameters.do_build = False
+    else:
+        if args.no_push:
+            parameters.do_push = False
 
 
 def query_from_recipe(recipe):
@@ -73,6 +90,7 @@ def reorder_recipes(recipes):
         def version_lt(vers_a: str, vers_b: str) -> bool:
             def safe_to_int(vers: str):
                 from re import match
+
                 crr = match(r"^\D*(\d+)", vers)
                 if crr:
                     return int(crr.group(1))
@@ -138,7 +156,9 @@ def main():
     parse_args()
     # list the recipes
     local_manager = LocalManager(verbosity=parameters.verbosity)
-    package_manager = PackageManager(system=local_manager.get_sys(), verbosity=parameters.verbosity)
+    package_manager = PackageManager(
+        system=local_manager.get_sys(), verbosity=parameters.verbosity
+    )
     rem = package_manager.get_default_remote()
     #
     # find all recipes
@@ -156,10 +176,14 @@ def main():
                 if parameters.verbosity > 0:
                     print(f"Package {recipe.to_str()} found locally, no build.")
                 continue
-            query_result = package_manager.query(query_from_recipe(recipe), remote_name="default")
+            query_result = package_manager.query(
+                query_from_recipe(recipe), remote_name="default"
+            )
             if len(query_result) > 0:
                 if parameters.verbosity > 0:
-                    print(f"Package {recipe.to_str()} found on remote, pulling, no build.")
+                    print(
+                        f"Package {recipe.to_str()} found on remote, pulling, no build."
+                    )
                 if parameters.do_pull:
                     package_manager.add_from_remote(query_result[0], "default")
                 continue
@@ -178,30 +202,33 @@ def main():
     for recipe in recipe_to_build:
         if parameters.verbosity > 0:
             print(f"Building: {recipe.to_str()}...")
+        recipe.cache_variables = {}  # reset cache between builds !!
         if temp_path.exists():
             rmtree(temp_path, ignore_errors=True)
         temp_path.mkdir(parents=True, exist_ok=True)
-        builder = RecipeBuilder(recipe=recipe,
-                                temp=temp_path,
-                                local=local_manager.get_sys(),
-                                cross_info=parameters.cross_info)
+        builder = RecipeBuilder(
+            recipe=recipe,
+            temp=temp_path,
+            local=local_manager.get_sys(),
+            cross_info=parameters.cross_info,
+        )
         if not builder.has_recipes():
             print("WARNING Something gone wrong with the recipe!", file=stderr)
             continue
-        builder.build()
+        if parameters.do_build:
+            builder.build()
     rmtree(temp_path, ignore_errors=True)
     #
     # do the push
     #
-    if not parameters.do_push:
-        exit(0)
     for recipe in recipe_to_build:
         packs = package_manager.query(query_from_recipe(recipe))
         if len(packs) == 0:
             print(f"ERROR: recipe {recipe.to_str()} should be built", file=stderr)
             continue
         print(f"Pushing {packs[0].properties.get_as_str()} to te remote!")
-        package_manager.add_to_remote(packs[0], "default")
+        if parameters.do_push:
+            package_manager.add_to_remote(packs[0], "default")
 
 
 if __name__ == "__main__":
