@@ -194,6 +194,9 @@ def main():
         exit(0)
     else:
         print(f"{nb} recipe{['', 's'][nb > 1]} needs to be build.")
+        if parameters.verbosity > 0:
+            for recipe in recipe_to_build:
+                print(f" --- Building: {recipe.to_str()}...")
     #
     # do the build
     #
@@ -221,10 +224,15 @@ def main():
     #
     # do the push
     #
+    err_code = 0
     for recipe in recipe_to_build:
         packs = package_manager.query(query_from_recipe(recipe))
         if len(packs) == 0:
-            print(f"ERROR: recipe {recipe.to_str()} should be built", file=stderr)
+            if parameters.do_build:
+                print(f"ERROR: recipe {recipe.to_str()} should be built", file=stderr)
+                err_code = 1
+            else:
+                print(f"HINT: recipe {recipe.to_str()} should be built")
             continue
         print(f"Pushing {packs[0].properties.get_as_str()} to te remote!")
         if parameters.do_push:
