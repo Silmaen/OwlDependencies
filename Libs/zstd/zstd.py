@@ -20,6 +20,8 @@ class ZstdShared(Recipe):
         self.cache_variables["ZSTD_BUILD_PROGRAMS"] = "OFF"
         self.cache_variables["ZSTD_BUILD_TESTS"] = "OFF"
         self.cache_variables["ZSTD_PROGRAMS_LINK_SHARED"] = "ON"
+        self.cache_variables["ZSTD_BUILD_STATIC"] = "OFF"
+        self.cache_variables["ZSTD_BUILD_SHARED"] = "ON"
 
 
 class ZstdStatic(ZstdShared):
@@ -34,3 +36,5 @@ class ZstdStatic(ZstdShared):
         self.cache_variables["ZSTD_BUILD_PROGRAMS"] = "OFF"
         self.cache_variables["ZSTD_BUILD_TESTS"] = "OFF"
         self.cache_variables["ZSTD_PROGRAMS_LINK_SHARED"] = "ON"
+        self.cache_variables["ZSTD_BUILD_STATIC"] = "ON"
+        self.cache_variables["ZSTD_BUILD_SHARED"] = "OFF"

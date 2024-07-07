@@ -165,6 +165,7 @@ def main():
     #
     # find all recipes
     #
+    err_code = 0
     recipes = find_recipes(lib_dir, 2)
     recipes = reorder_recipes(recipes)
     recipe_to_build = []
@@ -222,24 +223,32 @@ def main():
             print("WARNING Something gone wrong with the recipe!", file=stderr)
             continue
         if parameters.do_build:
-            builder.build()
+            if not builder.build():
+                err_code += 1
     rmtree(temp_path, ignore_errors=True)
     #
     # do the push
     #
-    err_code = 0
     for recipe in recipe_to_build:
         packs = package_manager.query(query_from_recipe(recipe))
         if len(packs) == 0:
             if parameters.do_build:
                 print(f"ERROR: recipe {recipe.to_str()} should be built", file=stderr)
-                err_code = 1
+                err_code += 1
             else:
                 print(f"HINT: recipe {recipe.to_str()} should be built")
             continue
+        ## temp debug....
+        print(
+            f" ---DEBUG--- pack '{recipe.name}/{recipe.version}-{recipe.kind}' : {len(packs)}"
+        )
+        for p in packs:
+            print(f" ---DEBUG--- {p.properties.get_as_str()}")
+        ## end Temp debug...
         print(f"Pushing {packs[0].properties.get_as_str()} to te remote!")
         if parameters.do_push:
-            package_manager.add_to_remote(packs[0], "default")
+            print(f"Push temporary deactivated")
+            # package_manager.add_to_remote(packs[0], "default")
     if err_code != 0:
         exit(1)
 
