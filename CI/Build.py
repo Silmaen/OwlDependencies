@@ -144,9 +144,11 @@ def reorder_recipes(recipes):
     for rec in recipes:
         if rec in new_recipe:  # add recipe only once
             continue
+        if parameters.verbosity > 1:
+            print(f"WARNING: inserting {rec.to_str()} with missing dependency.")
         new_recipe.append(rec)
     # replace the list
-    return list(set(new_recipe))
+    return new_recipe
 
 
 def main():
@@ -237,6 +239,8 @@ def main():
         print(f"Pushing {packs[0].properties.get_as_str()} to te remote!")
         if parameters.do_push:
             package_manager.add_to_remote(packs[0], "default")
+    if err_code != 0:
+        exit(1)
 
 
 if __name__ == "__main__":
