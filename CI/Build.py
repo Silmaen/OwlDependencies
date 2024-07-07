@@ -225,6 +225,7 @@ def main():
         if parameters.do_build:
             if not builder.build():
                 err_code += 1
+        local_manager.get_sys().local_database.dependencies.clear()
         local_manager.get_sys().local_database.reload()
     rmtree(temp_path, ignore_errors=True)
     #
