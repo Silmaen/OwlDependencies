@@ -240,17 +240,9 @@ def main():
             else:
                 print(f"HINT: recipe {recipe.to_str()} should be built")
             continue
-        ## temp debug....
-        print(
-            f" ---DEBUG--- pack '{recipe.name}/{recipe.version}-{recipe.kind}' : {len(packs)}"
-        )
-        for p in packs:
-            print(f" ---DEBUG--- {p.properties.get_as_str()}")
-        ## end Temp debug...
         print(f"Pushing {packs[0].properties.get_as_str()} to te remote!")
         if parameters.do_push:
-            print(f"Push temporary deactivated")
-            # package_manager.add_to_remote(packs[0], "default")
+            package_manager.add_to_remote(packs[0], "default")
     if err_code != 0:
         exit(1)
 
