@@ -166,6 +166,7 @@ def main():
     # find all recipes
     #
     recipes = find_recipes(lib_dir, 2)
+    recipes = reorder_recipes(recipes)
     recipe_to_build = []
     #
     # Select only what need to be build right now!
