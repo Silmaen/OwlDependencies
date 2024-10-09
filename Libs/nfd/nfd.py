@@ -1,6 +1,7 @@
 """
 Depmanager recipes
 """
+
 from pathlib import Path
 
 from depmanager.api.recipe import Recipe
@@ -14,7 +15,7 @@ class NfdShared(Recipe):
     """
 
     name = "nfd"
-    version = "1.2.0"
+    version = "1.2.1"
     source_dir = "nativefiledialog-extended"
     kind = "shared"
 

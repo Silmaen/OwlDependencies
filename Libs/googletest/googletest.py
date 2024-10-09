@@ -11,7 +11,7 @@ class GoogleTestShared(Recipe):
     """
 
     name = "googletest"
-    version = "1.14.0"
+    version = "1.15.2"
     source_dir = "googletest"
     kind = "shared"
 
