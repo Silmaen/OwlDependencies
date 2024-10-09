@@ -1,6 +1,7 @@
 """
 Depmanager recipes
 """
+
 from pathlib import Path
 from shutil import copy2
 
@@ -9,13 +10,19 @@ from depmanager.api.recipe import Recipe
 here = Path(__file__).resolve().parent
 modifications = here / "modifs"
 
-
 corrections = [
-    [b"# Example binaries", b"SET(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR})\ninclude(DmgrInstall)"],
-    [b"target_include_directories(zlib PUBLIC ${CMAKE_CURRENT_BINARY_DIR} ${CMAKE_CURRENT_SOURCE_DIR})",
-     b"target_include_directories(zlib PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR} ${CMAKE_CURRENT_SOURCE_DIR}> $<INSTALL_INTERFACE:include>)"],
-    [b"target_include_directories(zlibstatic PUBLIC ${CMAKE_CURRENT_BINARY_DIR} ${CMAKE_CURRENT_SOURCE_DIR})",
-    b"target_include_directories(zlibstatic PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR} ${CMAKE_CURRENT_SOURCE_DIR}> $<INSTALL_INTERFACE:include>)"]
+    [
+        b"# Example binaries",
+        b"SET(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR})\ninclude(DmgrInstall)",
+    ],
+    [
+        b"target_include_directories(zlib PUBLIC ${CMAKE_CURRENT_BINARY_DIR} ${CMAKE_CURRENT_SOURCE_DIR})",
+        b"target_include_directories(zlib PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}> $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}> $<INSTALL_INTERFACE:include>)",
+    ],
+    [
+        b"target_include_directories(zlibstatic PUBLIC ${CMAKE_CURRENT_BINARY_DIR} ${CMAKE_CURRENT_SOURCE_DIR})",
+        b"target_include_directories(zlibstatic PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}> $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}> $<INSTALL_INTERFACE:include>)",
+    ],
 ]
 
 
@@ -31,8 +38,8 @@ class ZlibShared(Recipe):
 
     def source(self):
         source = here / self.source_dir
-        copy2(modifications/"zlib-config.cmake.in", source/"zlib-config.cmake.in")
-        copy2(modifications/"DmgrInstall.cmake", source/"DmgrInstall.cmake")
+        copy2(modifications / "zlib-config.cmake.in", source / "zlib-config.cmake.in")
+        copy2(modifications / "DmgrInstall.cmake", source / "DmgrInstall.cmake")
         # modify CMakeLists.txt
         with open(source / "CMakeLists.txt", "rb") as fp:
             lines = fp.read()
@@ -49,8 +56,8 @@ class ZlibShared(Recipe):
 
     def clean(self):
         source = here / self.source_dir
-        (source/"zlib-config.cmake.in").unlink()
-        (source/"DmgrInstall.cmake").unlink()
+        (source / "zlib-config.cmake.in").unlink()
+        (source / "DmgrInstall.cmake").unlink()
         # restore CMakeLists.txt
         with open(source / "CMakeLists.txt", "rb") as fp:
             lines = fp.read()
