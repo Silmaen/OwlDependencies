@@ -100,3 +100,9 @@
 [submodule "Libs/zlib/zlib"]
 	path = Libs/zlib/zlib
 	url = git@github.com:madler/zlib.git
+[submodule "Libs/msdfgen/msdfgen"]
+	path = Libs/msdfgen/msdfgen
+	url = git@github.com:Chlumsky/msdfgen.git
+[submodule "Libs/msdf-atlas-gen/msdf-atlas-gen"]
+	path = Libs/msdf-atlas-gen/msdf-atlas-gen
+	url = git@github.com:Chlumsky/msdf-atlas-gen.git
