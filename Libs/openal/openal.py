@@ -11,7 +11,7 @@ here = Path(__file__).parent
 
 class OpenALShared(Recipe):
     """
-    Shared version
+    Shared version (the only one)
     """
 
     name = "openal"
@@ -23,11 +23,3 @@ class OpenALShared(Recipe):
         self.cache_variables["ALSOFT_EXAMPLES"] = "OFF"
         self.cache_variables["ALSOFT_INSTALL_EXAMPLES"] = "OFF"
         self.cache_variables["CMAKE_DEBUG_POSTFIX"] = "d"
-
-
-class OpenALStatic(OpenALShared):
-    """
-    Static  version
-    """
-
-    kind = "static"
