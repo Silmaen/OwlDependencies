@@ -109,3 +109,6 @@
 [submodule "Libs/msdf-atlas-gen/msdf-atlas-gen"]
 	path = Libs/msdf-atlas-gen/msdf-atlas-gen
 	url = git@github.com:Chlumsky/msdf-atlas-gen.git
+[submodule "Libs/box2d/box2d"]
+	path = Libs/box2d/box2d
+	url = git@github.com:erincatto/box2d.git
