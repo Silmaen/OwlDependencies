@@ -13,8 +13,13 @@ file_modif = [
 ]
 corrections = [
     [
-        b"fmt::basic_format_string",
-        b"fmt::fstring",
+        b"template <typename T, typename... Args>\r\ninline fmt::basic_string_view<T> to_string_view(fmt::basic_format_string<T, Args...> fmt) {",
+        b"template <typename... Args>\r\ninline fmt::basic_string_view<char> to_string_view(fmt::fstring<Args...> fmt) {",
+        None,
+    ],
+    [
+        b"template <typename T, typename... Args>\ninline fmt::basic_string_view<T> to_string_view(fmt::basic_format_string<T, Args...> fmt) {",
+        b"template <typename... Args>\ninline fmt::basic_string_view<char> to_string_view(fmt::fstring<Args...> fmt) {",
         None,
     ],
 ]

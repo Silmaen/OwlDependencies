@@ -25,6 +25,11 @@ corrections = [
         b"target_include_directories(simde INTERFACE $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>)",
         None,
     ],
+    [
+        b"$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>",
+        b"$<INSTALL_INTERFACE:include>",
+        None,
+    ],
 ]
 
 
