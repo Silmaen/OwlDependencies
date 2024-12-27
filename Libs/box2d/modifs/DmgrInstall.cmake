@@ -1,6 +1,5 @@
 include(GNUInstallDirs)
 
-string(TOUPPER ${PROJECT_NAME} PROJECT_ID)
 set(version_config ${PROJECT_BINARY_DIR}/${PROJECT_NAME}-config-version.cmake)
 set(project_config ${PROJECT_BINARY_DIR}/${PROJECT_NAME}-config.cmake)
 set(targets_export_name ${PROJECT_NAME}-targets)
@@ -40,4 +39,4 @@ install(
 install(EXPORT ${targets_export_name}-$<CONFIG>
         FILE ${targets_export_name}.cmake
         DESTINATION lib/cmake/
-        NAMESPACE ${PROJECT_ID}::)
+        NAMESPACE ${PROJECT_NAME}::)
