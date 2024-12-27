@@ -9,13 +9,11 @@ ignore_list = [
     "JSONCPP_WITH_POST_BUILD_UNITTEST",
     "BUILD_OBJECT_LIBS",
 ]
-cmakelists_modif = [
-    "jsoncppConfig.cmake.in"
-]
+cmakelists_modif = ["jsoncppConfig.cmake.in"]
 corrections = [
     [b"cmake_policy(PUSH)", b"#cmake_policy(PUSH)", None],
     [b"cmake_policy(VERSION 3.0)", b"#cmake_policy(VERSION 3.0)", None],
-    [b'cmake_policy(POP)', b'#cmake_policy(POP)', None],
+    [b"cmake_policy(POP)", b"#cmake_policy(POP)", None],
 ]
 
 
@@ -25,7 +23,7 @@ class JsonCppShared(Recipe):
     """
 
     name = "jsoncpp"
-    version = "1.9.5.1"
+    version = "1.9.6"
     source_dir = "jsoncpp"
     kind = "shared"
 

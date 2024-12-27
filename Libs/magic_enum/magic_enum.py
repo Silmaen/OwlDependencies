@@ -11,7 +11,7 @@ class MagicEnumHeader(Recipe):
     """
 
     name = "magic_enum"
-    version = "0.9.6"
+    version = "0.9.7"
     source_dir = "magic_enum"
     kind = "header"
 

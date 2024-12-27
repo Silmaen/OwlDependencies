@@ -9,7 +9,8 @@ class EnttHeader(Recipe):
     """
     Header-only version
     """
+
     name = "entt"
-    version = "3.13.1"
+    version = "3.14.0"
     source_dir = "entt"
     kind = "header"
