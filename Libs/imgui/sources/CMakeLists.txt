@@ -23,12 +23,17 @@ add_library(${PROJECT_ID}::${PROJECT_ID} ALIAS ${PROJECT_ID})
 
 target_include_directories(${PROJECT_ID} PRIVATE ${PROJECT_ROOT} ${PROJECT_ROOT}/backend)
 
-target_compile_definitions(${PROJECT_ID} INTERFACE IMGUI_IMPL_HAS_DOCKING)
-
 target_include_directories(${PROJECT_ID} SYSTEM INTERFACE
         $<BUILD_INTERFACE:${PROJECT_ROOT}>
         $<INSTALL_INTERFACE:include>
 )
+
+# additional modules
+target_sources(${PROJECT_ID} PRIVATE
+        ${PROJECT_ROOT}/misc/cpp/imgui_stdlib.cpp
+        ${PROJECT_ROOT}/misc/cpp/imgui_stdlib.h)
+install(FILES ${PROJECT_ROOT}/misc/cpp/imgui_stdlib.h
+        DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
 
 # glfw dependency
 find_package(glfw3 REQUIRED)
@@ -128,4 +133,3 @@ install(EXPORT ${targets_export_name}-$<CONFIG>
         FILE ${targets_export_name}.cmake
         DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/${PROJECT_ID}
         NAMESPACE ${PROJECT_ID}::)
-

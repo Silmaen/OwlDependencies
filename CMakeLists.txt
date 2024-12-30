@@ -11,6 +11,7 @@ add_subdirectory(Libs/entt)
 add_subdirectory(Libs/magic_enum)
 add_subdirectory(Libs/stb)
 # compiled without dependency
+add_subdirectory(Libs/box2d)
 add_subdirectory(Libs/fmt)
 add_subdirectory(Libs/curl)
 add_subdirectory(Libs/glad)
