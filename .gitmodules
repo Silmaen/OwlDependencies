@@ -112,3 +112,9 @@
 [submodule "Libs/box2d/box2d"]
 	path = Libs/box2d/box2d
 	url = git@github.com:erincatto/box2d.git
+[submodule "Libs/libsndfile/--force"]
+	path = Libs/libsndfile/--force
+	url = git@github.com:libsndfile/libsndfile.git
+[submodule "Libs/libsndfile/libsndfile"]
+	path = Libs/libsndfile/libsndfile
+	url = git@github.com:libsndfile/libsndfile.git
