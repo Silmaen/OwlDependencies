@@ -22,6 +22,8 @@ class LibSndFileShared(Recipe):
         self.cache_variables["BUILD_PROGRAMS"] = "OFF"
         self.cache_variables["BUILD_REGTEST"] = "OFF"
         self.cache_variables["INSTALL_MANPAGES"] = "OFF"
+        self.cache_variables["ENABLE_MPEG"] = "OFF"
+        self.cache_variables["ENABLE_EXTERNAL_LIBS"] = "OFF"
         self.cache_variables["CMAKE_DEBUG_POSTFIX"] = "d"
 
 
