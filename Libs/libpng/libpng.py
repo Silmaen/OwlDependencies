@@ -6,13 +6,11 @@ from depmanager.api.recipe import Recipe
 
 file_modif = [
     "CMakeLists.txt",
+    "scripts/cmake/PNGConfig.cmake",
 ]
 corrections = [
-    [
-        b"find_package(ZLIB REQUIRED)",
-        b"find_package(ZLIB MODULE REQUIRED)",
-        None,
-    ],
+    [b"find_package(ZLIB", b"find_package(ZLIB MODULE", None],
+    [b"find_dependency(ZLIB", b"find_dependency(ZLIB CONFIG", None],
 ]
 
 
