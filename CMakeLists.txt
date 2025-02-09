@@ -12,6 +12,7 @@ add_subdirectory(Libs/magic_enum)
 add_subdirectory(Libs/stb)
 # compiled without dependency
 add_subdirectory(Libs/box2d)
+add_subdirectory(Libs/brotli)
 add_subdirectory(Libs/fmt)
 add_subdirectory(Libs/curl)
 add_subdirectory(Libs/glad)
@@ -28,6 +29,7 @@ add_subdirectory(Libs/vulkan_sdk)
 add_subdirectory(Libs/zlib)
 add_subdirectory(Libs/zstd)
 # compiled with dependency
+add_subdirectory(Libs/libpng) # depends on zlib
 add_subdirectory(Libs/libdwarf) # depends on zstd
 add_subdirectory(Libs/cpptrace) # depends on libdwarf
 add_subdirectory(Libs/mavsdk) # depends on tinyxml2 & jsoncpp

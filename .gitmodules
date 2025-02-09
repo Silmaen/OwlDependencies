@@ -121,3 +121,9 @@
 [submodule "Libs/libpng/libpng"]
 	path = Libs/libpng/libpng
 	url = git@github.com:pnggroup/libpng.git
+[submodule "Libs/brotli/brotli"]
+	path = Libs/brotli/brotli
+	url = git@github.com:google/brotli.git
+[submodule "Libs/harfbuzz/harfbuzz"]
+	path = Libs/harfbuzz/harfbuzz
+	url = git@github.com:harfbuzz/harfbuzz.git
