@@ -42,7 +42,7 @@ class FreeTypeShared(Recipe):
     kind = "shared"
     dependencies = [
         {"name": "libpng", "kind": "shared"},
-        {"name": "harfbuzz", "kind": "shared"},
+        {"name": "harfbuzz", "kind": "static"},
         {"name": "brotli", "kind": "shared"},
     ]
 

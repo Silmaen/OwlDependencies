@@ -81,7 +81,7 @@ def query_from_recipe(recipe):
     }
 
 
-def reorder_recipes(recipes):
+def reorder_recipes(recipes, package_manager: PackageManager, strict_dep: bool = False):
     """
     Reorder the recipes to take the dependencies into account.
     """
@@ -122,31 +122,68 @@ def reorder_recipes(recipes):
             break
         return found
 
+    def find_package(criteria):
+        q = package_manager.query(criteria)
+        return len(q) > 0
+
     new_recipe = []
     stalled = False
+    i = -1
     while not stalled:
+        stalled = True
+        i += 1
+        print(f"turn {i}")
         for rec in recipes:
-            stalled = True
             if rec in new_recipe:  # add recipe only once
                 continue
             if len(rec.dependencies) == 0:  # no dependency -> just add it!
                 stalled = False
                 new_recipe.append(rec)
+                if parameters.verbosity > 2:
+                    print(f" -- inserting {rec.name} with no dependency")
             else:
                 dep_satisfied = True
+                deps_list = []
                 for dep in rec.dependencies:
+                    deps_list.append(dep["name"])
                     if not _find_recipe(new_recipe, dep):
                         dep_satisfied = False
                 if dep_satisfied:
                     stalled = False
                     new_recipe.append(rec)
+                    if parameters.verbosity > 2:
+                        print(
+                            f" -- inserting {rec.name} with all dependency full filled {deps_list}"
+                        )
     # add unresolved dependency recipes
+    continue_exec = True
     for rec in recipes:
         if rec in new_recipe:  # add recipe only once
             continue
-        if parameters.verbosity > 1:
-            print(f"WARNING: inserting {rec.to_str()} with missing dependency.")
-        new_recipe.append(rec)
+        missing = []
+        found = []
+        for dep in rec.dependencies:
+            if _find_recipe(new_recipe, dep) and not find_package(dep):
+                found.append(dep["name"])
+            else:
+                missing.append(dep["name"])
+        if len(missing) == 0:
+            new_recipe.append(rec)
+            continue
+        if strict_dep:
+            print(
+                f"ERROR: Target {rec.to_str()} has missing dependency: {missing} but found: {found}.",
+                file=stderr,
+            )
+            continue_exec = False
+        else:
+            if parameters.verbosity > 1:
+                print(
+                    f"WARNING: inserting {rec.to_str()} with missing dependency: {missing} but found: {found}."
+                )
+            new_recipe.append(rec)
+    if not continue_exec:
+        exit(1)
     # replace the list
     return new_recipe
 
@@ -167,7 +204,7 @@ def main():
     #
     err_code = 0
     recipes = find_recipes(lib_dir, 1)
-    recipes = reorder_recipes(recipes)
+    recipes = reorder_recipes(recipes, package_manager, True)
     recipe_to_build = []
     #
     # Select only what need to be build right now!
@@ -204,7 +241,6 @@ def main():
     #
     # do the build
     #
-    recipe_to_build = reorder_recipes(recipe_to_build)
     temp_path = local_manager.get_sys().temp_path / "builder"
     for recipe in recipe_to_build:
         if parameters.verbosity > 0:
