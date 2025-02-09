@@ -9,59 +9,118 @@ from depmanager.api.recipe import Recipe
 here = Path(__file__).parent
 
 file_modif = [
-    "Core/Contour.h",
-    "Core/contour-combiners.h",
-    "Core/DistanceMapping.h",
-    "Core/edge-coloring.h",   # ***
-    "Core/edge-segments.h",
-    "Core/edge-selectors.h",
-    "Core/EdgeHolder.h",
-    "Core/equation-solver.h", # ***
-    "Core/export-svg.h", # ***
-    "Core/msdf-error-correction.h",
-    "Core/MSDFErrorCorrection.h",
-    "Core/Projection.h",
-    "Core/rasterization.h",
-    "Core/render-sdf.h", # ***
-    "Core/save-bmp.h", # ***
-    "Core/save-fl32.h", # ***
-    "Core/save-rgba.h", # ***
-    "Core/save-tiff.h", # ***
-    "Core/Scanline.h",
-    "Core/sdf-error-estimation.h", # ***
-    "Core/SDFTransformation.h",
-    "Core/Shape.h",
-    "Core/shape-description.h", # ***
-    "msdfgen.h"
+    "CMakeLists.txt",
+    "cmake/msdfgenConfig.cmake.in",
+    "core/Contour.h",
+    "core/contour-combiners.h",
+    "core/DistanceMapping.h",
+    "core/edge-coloring.h",  # ***
+    "core/edge-segments.h",
+    "core/edge-selectors.h",
+    "core/EdgeHolder.h",
+    "core/equation-solver.h",  # ***
+    "core/export-svg.h",  # ***
+    "core/msdf-error-correction.h",
+    "core/MSDFErrorCorrection.h",
+    "core/Projection.h",
+    "core/rasterization.h",
+    "core/render-sdf.h",  # ***
+    "core/save-bmp.h",  # ***
+    "core/save-fl32.h",  # ***
+    "core/save-rgba.h",  # ***
+    "core/save-tiff.h",  # ***
+    "core/Scanline.h",
+    "core/sdf-error-estimation.h",  # ***
+    "core/SDFTransformation.h",
+    "core/Shape.h",
+    "core/shape-description.h",  # ***
+    "msdfgen.h",
 ]
 corrections = [
+    # CMake packages
+    [b"find_package(Freetype", b"find_package(Freetype CONFIG", None],
+    [b"find_package(tinyxml2", b"find_package(tinyxml2 CONFIG", None],
+    [b"find_package(PNG", b"find_package(PNG CONFIG", None],
+    # CMake configure
+    [b"find_dependency(Freetype", b"find_package(Freetype CONFIG", None],
+    [b"find_dependency(tinyxml2", b"find_package(tinyxml2 CONFIG", None],
+    [b"find_dependency(PNG", b"find_package(PNG CONFIG", None],
     # class declarations
     [b"class Contour {", b"class MSDFGEN_PUBLIC Contour {", None],
-    [b"class SimpleContourCombiner {", b"class MSDFGEN_PUBLIC SimpleContourCombiner {", None],
-    [b"class OverlappingContourCombiner {", b"class MSDFGEN_PUBLIC OverlappingContourCombiner {", None],
+    [
+        b"class SimpleContourCombiner {",
+        b"class MSDFGEN_PUBLIC SimpleContourCombiner {",
+        None,
+    ],
+    [
+        b"class OverlappingContourCombiner {",
+        b"class MSDFGEN_PUBLIC OverlappingContourCombiner {",
+        None,
+    ],
     [b"class DistanceMapping {", b"class MSDFGEN_PUBLIC DistanceMapping {", None],
     [b"class EdgeSegment {", b"class MSDFGEN_PUBLIC EdgeSegment {", None],
-    [b"class TrueDistanceSelector {", b"class MSDFGEN_PUBLIC TrueDistanceSelector {", None],
+    [
+        b"class TrueDistanceSelector {",
+        b"class MSDFGEN_PUBLIC TrueDistanceSelector {",
+        None,
+    ],
     [b"struct EdgeCache {", b"struct MSDFGEN_PUBLIC EdgeCache {", None],
-    [b"class PerpendicularDistanceSelectorBase {", b"class MSDFGEN_PUBLIC PerpendicularDistanceSelectorBase {", None],
-    [b"class PerpendicularDistanceSelector {", b"class MSDFGEN_PUBLIC PerpendicularDistanceSelector {", None],
-    [b"class MultiDistanceSelector {", b"class MSDFGEN_PUBLIC MultiDistanceSelector {", None],
-    [b"class MultiAndTrueDistanceSelector {", b"class MSDFGEN_PUBLIC MultiAndTrueDistanceSelector {", None],
+    [
+        b"class PerpendicularDistanceSelectorBase {",
+        b"class MSDFGEN_PUBLIC PerpendicularDistanceSelectorBase {",
+        None,
+    ],
+    [
+        b"class PerpendicularDistanceSelector {",
+        b"class MSDFGEN_PUBLIC PerpendicularDistanceSelector {",
+        None,
+    ],
+    [
+        b"class MultiDistanceSelector {",
+        b"class MSDFGEN_PUBLIC MultiDistanceSelector {",
+        None,
+    ],
+    [
+        b"class MultiAndTrueDistanceSelector {",
+        b"class MSDFGEN_PUBLIC MultiAndTrueDistanceSelector {",
+        None,
+    ],
     [b"class EdgeHolder {", b"class MSDFGEN_PUBLIC EdgeHolder {", None],
-    [b"class MSDFErrorCorrection {", b"class MSDFGEN_PUBLIC MSDFErrorCorrection {", None],
+    [
+        b"class MSDFErrorCorrection {",
+        b"class MSDFGEN_PUBLIC MSDFErrorCorrection {",
+        None,
+    ],
     [b"class Projection {", b"class MSDFGEN_PUBLIC Projection {", None],
     [b"class Scanline {", b"class MSDFGEN_PUBLIC Scanline {", None],
     [b"class SDFTransformation {", b"class MSDFGEN_PUBLIC SDFTransformation {", None],
     [b"class Shape {", b"class MSDFGEN_PUBLIC Shape {", None],
     # functions
     [b"void rasterize(", b"MSDFGEN_PUBLIC void rasterize(", None],
-    [b"void distanceSignCorrection(", b"MSDFGEN_PUBLIC void distanceSignCorrection(", None],
+    [
+        b"void distanceSignCorrection(",
+        b"MSDFGEN_PUBLIC void distanceSignCorrection(",
+        None,
+    ],
     [b"void generate", b"MSDFGEN_PUBLIC void generate", None],
     [b"void msdfErrorCorrection", b"MSDFGEN_PUBLIC void msdfErrorCorrection", None],
-    [b"void msdfFastDistanceErrorCorrection", b"MSDFGEN_PUBLIC void msdfFastDistanceErrorCorrection", None],
-    [b"void msdfFastEdgeErrorCorrection", b"MSDFGEN_PUBLIC void msdfFastEdgeErrorCorrection", None],
-    [b"void msdfErrorCorrection_legacy", b"MSDFGEN_PUBLIC void msdfErrorCorrection_legacy", None],
+    [
+        b"void msdfFastDistanceErrorCorrection",
+        b"MSDFGEN_PUBLIC void msdfFastDistanceErrorCorrection",
+        None,
+    ],
+    [
+        b"void msdfFastEdgeErrorCorrection",
+        b"MSDFGEN_PUBLIC void msdfFastEdgeErrorCorrection",
+        None,
+    ],
+    [
+        b"void msdfErrorCorrection_legacy",
+        b"MSDFGEN_PUBLIC void msdfErrorCorrection_legacy",
+        None,
+    ],
 ]
+
 
 class MsdfGenShared(Recipe):
     """
@@ -74,6 +133,9 @@ class MsdfGenShared(Recipe):
     kind = "shared"
     dependencies = [
         {"name": "tinyxml2", "kind": "shared"},
+        {"name": "libpng", "kind": "shared"},
+        {"name": "zlib", "kind": "shared"},
+        {"name": "freetype", "kind": "shared"},
     ]
 
     def source(self):
@@ -131,15 +193,10 @@ class MsdfGenStatic(MsdfGenShared):
     kind = "static"
     dependencies = [
         {"name": "tinyxml2", "kind": "static"},
+        {"name": "libpng", "kind": "static"},
+        {"name": "zlib", "kind": "static"},
+        {"name": "freetype", "kind": "static"},
     ]
 
     def configure(self):
-        self.cache_variables["MSDFGEN_DISABLE_SVG"] = "ON"
-        self.cache_variables["MSDFGEN_CORE_ONLY"] = "OFF"
-        self.cache_variables["MSDFGEN_BUILD_STANDALONE"] = "OFF"
-        self.cache_variables["MSDFGEN_USE_VCPKG"] = "OFF"
-        self.cache_variables["MSDFGEN_USE_OPENMP"] = "OFF"
-        self.cache_variables["MSDFGEN_USE_CPP11"] = "ON"
-        self.cache_variables["MSDFGEN_USE_SKIA"] = "OFF"
-        self.cache_variables["MSDFGEN_INSTALL"] = "ON"
-        self.cache_variables["CMAKE_DEBUG_POSTFIX"] = "d"
+        super().configure()
