@@ -15,7 +15,7 @@ class MsdfAtlasGenShared(Recipe):
     """
 
     name = "msdf-atlas-gen"
-    version = "1.2.2"
+    version = "1.3"
     source_dir = "msdf-atlas-gen"
     kind = "shared"
     dependencies = [
