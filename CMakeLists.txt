@@ -37,5 +37,6 @@ add_subdirectory(Libs/mavsdk) # depends on tinyxml2 & jsoncpp
 add_subdirectory(Libs/spdlog) # depends on fmt
 add_subdirectory(Libs/imgui) # depends on glfw & vulkan
 add_subdirectory(Libs/imguizmo) # depends on imgui
+add_subdirectory(Libs/FreeType) # depends on libpng, harfbuzz & brotli
 add_subdirectory(Libs/msdfgen)
 add_subdirectory(Libs/msdf-atlas-gen)
