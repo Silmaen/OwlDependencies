@@ -9,23 +9,42 @@ file_modif = [
 ]
 corrections = [
     [
-        b"find_package(ZLIB REQUIRED)",
-        b"find_package(ZLIB MODULE REQUIRED)",
+        b"find_package(BrotliDec",
+        b"find_package(BrotliDec MODULE",
+        None,
+    ],
+    [
+        b"find_package(HarfBuzz",
+        b"find_package(HarfBuzz MODULE",
+        None,
+    ],
+    [
+        b"find_package(PNG",
+        b"find_package(PNG MODULE",
+        None,
+    ],
+    [
+        b"find_package(ZLIB",
+        b"find_package(ZLIB MODULE",
         None,
     ],
 ]
 
 
-class LibPngShared(Recipe):
+class FreeTypeShared(Recipe):
     """
     Shared version
     """
 
-    name = "libpng"
-    version = "1.6.46"
-    source_dir = "libpng"
+    name = "freetype"
+    version = "2.13.3"
+    source_dir = "freetype"
     kind = "shared"
-    dependencies = [{"name": "zlib", "kind": "shared"}]
+    dependencies = [
+        {"name": "libpng", "kind": "shared"},
+        {"name": "harfbuzz", "kind": "shared"},
+        {"name": "brotli", "kind": "shared"},
+    ]
 
     def source(self):
         # Files to modify
@@ -65,23 +84,12 @@ class LibPngShared(Recipe):
             print(f"***** File {file} @ {path} restored.")
 
     def configure(self):
-        self.cache_variables["PNG_SHARED"] = "ON"
-        self.cache_variables["PNG_STATIC"] = "OFF"
-        self.cache_variables["PNG_TESTS"] = "OFF"
-        self.cache_variables["PNG_TOOLS"] = "OFF"
-        self.cache_variables["CMAKE_DEBUG_POSTFIX"] = "d"
-        self.cache_variables["AWK"] = "OFF"
+        pass
 
 
-class LibPngStatic(LibPngShared):
+class FreeTypeStatic(FreeTypeShared):
     """
     Static version
     """
 
     kind = "static"
-    dependencies = [{"name": "zlib", "kind": "static"}]
-
-    def configure(self):
-        super().configure()
-        self.cache_variables["PNG_SHARED"] = "OFF"
-        self.cache_variables["PNG_STATIC"] = "ON"
