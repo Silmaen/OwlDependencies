@@ -166,7 +166,7 @@ def main():
     # find all recipes
     #
     err_code = 0
-    recipes = find_recipes(lib_dir, 2)
+    recipes = find_recipes(lib_dir, 1)
     recipes = reorder_recipes(recipes)
     recipe_to_build = []
     #
