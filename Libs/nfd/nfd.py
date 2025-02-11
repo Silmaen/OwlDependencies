@@ -33,6 +33,4 @@ class NfdStatic(NfdShared):
     kind = "static"
 
     def configure(self):
-        self.cache_variables["NFD_BUILD_TESTS"] = "OFF"
-        self.cache_variables["NFD_INSTALL"] = "ON"
-        self.cache_variables["CMAKE_DEBUG_POSTFIX"] = "d"
+        super().configure()
