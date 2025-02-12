@@ -20,6 +20,9 @@ def get_edm_basedir():
 def is_ignored(lib_name, ignore_list):
     return any(ignore in lib_name for ignore in ignore_list)
 
+def list_libs_in_dir(lib_dir:Path):
+    return [str(l.stem).lower() for l in lib_dir.rglob("*.dll")]
+
 
 def is_in_lib_dir(lib_path, lib_dir):
     return str(lib_path).startswith(str(lib_dir))
@@ -65,9 +68,8 @@ def check_dll_dependencies_windows(dll, lib_dir, ignore_list):
                 dep = line.split()[-1]
                 dep_path = lib_dir / dep
 
-                if not is_ignored(dep, ignore_list) and not is_in_lib_dir(
-                    dep_path, lib_dir
-                ):
+                if not is_ignored(dep.lower(), ignore_list):
+                        #and not is_in_lib_dir(dep_path, lib_dir)):
                     non_system_deps.append(dep)
 
         if non_system_deps:
@@ -90,7 +92,7 @@ def main():
         return
 
     lib_dir = edm_basedir / "data"
-    ignore_list = [
+    ignore_list_lin = [
         "libc",
         "libgcc",
         "libm",
@@ -107,6 +109,8 @@ def main():
         "libbsd",
         "libssl",
         "libcrypto",
+        ]
+    ignore_list_win = [
         "kernel32.dll",
         "user32.dll",
         "gdi32.dll",
@@ -119,6 +123,20 @@ def main():
         "uuid.dll",
         "odbc32.dll",
         "odbccp32.dll",
+        "msvcrt.dll",
+        "libgcc_s_seh-1.dll",
+        "libstdc++-6.dll",
+        "libwinpthread-1.dll",
+        "msvcp140.dll",
+        "vcruntime140_1.dll",
+        "vcruntime140.dll",
+        "dwmapi.dll",
+        "opengl32.dll",
+        "winmm.dll",
+        "wldap32.dll",
+        "ws2_32.dll",
+        "dbghelp.dll",
+        "cfgmgr32.dll",
     ]
 
     filter_regex = re.compile(args.filter)
@@ -132,12 +150,13 @@ def main():
 
         for lib in lib_dir.rglob("*.so"):
             if filter_regex.match(lib.name):
-                check_shared_lib_linux(lib, lib_dir, ignore_list)
+                check_shared_lib_linux(lib, lib_dir, ignore_list_lin)
 
     elif platform.system() == "Windows":
+        ignore_list_win += list_libs_in_dir(lib_dir)
         for dll in lib_dir.rglob("*.dll"):
             if filter_regex.match(dll.name):
-                check_dll_dependencies_windows(dll, lib_dir, ignore_list)
+                check_dll_dependencies_windows(dll, lib_dir, ignore_list_win)
 
     else:
         print("Système d'exploitation non supporté.")
