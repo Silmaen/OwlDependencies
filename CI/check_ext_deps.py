@@ -137,6 +137,7 @@ def main():
         "ws2_32.dll",
         "dbghelp.dll",
         "cfgmgr32.dll",
+        "avrt.dll",
     ]
 
     filter_regex = re.compile(args.filter)

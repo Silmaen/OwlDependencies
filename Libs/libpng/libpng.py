@@ -9,7 +9,7 @@ file_modif = [
     "scripts/cmake/PNGConfig.cmake",
 ]
 corrections = [
-    [b"find_package(ZLIB", b"find_package(ZLIB MODULE", None],
+    [b"find_package(ZLIB", b"find_package(ZLIB CONFIG", None],
     [b"find_dependency(ZLIB", b"find_dependency(ZLIB CONFIG", None],
 ]
 
@@ -23,7 +23,7 @@ class LibPngShared(Recipe):
     version = "1.6.46"
     source_dir = "libpng"
     kind = "shared"
-    dependencies = [{"name": "zlib", "kind": "shared"}]
+    dependencies = [{"name": "zlib", "kind": "static"}]
 
     def source(self):
         # Files to modify
