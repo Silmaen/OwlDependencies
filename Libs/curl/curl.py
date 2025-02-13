@@ -9,7 +9,7 @@ file_modif = [
     "CMake/curl-config.cmake.in",
 ]
 corrections = [
-    [b"find_package(${_dependency}", b"find_package(${_dependency} MODULE", None],
+    [b"find_package(${_dependency}", b"find_package(${_dependency} CONFIG", None],
     [b"find_dependency(ZLIB", b"find_dependency(ZLIB CONFIG", None],
 ]
 
