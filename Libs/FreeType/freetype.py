@@ -10,22 +10,93 @@ file_modif = [
 corrections = [
     [
         b"find_package(BrotliDec",
-        b"find_package(BrotliDec MODULE",
+        b"find_package(BrotliDec CONFIG",
         None,
     ],
     [
         b"find_package(HarfBuzz",
-        b"find_package(HarfBuzz MODULE",
+        b"find_package(HarfBuzz CONFIG",
         None,
     ],
     [
         b"find_package(PNG",
-        b"find_package(PNG MODULE",
+        b"find_package(PNG CONFIG",
         None,
     ],
     [
         b"find_package(ZLIB",
-        b"find_package(ZLIB MODULE",
+        b"find_package(ZLIB CONFIG",
+        None,
+    ],
+    [b'set(HARFBUZZ_MIN_VERSION "2.0.0")', b"set(HARFBUZZ_MIN_VERSION)", None],
+    [
+        b"target_include_directories(freetype PRIVATE ${ZLIB_INCLUDE_DIRS})",
+        b"#target_include_directories(freetype PRIVATE ${ZLIB_INCLUDE_DIRS})",
+        None,
+    ],
+    [
+        b'list(APPEND PKGCONFIG_REQUIRES_PRIVATE "zlib")',
+        b'#list(APPEND PKGCONFIG_REQUIRES_PRIVATE "zlib")',
+        None,
+    ],
+    [
+        b"target_link_libraries(freetype PRIVATE ${ZLIB_LIBRARIES})",
+        b"target_link_libraries(freetype PRIVATE ZLIB::ZLIB)",
+        None,
+    ],
+    [
+        b"target_compile_definitions(freetype PRIVATE ${PNG_DEFINITIONS})",
+        b"#target_compile_definitions(freetype PRIVATE ${PNG_DEFINITIONS})",
+        None,
+    ],
+    [
+        b"target_include_directories(freetype PRIVATE ${PNG_INCLUDE_DIRS})",
+        b"#target_include_directories(freetype PRIVATE ${PNG_INCLUDE_DIRS})",
+        None,
+    ],
+    [
+        b'list(APPEND PKGCONFIG_REQUIRES_PRIVATE "libpng")',
+        b'#list(APPEND PKGCONFIG_REQUIRES_PRIVATE "libpng")',
+        None,
+    ],
+    [
+        b"target_link_libraries(freetype PRIVATE ${PNG_LIBRARIES})",
+        b"target_link_libraries(freetype PRIVATE PNG::PNG)",
+        None,
+    ],
+    [
+        b"target_include_directories(freetype PRIVATE ${HarfBuzz_INCLUDE_DIRS})",
+        b"#target_include_directories(freetype PRIVATE ${HarfBuzz_INCLUDE_DIRS})",
+        None,
+    ],
+    [
+        b'list(APPEND PKGCONFIG_REQUIRES_PRIVATE "harfbuzz >= ${HARFBUZZ_MIN_VERSION}")',
+        b'#list(APPEND PKGCONFIG_REQUIRES_PRIVATE "harfbuzz >= ${HARFBUZZ_MIN_VERSION}")',
+        None,
+    ],
+    [
+        b"target_link_libraries(freetype PRIVATE ${HarfBuzz_LIBRARY})",
+        b"target_link_libraries(freetype PRIVATE harfbuzz)",
+        None,
+    ],
+    [
+        b"target_compile_definitions(freetype PRIVATE ${BROTLIDEC_DEFINITIONS})",
+        b"#target_compile_definitions(freetype PRIVATE ${BROTLIDEC_DEFINITIONS})",
+        None,
+    ],
+    [
+        b"target_include_directories(freetype PRIVATE ${BROTLIDEC_INCLUDE_DIRS})",
+        b"#target_include_directories(freetype PRIVATE ${BROTLIDEC_INCLUDE_DIRS})",
+        None,
+    ],
+    [
+        b'list(APPEND PKGCONFIG_REQUIRES_PRIVATE "libbrotlidec")',
+        b'#list(APPEND PKGCONFIG_REQUIRES_PRIVATE "libbrotlidec")',
+        None,
+    ],
+    [
+        b"target_link_libraries(freetype PRIVATE ${BROTLIDEC_LIBRARIES})",
+        b"target_link_libraries(freetype PRIVATE brotli)",
         None,
     ],
 ]
@@ -41,9 +112,10 @@ class FreeTypeShared(Recipe):
     source_dir = "freetype"
     kind = "shared"
     dependencies = [
-        {"name": "libpng", "kind": "shared"},
+        {"name": "libpng", "kind": "static"},
         {"name": "harfbuzz", "kind": "static"},
         {"name": "brotli", "kind": "shared"},
+        {"name": "zlib", "kind": "shared"},
     ]
 
     def source(self):
@@ -84,7 +156,7 @@ class FreeTypeShared(Recipe):
             print(f"***** File {file} @ {path} restored.")
 
     def configure(self):
-        pass
+        self.cache_variables["FT_DISABLE_BZIP2"] = "ON"
 
 
 class FreeTypeStatic(FreeTypeShared):
@@ -93,3 +165,9 @@ class FreeTypeStatic(FreeTypeShared):
     """
 
     kind = "static"
+    dependencies = [
+        {"name": "libpng", "kind": "static"},
+        {"name": "harfbuzz", "kind": "static"},
+        {"name": "brotli", "kind": "static"},
+        {"name": "zlib", "kind": "static"},
+    ]
