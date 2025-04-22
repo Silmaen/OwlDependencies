@@ -15,7 +15,7 @@ class OpenALShared(Recipe):
     """
 
     name = "openal"
-    version = "1.24.2"
+    version = "1.24.3"
     source_dir = "openal-soft"
     kind = "shared"
 
