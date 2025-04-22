@@ -11,6 +11,6 @@ class EnttHeader(Recipe):
     """
 
     name = "entt"
-    version = "3.14.0"
+    version = "3.15.0"
     source_dir = "entt"
     kind = "header"
