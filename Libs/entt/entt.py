@@ -14,3 +14,6 @@ class EnttHeader(Recipe):
     version = "3.15.0"
     source_dir = "entt"
     kind = "header"
+
+    def configure(self):
+        self.cache_variables["ENTT_INSTALL"] = "ON"
