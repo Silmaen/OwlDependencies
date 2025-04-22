@@ -11,7 +11,7 @@ class ZstdShared(Recipe):
     """
 
     name = "zstd"
-    version = "1.5.6"
+    version = "1.5.7"
     source_dir = "sources/zstd/build/cmake"
     kind = "shared"
 
