@@ -31,7 +31,7 @@ class SpdlogShared(Recipe):
     """
 
     name = "spdlog"
-    version = "1.15.0"
+    version = "1.15.2"
     source_dir = "spdlog"
     kind = "shared"
     dependencies = [{"name": "fmt", "kind": "shared"}]
