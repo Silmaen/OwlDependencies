@@ -13,7 +13,7 @@ class TinyXML2Shared(Recipe):
     """
 
     name = "tinyxml2"
-    version = "10.0.0"
+    version = "11.0.0"
     source_dir = "tinyxml2"
     kind = "shared"
 
