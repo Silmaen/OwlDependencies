@@ -39,7 +39,7 @@ class Box2DShared(Recipe):
     """
 
     name = "box2d"
-    version = "3.0.0"
+    version = "3.1.0"
     source_dir = "box2d"
     kind = "shared"
     dependencies = []
