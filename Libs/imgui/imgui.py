@@ -11,7 +11,7 @@ class ImguiShared(Recipe):
     """
 
     name = "imgui"
-    version = "1.91.9b-docking"
+    version = "1.91.9-docking"
     source_dir = "sources"
     kind = "shared"
     dependencies = [
