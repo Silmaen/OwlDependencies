@@ -11,7 +11,7 @@ class HarfbuzzStatic(Recipe):
     """
 
     name = "harfbuzz"
-    version = "10.2.0"
+    version = "11.1.0"
     source_dir = "harfbuzz"
     kind = "static"
 
