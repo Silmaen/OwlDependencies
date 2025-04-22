@@ -12,17 +12,11 @@ modifications = here / "modifs"
 
 cmakelists_modif = [
     "src/CMakeLists.txt",
-    "extern/simde/CMakeLists.txt",
 ]
 corrections = [
     [
         b"install(TARGETS box2d)",
         b"SET(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR})\ninclude(DmgrInstall)",
-        None,
-    ],
-    [
-        b"target_include_directories(simde INTERFACE ${CMAKE_CURRENT_SOURCE_DIR})",
-        b"target_include_directories(simde INTERFACE $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>)",
         None,
     ],
     [
