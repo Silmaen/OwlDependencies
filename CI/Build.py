@@ -6,6 +6,7 @@ from sys import stderr
 from depmanager.api.builder import find_recipes
 from depmanager.api.internal.machine import Machine
 from depmanager.api.internal.recipe_builder import RecipeBuilder
+from depmanager.api.internal.toolset import Toolset
 from depmanager.api.local import LocalManager
 from depmanager.api.package import PackageManager
 
@@ -41,7 +42,28 @@ def parse_args():
     parser.add_argument(
         "--no-push", action="store_true", help="Do not push the results."
     )
+    parser.add_argument(
+        "--toolset",
+        type=str,
+        default="",
+        help="The toolset to use, format: '<name>:<compiler_path>:<abi>.",
+    )
     args = parser.parse_args()
+
+    if args.toolset not in ["", None]:
+        if ":" not in args.toolset:
+            print("ERROR: Toolset must be in the format '<name>:<compiler_path>:<abi>'")
+            exit(1)
+        toolset_info = args.toolset.split(":")
+        if len(toolset_info) != 3:
+            print("ERROR: Toolset must be in the format '<name>:<compiler_path>:<abi>'")
+            exit(1)
+        parameters.machine.toolset = Toolset(
+            name=toolset_info[0],
+            compiler_path=toolset_info[1],
+            abi=toolset_info[2],
+        )
+
     print(f"verbosity {args.verbose}")
     parameters.verbosity = args.verbose
     if args.dry_run:
@@ -58,7 +80,7 @@ def query_from_recipe(recipe):
     if recipe.kind == "header":
         arch = "any"
         os = "any"
-        compiler = "any"
+        abi = "any"
     else:
         if "CROSS_ARCH" in parameters.cross_info:
             arch = parameters.cross_info["CROSS_ARCH"]
@@ -68,7 +90,7 @@ def query_from_recipe(recipe):
             os = parameters.cross_info["CROSS_OS"]
         else:
             os = parameters.machine.os
-        compiler = parameters.machine.default_compiler
+        abi = parameters.machine.default_abi
         glibc = parameters.machine.glibc
     return {
         "name": recipe.name,
@@ -76,7 +98,7 @@ def query_from_recipe(recipe):
         "os": os,
         "arch": arch,
         "kind": recipe.kind,
-        "compiler": compiler,
+        "abi": abi,
         "glibc": glibc,
     }
 
@@ -101,13 +123,13 @@ def reorder_recipes(recipes, package_manager: PackageManager, strict_dep: bool =
                 return False
             vers_aa = vers_a.split(".")
             vers_bb = vers_b.split(".")
-            for i in range(min(len(vers_aa), len(vers_bb))):
-                if vers_aa[i] == vers_bb[i]:
+            for i_vers in range(min(len(vers_aa), len(vers_bb))):
+                if vers_aa[i_vers] == vers_bb[i_vers]:
                     continue
-                return safe_to_int(vers_aa[i]) < safe_to_int(vers_bb[i])
+                return safe_to_int(vers_aa[i_vers]) < safe_to_int(vers_bb[i_vers])
             return len(vers_aa) < len(vers_bb)
 
-        found = False
+        rec_found = False
         for a_rec in rec_list:
             if "name" in criteria:
                 if a_rec.name != criteria["name"]:
@@ -118,9 +140,9 @@ def reorder_recipes(recipes, package_manager: PackageManager, strict_dep: bool =
             if "version" in criteria:
                 if version_lt(a_rec.version, criteria["version"]):
                     continue
-            found = True
+            rec_found = True
             break
-        return found
+        return rec_found
 
     def find_package(criteria):
         q = package_manager.query(criteria)
@@ -254,6 +276,7 @@ def main():
             temp=temp_path,
             local=local_manager.get_sys(),
             cross_info=parameters.cross_info,
+            toolset=parameters.machine.toolset,
         )
         if not builder.has_recipes():
             print("WARNING Something gone wrong with the recipe!", file=stderr)
