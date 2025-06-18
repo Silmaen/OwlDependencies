@@ -8,4 +8,4 @@ set -e
 
 depmanager info version
 depmanager remote add -vv -n pack -d -u ${remote_url} -l ${remote_login} -p ${remote_passwd}
-depmanager remote list -vv
+depmanager remote ls -vv
