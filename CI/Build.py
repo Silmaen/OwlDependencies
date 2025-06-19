@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+import re
 from pathlib import Path
 from shutil import rmtree
 from sys import stderr
@@ -23,6 +24,14 @@ class Parameters:
         self.do_build = True
         self.machine = Machine(True)
         self.cross_info = {"SINGLE_THREAD": False}
+        self.filter = ""
+
+    def __repr__(self):
+        return (
+            f"Parameters(verbosity={self.verbosity}, do_pull={self.do_pull}, "
+            f"do_push={self.do_push}, do_build={self.do_build}, "
+            f"machine={self.machine}, cross_info={self.cross_info}) filter={self.filter}"
+        )
 
 
 parameters = Parameters()
@@ -48,6 +57,12 @@ def parse_args():
         default="",
         help="The toolset to use, format: '<name>:<compiler_path>:<abi>.",
     )
+    parser.add_argument(
+        "--filter",
+        type=str,
+        default="",
+        help="The Filter on the recipes.",
+    )
     args = parser.parse_args()
 
     if args.toolset not in ["", None]:
@@ -58,13 +73,17 @@ def parse_args():
         if len(toolset_info) != 3:
             print("ERROR: Toolset must be in the format '<name>:<compiler_path>:<abi>'")
             exit(1)
-        parameters.machine.toolset = Toolset(
-            name=toolset_info[0],
-            compiler_path=toolset_info[1],
-            abi=toolset_info[2],
+        parameters.machine = Machine(
+            True,
+            Toolset(
+                name=toolset_info[0],
+                compiler_path=toolset_info[1],
+                abi=toolset_info[2],
+            ),
         )
+    if args.filter not in ["", None]:
+        parameters.filter = args.filter
 
-    print(f"verbosity {args.verbose}")
     parameters.verbosity = args.verbose
     if args.dry_run:
         parameters.do_pull = False
@@ -151,13 +170,21 @@ def reorder_recipes(recipes, package_manager: PackageManager, strict_dep: bool =
     new_recipe = []
     stalled = False
     i = -1
+    filter_ = re.compile(".*")
+    if parameters.filter not in ["", None]:
+        filter_ = re.compile(parameters.filter)
+    all_dep_list = []
     while not stalled:
         stalled = True
         i += 1
-        print(f"turn {i}")
+        if parameters.verbosity > 2:
+            print(f"turn {i}")
         for rec in recipes:
             if rec in new_recipe:  # add recipe only once
                 continue
+            if not filter_.match(rec.name):
+                if rec.name not in [d["name"] for d in all_dep_list]:
+                    continue
             if len(rec.dependencies) == 0:  # no dependency -> just add it!
                 stalled = False
                 new_recipe.append(rec)
@@ -168,19 +195,42 @@ def reorder_recipes(recipes, package_manager: PackageManager, strict_dep: bool =
                 deps_list = []
                 for dep in rec.dependencies:
                     deps_list.append(dep["name"])
+                    all_dep_list.append(dep)
                     if not _find_recipe(new_recipe, dep):
                         dep_satisfied = False
+                stalled = False
                 if dep_satisfied:
-                    stalled = False
                     new_recipe.append(rec)
                     if parameters.verbosity > 2:
                         print(
                             f" -- inserting {rec.name} with all dependency full filled {deps_list}"
                         )
+    # add dependencies not satisfied
+    stalled = False
+    while not stalled:
+        stalled = True
+        for rrec in new_recipe:
+            print(f"new recipe {rrec.name}")
+            for dep in rrec.dependencies:
+                if not _find_recipe(new_recipe, dep):
+                    if parameters.verbosity > 2:
+                        print(
+                            f" -- adding dependency {dep['name']} for {rrec.name} ({rrec.kind})"
+                        )
+                    new_recipe.append(dep)
+                    stalled = False
+                else:
+                    if parameters.verbosity > 2:
+                        print(
+                            f" -- dependency {dep['name']} for {rrec.name} ({rrec.kind}) already satisfied"
+                        )
+
     # add unresolved dependency recipes
     continue_exec = True
     for rec in recipes:
         if rec in new_recipe:  # add recipe only once
+            continue
+        if not filter_.match(rec.name):
             continue
         missing = []
         found = []
@@ -215,6 +265,7 @@ def main():
     Do all builds
     """
     parse_args()
+
     # list the recipes
     local_manager = LocalManager(verbosity=parameters.verbosity)
     package_manager = PackageManager(
@@ -234,14 +285,13 @@ def main():
     #
     if rem is not None:
         for recipe in recipes:
-            query_result = package_manager.query(query_from_recipe(recipe))
+            qr = query_from_recipe(recipe)
+            query_result = package_manager.query(qr)
             if len(query_result):
                 if parameters.verbosity > 0:
                     print(f"Package {recipe.to_str()} found locally, no build.")
                 continue
-            query_result = package_manager.query(
-                query_from_recipe(recipe), remote_name="default"
-            )
+            query_result = package_manager.query(qr, remote_name="default")
             if len(query_result) > 0:
                 if parameters.verbosity > 0:
                     print(
