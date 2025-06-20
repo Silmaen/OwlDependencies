@@ -15,18 +15,45 @@ cmakelists_modif = [
     "Vulkan-ValidationLayers/CMakeLists.txt",
     "Vulkan-ExtensionLayer/CMakeLists.txt",
     "SPIRV-Cross/CMakeLists.txt",
+    "SPIRV-Reflect/CMakeLists.txt",
     "shaderc/libshaderc/CMakeLists.txt",
-    "shaderc/libshaderc_util/CMakeLists.txt"
+    "shaderc/libshaderc_util/CMakeLists.txt",
 ]
 
 corrections = [
-    [b"${CMAKE_INSTALL_LIBDIR}/cmake/VulkanLoader", b'"${cmake_install_dir}"', "Vulkan-Loader/loader/CMakeLists.txt"],
+    [
+        b"${CMAKE_INSTALL_LIBDIR}/cmake/VulkanLoader",
+        b'"${cmake_install_dir}"',
+        "Vulkan-Loader/loader/CMakeLists.txt",
+    ],
     [b"\nfind_package", b"\n#find_package", None],
-    [b"PUBLIC include", b"PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include> $<INSTALL_INTERFACE:include>", None],
+    [
+        b"PUBLIC include",
+        b"PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include> $<INSTALL_INTERFACE:include>",
+        None,
+    ],
     [b"${CMAKE_INSTALL_DATADIR}/pkgconfig", b"${cmake_install_dir}/pkgconfig", None],
     [b"set(${PATH} ${TARGET}/cmake)", b"set(${PATH} ${cmake_install_dir})", None],
-    [b"set(${PATH} ${CMAKE_INSTALL_LIBDIR}/cmake/${TARGET})", b"set(${PATH} ${cmake_install_dir} )", None],
-    [b"EXPORT ${config_name}Config DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/${config_name}/cmake", b"EXPORT ${config_name}Config DESTINATION ${cmake_install_dir}", None],
+    [
+        b"set(${PATH} ${CMAKE_INSTALL_LIBDIR}/cmake/${TARGET})",
+        b"set(${PATH} ${cmake_install_dir} )",
+        None,
+    ],
+    [
+        b"EXPORT ${config_name}Config DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/${config_name}/cmake",
+        b"EXPORT ${config_name}Config DESTINATION ${cmake_install_dir}",
+        None,
+    ],
+    [
+        b"cmake_minimum_required(VERSION 3.0)",
+        b"cmake_minimum_required(VERSION 3.10)",
+        None,
+    ],
+    [
+        b"cmake_minimum_required(VERSION 3.1)",
+        b"cmake_minimum_required(VERSION 3.10)",
+        None,
+    ],
 ]
 
 

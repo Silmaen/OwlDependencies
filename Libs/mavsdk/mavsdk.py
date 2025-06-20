@@ -1,6 +1,7 @@
 """
 Depmanager recipes
 """
+
 from pathlib import Path
 
 from depmanager.api.recipe import Recipe
@@ -54,6 +55,7 @@ class MavSDKShared(Recipe):
         {"name": "jsoncpp", "kind": kind},
         {"name": "tinyxml2", "kind": kind},
         {"name": "curl", "kind": kind},
+        {"name": "zlib", "kind": kind},
         {"name": "mavlink", "kind": "header"},
     ]
 
@@ -72,5 +74,6 @@ class MavSDKStatic(MavSDKShared):
         {"name": "jsoncpp", "kind": kind},
         {"name": "tinyxml2", "kind": kind},
         {"name": "curl", "kind": kind},
+        {"name": "zlib", "kind": kind},
         {"name": "mavlink", "kind": "header"},
     ]
