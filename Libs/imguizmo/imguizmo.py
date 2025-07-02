@@ -11,7 +11,7 @@ class ImguizmoShared(Recipe):
     """
 
     name = "imguizmo"
-    version = "1.91.9"
+    version = "1.92.0"
     source_dir = "sources"
     kind = "shared"
     dependencies = [

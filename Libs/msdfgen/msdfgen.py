@@ -128,7 +128,7 @@ class MsdfGenShared(Recipe):
     """
 
     name = "msdfgen"
-    version = "1.12"
+    version = "1.12.1"
     source_dir = "msdfgen"
     kind = "shared"
     dependencies = [

@@ -20,7 +20,7 @@ class LibPngShared(Recipe):
     """
 
     name = "libpng"
-    version = "1.6.47"
+    version = "1.6.50"
     source_dir = "libpng"
     kind = "shared"
     dependencies = [{"name": "zlib", "kind": "static"}]
