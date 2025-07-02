@@ -28,7 +28,7 @@ class LibDwarfShared(Recipe):
     """
 
     name = "libdwarf"
-    version = "0.12.0"
+    version = "2.0.0"
     source_dir = "libdwarf-code"
     kind = "shared"
     dependencies = [

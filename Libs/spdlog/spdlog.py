@@ -31,10 +31,11 @@ class SpdlogShared(Recipe):
     """
 
     name = "spdlog"
-    version = "1.15.2"
+    version = "1.15.3"
     source_dir = "spdlog"
     kind = "shared"
-    dependencies = [{"name": "fmt", "kind": "shared"}]
+
+    # dependencies = [{"name": "fmt", "kind": "shared"}]
 
     def source(self):
         # Files to modify
@@ -78,7 +79,7 @@ class SpdlogShared(Recipe):
         self.cache_variables["SPDLOG_BUILD_EXAMPLE"] = "OFF"
         self.cache_variables["SPDLOG_BUILD_TESTS"] = "OFF"
         self.cache_variables["SPDLOG_BUILD_BENCH"] = "OFF"
-        self.cache_variables["SPDLOG_FMT_EXTERNAL"] = "ON"
+        self.cache_variables["SPDLOG_USE_STD_FORMAT"] = "ON"
         if self.settings["os"] == "Windows":
             self.cache_variables["SPDLOG_WCHAR_SUPPORT"] = "ON"
             self.cache_variables["SPDLOG_WCHAR_FILENAMES"] = "ON"
@@ -90,14 +91,15 @@ class SpdlogStatic(SpdlogShared):
     """
 
     kind = "static"
-    dependencies = [{"name": "fmt", "kind": "static"}]
+
+    # dependencies = [{"name": "fmt", "kind": "static"}]
 
     def configure(self):
         self.cache_variables["SPDLOG_BUILD_SHARED"] = "OFF"
         self.cache_variables["SPDLOG_BUILD_EXAMPLE"] = "OFF"
         self.cache_variables["SPDLOG_BUILD_TESTS"] = "OFF"
         self.cache_variables["SPDLOG_BUILD_BENCH"] = "OFF"
-        self.cache_variables["SPDLOG_FMT_EXTERNAL"] = "ON"
+        self.cache_variables["SPDLOG_USE_STD_FORMAT"] = "ON"
         if self.settings["os"] == "Windows":
             self.cache_variables["SPDLOG_WCHAR_SUPPORT"] = "ON"
             self.cache_variables["SPDLOG_WCHAR_FILENAMES"] = "ON"
