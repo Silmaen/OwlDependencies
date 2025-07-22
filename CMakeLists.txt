@@ -10,6 +10,7 @@ add_subdirectory(Libs/debugbreak)
 add_subdirectory(Libs/entt)
 add_subdirectory(Libs/magic_enum)
 add_subdirectory(Libs/stb)
+add_subdirectory(Libs/zeus)
 # compiled without dependency
 add_subdirectory(Libs/box2d)
 add_subdirectory(Libs/brotli)

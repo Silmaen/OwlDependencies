@@ -127,3 +127,6 @@
 [submodule "Libs/harfbuzz/harfbuzz"]
 	path = Libs/harfbuzz/harfbuzz
 	url = git@github.com:harfbuzz/harfbuzz.git
+[submodule "Libs/zeus/expected"]
+	path = Libs/zeus/expected
+	url = git@github.com:zeus-cpp/expected.git
