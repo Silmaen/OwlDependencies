@@ -130,3 +130,9 @@
 [submodule "Libs/zeus/expected"]
 	path = Libs/zeus/expected
 	url = git@github.com:zeus-cpp/expected.git
+[submodule "Libs/tinyply/tinyply"]
+	path = Libs/tinyply/tinyply
+	url = git@github.com:ddiakopoulos/tinyply.git
+[submodule "Libs/tinygltf/tinygltf"]
+	path = Libs/tinygltf/tinygltf
+	url = git@github.com:syoyo/tinygltf.git
