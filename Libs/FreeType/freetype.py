@@ -108,7 +108,7 @@ class FreeTypeShared(Recipe):
     """
 
     name = "freetype"
-    version = "2.13.3"
+    version = "2.14.1"
     source_dir = "freetype"
     kind = "shared"
     dependencies = [

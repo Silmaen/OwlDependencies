@@ -1,6 +1,7 @@
 """
 Depmanager recipes
 """
+
 from pathlib import Path
 
 from depmanager.api.recipe import Recipe
@@ -14,7 +15,7 @@ class GlmShared(Recipe):
     """
 
     name = "glm"
-    version = "1.0.1"
+    version = "1.0.2"
     source_dir = "sources/glm"
     kind = "shared"
 

@@ -22,7 +22,7 @@ class CppTraceShared(Recipe):
     """
 
     name = "cpptrace"
-    version = "1.0.2"
+    version = "1.0.4"
     source_dir = "cpptrace"
     kind = "shared"
     dependencies = [

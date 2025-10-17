@@ -31,11 +31,9 @@ class SpdlogShared(Recipe):
     """
 
     name = "spdlog"
-    version = "1.15.3"
+    version = "1.16.0"
     source_dir = "spdlog"
     kind = "shared"
-
-    # dependencies = [{"name": "fmt", "kind": "shared"}]
 
     def source(self):
         # Files to modify
