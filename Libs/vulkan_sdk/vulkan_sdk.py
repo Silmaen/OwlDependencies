@@ -21,12 +21,19 @@ cmakelists_modif = [
 ]
 
 corrections = [
+    [b"\nfind_package(VulkanHeaders", b"\n#find_package(VulkanHeaders", None],
+    [
+        b"\nfind_package(VulkanUtilityLibraries",
+        b"\n#find_package(VulkanUtilityLibraries",
+        None,
+    ],
+    [b"\nfind_package(SPIRV-Headers", b"\n#find_package(SPIRV-Headers", None],
+    [b"\nfind_package(SPIRV-Tools-opt", b"\n#find_package(SPIRV-Tools-opt", None],
     [
         b"${CMAKE_INSTALL_LIBDIR}/cmake/VulkanLoader",
         b'"${cmake_install_dir}"',
         "Vulkan-Loader/loader/CMakeLists.txt",
     ],
-    [b"\nfind_package", b"\n#find_package", None],
     [
         b"PUBLIC include",
         b"PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include> $<INSTALL_INTERFACE:include>",
@@ -44,16 +51,6 @@ corrections = [
         b"EXPORT ${config_name}Config DESTINATION ${cmake_install_dir}",
         None,
     ],
-    [
-        b"cmake_minimum_required(VERSION 3.0)",
-        b"cmake_minimum_required(VERSION 3.10)",
-        None,
-    ],
-    [
-        b"cmake_minimum_required(VERSION 3.1)",
-        b"cmake_minimum_required(VERSION 3.10)",
-        None,
-    ],
 ]
 
 
@@ -63,7 +60,7 @@ class VulkanSdk(Recipe):
     """
 
     name = "vulkan_sdk"
-    version = "1.3.275"
+    version = "1.4.328"
     source_dir = "source"
     kind = "shared"
     config = ["Release"]

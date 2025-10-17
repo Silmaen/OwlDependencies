@@ -299,8 +299,8 @@ if (SDK_INSTALL)
             GlslangToSpv.h
             disassemble.h
             Logger.h
-            spirv.hpp
-            SPVRemapper.h)
+            spirv.hpp11
+            SpvTools.h)
     foreach (file ${PUBLIC_HEADERS})
         install(FILES glslang/SPIRV/${file} DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/glslang/SPIRV/)
     endforeach ()
@@ -387,11 +387,15 @@ set(SHADERC_SKIP_TESTS ON)
 set(SHADERC_SKIP_EXAMPLES ON)
 set(SHADERC_SKIP_COPYRIGHT_CHECK ON)
 add_subdirectory(shaderc)
+if (WIN32 AND NOT MSVC)
+    target_link_options(shaderc_shared PRIVATE "-Wl,--allow-multiple-definition")
+    target_link_options(glslc_exe PRIVATE "-Wl,--allow-multiple-definition")
+endif ()
 if (SDK_INSTALL)
     set(SHADERC_SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/shaderc")
     set(SHADERC_BINARY_DIR "${CMAKE_CURRENT_BINARY_DIR}/shaderc")
 
-    foreach (target IN ITEMS shaderc shaderc_util shaderc_shared shaderc_static shaderc_combined)
+    foreach (target IN ITEMS shaderc shaderc_util shaderc_shared shaderc_combined)
         if (TARGET ${target})
             install(TARGETS ${target} EXPORT shaderc-targets
                     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
