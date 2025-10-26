@@ -22,4 +22,4 @@ class TinyGltf(Recipe):
     def configure(self):
         self.cache_variables["TINYGLTF_BUILD_LOADER_EXAMPLE"] = "OFF"
         self.cache_variables["TINYGLTF_HEADER_ONLY"] = "ON"
-        self.cache_variables["TINYGLTF_INSTALL_VENDOR"] = "OFF"
+        self.cache_variables["TINYGLTF_INSTALL_VENDOR"] = "ON"
