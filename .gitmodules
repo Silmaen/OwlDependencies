@@ -136,3 +136,6 @@
 [submodule "Libs/tinygltf/tinygltf"]
 	path = Libs/tinygltf/tinygltf
 	url = git@github.com:syoyo/tinygltf.git
+[submodule "Libs/ufbx/ufbx"]
+	path = Libs/ufbx/ufbx
+	url = git@github.com:ufbx/ufbx.git
