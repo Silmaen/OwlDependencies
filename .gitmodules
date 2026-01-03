@@ -139,3 +139,6 @@
 [submodule "Libs/ufbx/ufbx"]
 	path = Libs/ufbx/ufbx
 	url = git@github.com:ufbx/ufbx.git
+[submodule "Libs/nanosvg/nanosvg"]
+	path = Libs/nanosvg/nanosvg
+	url = git@github.com:memononen/nanosvg.git
