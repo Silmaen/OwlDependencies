@@ -267,10 +267,8 @@ def main():
     parse_args()
 
     # list the recipes
-    local_manager = LocalManager(verbosity=parameters.verbosity)
-    package_manager = PackageManager(
-        system=local_manager.get_sys(), verbosity=parameters.verbosity
-    )
+    local_manager = LocalManager()
+    package_manager = PackageManager(system=local_manager.get_sys())
     rem = package_manager.get_default_remote()
     #
     # find all recipes
