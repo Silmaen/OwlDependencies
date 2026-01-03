@@ -28,7 +28,6 @@ class CppTraceShared(Recipe):
     dependencies = [
         {"name": "zstd", "kind": "static"},
         {"name": "libdwarf", "kind": "static"},
-        {"name": "zlib", "kind": "static"},
     ]
 
     def source(self):
@@ -83,5 +82,4 @@ class CppTraceStatic(CppTraceShared):
     dependencies = [
         {"name": "zstd", "kind": "static"},
         {"name": "libdwarf", "kind": "static"},
-        {"name": "zlib", "kind": "static"},
     ]
