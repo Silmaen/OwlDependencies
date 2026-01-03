@@ -11,7 +11,7 @@ class BrotliShared(Recipe):
     """
 
     name = "brotli"
-    version = "1.1.0"
+    version = "1.2.0"
     source_dir = "brotli"
     kind = "shared"
 

@@ -20,7 +20,7 @@ class CurlShared(Recipe):
     """
 
     name = "curl"
-    version = "8.16.0"
+    version = "8.17.0"
     source_dir = "curl"
     kind = "shared"
     dependencies = [

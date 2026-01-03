@@ -15,7 +15,7 @@ class TinyGltf(Recipe):
     """
 
     name = "tinygltf"
-    version = "2.9.6"
+    version = "2.9.7"
     source_dir = "tinygltf"
     kind = "header"
 

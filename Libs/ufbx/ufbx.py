@@ -16,7 +16,7 @@ class UfbxStatic(Recipe):
     """
 
     name = "ufbx"
-    version = "0.20.1"
+    version = "0.21.2"
     source_dir = "ufbx"
     kind = "static"
 

@@ -19,11 +19,8 @@ class MsdfAtlasGenShared(Recipe):
     source_dir = "msdf-atlas-gen"
     kind = "shared"
     dependencies = [
-        {"name": "msdfgen", "kind": "shared"},
-        {"name": "tinyxml2", "kind": "shared"},
-        {"name": "libpng", "kind": "shared"},
-        {"name": "zlib", "kind": "shared"},
-        {"name": "freetype", "kind": "shared"},
+        {"name": "msdfgen", "kind": "static"},
+        {"name": "libpng", "kind": "static"},
     ]
 
     def configure(self):
@@ -44,10 +41,7 @@ class MsdfAtlasGenStatic(MsdfAtlasGenShared):
     kind = "static"
     dependencies = [
         {"name": "msdfgen", "kind": "static"},
-        {"name": "tinyxml2", "kind": "static"},
         {"name": "libpng", "kind": "static"},
-        {"name": "zlib", "kind": "static"},
-        {"name": "freetype", "kind": "static"},
     ]
 
     def configure(self):
