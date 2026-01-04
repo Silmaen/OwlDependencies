@@ -25,6 +25,7 @@ class YamlCppShared(Recipe):
     version = "0.8.0"
     source_dir = "yaml-cpp"
     kind = "shared"
+    description = "yaml-cpp is a YAML parser and emitter in C++"
 
     def source(self):
         # Files to modify

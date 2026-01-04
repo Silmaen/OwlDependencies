@@ -18,3 +18,4 @@ class NanoSvgHeader(Recipe):
     version = "1.0.0"
     source_dir = "nanosvg"
     kind = "static"
+    description = "NanoSVG is a simple SVG parser and rasterizer"

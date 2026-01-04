@@ -35,6 +35,7 @@ class LibDwarfShared(Recipe):
         {"name": "zstd", "kind": "static"},
         {"name": "zlib", "kind": "static"},
     ]
+    description = "libdwarf is a library for reading and writing DWARF debug information."
 
     def source(self):
         for cmakelists in cmakelists_modif:

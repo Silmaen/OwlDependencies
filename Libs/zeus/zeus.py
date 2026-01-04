@@ -18,6 +18,7 @@ class ZeusHeader(Recipe):
     version = "1.3.1"
     source_dir = "expected"
     kind = "header"
+    description = "Zeus is a C++17 library for modeling expected and unexpected results"
 
     def configure(self):
         self.cache_variables["BUILD_TESTING"] = "OFF"

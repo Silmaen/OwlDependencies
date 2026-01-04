@@ -22,6 +22,7 @@ class MsdfAtlasGenShared(Recipe):
         {"name": "msdfgen", "kind": "static"},
         {"name": "libpng", "kind": "static"},
     ]
+    description = "Multi-channel signed distance field font atlas generator"
 
     def configure(self):
         self.cache_variables["MSDF_ATLAS_BUILD_STANDALONE"] = "OFF"

@@ -14,6 +14,7 @@ class GoogleTestShared(Recipe):
     version = "1.17.0"
     source_dir = "googletest"
     kind = "shared"
+    description = "GoogleTest is a unit testing library for the C++ programming language, based on the xUnit architecture."
 
     def configure(self):
         self.cache_variables["BUILD_GMOCK"] = "OFF"

@@ -26,6 +26,7 @@ class JsonCppShared(Recipe):
     version = "1.9.6"
     source_dir = "jsoncpp"
     kind = "shared"
+    description = "JsonCpp is a C++ library for interacting with JSON."
 
     def source(self):
         for cmakelists in cmakelists_modif:

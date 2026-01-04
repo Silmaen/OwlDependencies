@@ -14,6 +14,7 @@ class GlfwShared(Recipe):
     version = "3.4.0"
     source_dir = "glfw"
     kind = "shared"
+    description = "GLFW is an Open Source, multi-platform library for OpenGL, OpenGL ES and Vulkan development on the desktop."
 
     def configure(self):
         self.cache_variables["GLFW_BUILD_EXAMPLES"] = "OFF"

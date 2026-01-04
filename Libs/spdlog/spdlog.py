@@ -31,9 +31,10 @@ class SpdlogShared(Recipe):
     """
 
     name = "spdlog"
-    version = "1.16.0"
+    version = "1.17.0"
     source_dir = "spdlog"
     kind = "shared"
+    description = "Fast C++ logging library"
 
     def source(self):
         # Files to modify

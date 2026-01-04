@@ -37,6 +37,7 @@ class Box2DShared(Recipe):
     source_dir = "box2d"
     kind = "shared"
     dependencies = []
+    description = "Box2D is a 2D physics engine for games"
 
     def source(self):
         source = here / self.source_dir

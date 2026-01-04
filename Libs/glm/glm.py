@@ -15,9 +15,10 @@ class GlmShared(Recipe):
     """
 
     name = "glm"
-    version = "1.0.2"
+    version = "1.0.3"
     source_dir = "sources/glm"
     kind = "shared"
+    description = "GLM is a header only C++ mathematics library for graphics software based on the OpenGL Shading Language (GLSL) specifications."
 
     def configure(self):
         self.cache_variables["GLM_ENABLE_CXX_20"] = "ON"

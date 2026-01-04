@@ -18,6 +18,7 @@ class NfdShared(Recipe):
     version = "1.2.1"
     source_dir = "nativefiledialog-extended"
     kind = "shared"
+    description = "Native File Dialog Extended is a tiny, neat C/C++ library that portably invokes native file open/save dialogs"
 
     def configure(self):
         self.cache_variables["NFD_BUILD_TESTS"] = "OFF"

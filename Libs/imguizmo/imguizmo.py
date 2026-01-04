@@ -11,13 +11,14 @@ class ImguizmoShared(Recipe):
     """
 
     name = "imguizmo"
-    version = "1.92.4"
+    version = "1.92.5"
     source_dir = "sources"
     kind = "shared"
     dependencies = [
         {"name": "imgui", "kind": "shared"},
         {"name": "vulkan_sdk", "kind": "shared"},
     ]
+    description = "ImGuizmo is a simple and easy to use gizmo for manipulating objects in 3D space with Dear ImGui."
 
     def configure(self):
         self.cache_variables["PROJECT_VERSION"] = self.version

@@ -14,3 +14,4 @@ class StbImageHeader(Recipe):
     version = "2.28"
     source_dir = "stb_image"
     kind = "header"
+    description = "stb_image is a popular single-header image loading library"

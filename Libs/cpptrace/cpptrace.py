@@ -29,6 +29,7 @@ class CppTraceShared(Recipe):
         {"name": "zstd", "kind": "static"},
         {"name": "libdwarf", "kind": "static"},
     ]
+    description = "C++ tracing library for performance analysis and debugging"
 
     def source(self):
         for cmakelists in cmakelists_modif:

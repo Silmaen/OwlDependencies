@@ -25,6 +25,7 @@ class LibSndFileShared(Recipe):
     version = "1.2.2"
     source_dir = "libsndfile"
     kind = "shared"
+    description = "Library for reading and writing files containing sampled sound"
 
     def source(self):
         # Files to modify

@@ -14,6 +14,7 @@ class ZstdShared(Recipe):
     version = "1.5.7"
     source_dir = "sources/zstd/build/cmake"
     kind = "shared"
+    description = "Zstandard (zstd) is a real-time compression algorithm"
 
     def configure(self):
         self.cache_variables["CMAKE_DEBUG_POSTFIX"] = "d"

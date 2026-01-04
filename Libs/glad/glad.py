@@ -14,6 +14,7 @@ class GladShared(Recipe):
     version = "2.0.4"
     source_dir = "sources"
     kind = "shared"
+    description = "OpenGL loader generator"
 
 
 class GladStatic(GladShared):

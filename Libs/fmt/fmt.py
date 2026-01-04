@@ -14,6 +14,7 @@ class FmtShared(Recipe):
     version = "12.1.0"
     source_dir = "fmt"
     kind = "shared"
+    description = "fmt is an open-source formatting library for C++"
 
     def configure(self):
         self.cache_variables["FMT_TEST"] = "OFF"

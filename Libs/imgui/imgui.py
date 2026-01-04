@@ -11,13 +11,14 @@ class ImguiShared(Recipe):
     """
 
     name = "imgui"
-    version = "1.92.4-docking"
+    version = "1.92.5-docking"
     source_dir = "sources"
     kind = "shared"
     dependencies = [
         {"name": "glfw", "kind": "shared"},
         {"name": "vulkan_sdk", "kind": "shared"},
     ]
+    description = "Dear ImGui is a bloat-free graphical user interface library for C++."
 
     def configure(self):
         self.cache_variables["PROJECT_VERSION"] = self.version.split("-")[0]

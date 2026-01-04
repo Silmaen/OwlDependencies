@@ -28,6 +28,7 @@ class CurlShared(Recipe):
         {"name": "zstd", "kind": "shared"},
         {"name": "brotli", "kind": "shared"},
     ]
+    description = "cURL is a library for transferring data with URL syntax"
 
     def configure(self):
         self.cache_variables["BUILD_CURL_EXE"] = "OFF"

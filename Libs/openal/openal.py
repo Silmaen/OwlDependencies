@@ -15,9 +15,10 @@ class OpenALShared(Recipe):
     """
 
     name = "openal"
-    version = "1.24.3"
+    version = "1.25.0"
     source_dir = "openal-soft"
     kind = "shared"
+    description = "Cross-platform 3D audio API appropriate for gaming applications"
 
     def configure(self):
         self.cache_variables["ALSOFT_EXAMPLES"] = "OFF"

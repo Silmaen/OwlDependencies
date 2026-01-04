@@ -19,6 +19,7 @@ class UfbxStatic(Recipe):
     version = "0.21.2"
     source_dir = "ufbx"
     kind = "static"
+    description = "ufbx is a single-file C library for loading and processing FBX files"
 
     def source(self):
         print(

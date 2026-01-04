@@ -29,6 +29,7 @@ class TinyPlyShared(Recipe):
     version = "2.3.4"
     source_dir = "tinyply"
     kind = "shared"
+    description = "TinyPly is a C++11 header-only library for reading and writing ASCII and binary PLY files"
 
     def source(self):
         for cmakelists in cmakelists_modif:
