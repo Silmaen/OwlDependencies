@@ -134,9 +134,10 @@ class MsdfGenShared(Recipe):
     dependencies = [
         {"name": "tinyxml2", "kind": "shared"},
         {"name": "libpng", "kind": "shared"},
-        {"name": "zlib", "kind": "static"},
+        {"name": "zlib", "kind": "shared"},
         {"name": "freetype", "kind": "shared"},
     ]
+    description = "Multi-channel signed distance field generator library."
 
     def source(self):
         for file in file_modif:
@@ -194,7 +195,7 @@ class MsdfGenStatic(MsdfGenShared):
     dependencies = [
         {"name": "tinyxml2", "kind": "static"},
         {"name": "libpng", "kind": "static"},
-        {"name": "zlib", "kind": "static"},
+        {"name": "zlib", "kind": "shared"},
         {"name": "freetype", "kind": "static"},
     ]
 

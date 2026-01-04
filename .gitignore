@@ -35,3 +35,4 @@ cmake-*
 *__pycache__*
 build
 .idea
+.fakehome

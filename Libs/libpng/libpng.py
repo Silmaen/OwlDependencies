@@ -20,10 +20,11 @@ class LibPngShared(Recipe):
     """
 
     name = "libpng"
-    version = "1.6.50"
+    version = "1.6.53"
     source_dir = "libpng"
     kind = "shared"
-    dependencies = [{"name": "zlib", "kind": "static"}]
+    dependencies = [{"name": "zlib", "kind": "shared"}]
+    description = "libpng is the official PNG reference library"
 
     def source(self):
         # Files to modify
@@ -77,7 +78,7 @@ class LibPngStatic(LibPngShared):
     """
 
     kind = "static"
-    dependencies = [{"name": "zlib", "kind": "static"}]
+    dependencies = [{"name": "zlib", "kind": "shared"}]
 
     def configure(self):
         super().configure()

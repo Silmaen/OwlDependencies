@@ -112,11 +112,12 @@ class FreeTypeShared(Recipe):
     source_dir = "freetype"
     kind = "shared"
     dependencies = [
-        {"name": "libpng", "kind": "static"},
+        {"name": "libpng", "kind": "shared"},
         {"name": "harfbuzz", "kind": "static"},
         {"name": "brotli", "kind": "shared"},
         {"name": "zlib", "kind": "shared"},
     ]
+    description = "FreeType is a freely available software library to render fonts"
 
     def source(self):
         # Files to modify
@@ -169,5 +170,5 @@ class FreeTypeStatic(FreeTypeShared):
         {"name": "libpng", "kind": "static"},
         {"name": "harfbuzz", "kind": "static"},
         {"name": "brotli", "kind": "static"},
-        {"name": "zlib", "kind": "static"},
+        {"name": "zlib", "kind": "shared"},
     ]

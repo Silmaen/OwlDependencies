@@ -14,6 +14,7 @@ class BrotliShared(Recipe):
     version = "1.2.0"
     source_dir = "brotli"
     kind = "shared"
+    description = "Brotli is a generic-purpose lossless compression algorithm"
 
     def configure(self):
         self.cache_variables["BROTLI_DISABLE_TESTS"] = "ON"

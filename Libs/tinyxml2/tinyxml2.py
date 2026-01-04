@@ -16,6 +16,7 @@ class TinyXML2Shared(Recipe):
     version = "11.0.0"
     source_dir = "tinyxml2"
     kind = "shared"
+    description = "TinyXML-2 is a simple, small, efficient, C++ XML parser"
 
     def configure(self):
         for ignore in ignore_list:

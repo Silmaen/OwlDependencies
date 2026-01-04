@@ -35,6 +35,9 @@ class ZlibShared(Recipe):
     version = "1.3.1.2"
     source_dir = "zlib"
     kind = "shared"
+    description = (
+        "Zlib is a massively spiffy yet delicately unobtrusive compression library"
+    )
 
     def source(self):
         source = here / self.source_dir
@@ -53,6 +56,8 @@ class ZlibShared(Recipe):
         self.cache_variables["CMAKE_DEBUG_POSTFIX"] = "d"
         self.cache_variables["ZLIB_BUILD_EXAMPLES"] = "OFF"
         self.cache_variables["SKIP_INSTALL_FILES"] = "ON"
+        self.cache_variables["ZLIB_BUILD_SHARED"] = "ON"
+        self.cache_variables["ZLIB_BUILD_STATIC"] = "OFF"
 
     def clean(self):
         source = here / self.source_dir
@@ -78,3 +83,5 @@ class ZlibStatic(ZlibShared):
         self.cache_variables["CMAKE_DEBUG_POSTFIX"] = "d"
         self.cache_variables["ZLIB_BUILD_EXAMPLES"] = "OFF"
         self.cache_variables["SKIP_INSTALL_FILES"] = "ON"
+        self.cache_variables["ZLIB_BUILD_SHARED"] = "OFF"
+        self.cache_variables["ZLIB_BUILD_STATIC"] = "ON"
