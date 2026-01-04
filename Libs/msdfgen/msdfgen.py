@@ -134,7 +134,7 @@ class MsdfGenShared(Recipe):
     dependencies = [
         {"name": "tinyxml2", "kind": "shared"},
         {"name": "libpng", "kind": "shared"},
-        {"name": "zlib", "kind": "shared"},
+        {"name": "zlib", "kind": "static"},
         {"name": "freetype", "kind": "shared"},
     ]
 
