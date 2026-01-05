@@ -9,9 +9,9 @@ from depmanager.api.recipe import Recipe
 here = Path(__file__).parent
 
 
-class NanoSvgHeader(Recipe):
+class NanoSvgStatic(Recipe):
     """
-    Header-only version
+    StaticLib version
     """
 
     name = "nanosvg"
