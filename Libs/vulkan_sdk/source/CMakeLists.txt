@@ -444,3 +444,44 @@ if (SDK_INSTALL)
 endif ()
 message(STATUS "-- -- shaderc")
 # ================ shaderc ==================================
+
+# ================ slang ====================================
+# Disable features not needed for the SDK
+set(SLANG_ENABLE_TESTS OFF)
+set(SLANG_ENABLE_EXAMPLES OFF)
+set(SLANG_ENABLE_GFX OFF)
+set(SLANG_ENABLE_SLANG_RHI OFF)
+set(SLANG_ENABLE_SLANGD OFF)
+set(SLANG_ENABLE_SLANGI OFF)
+set(SLANG_ENABLE_REPLAYER OFF)
+set(SLANG_ENABLE_PREBUILT_BINARIES OFF)
+set(SLANG_ENABLE_FULL_IR_VALIDATION OFF)
+set(SLANG_ENABLE_IR_BREAK_ALLOC OFF)
+set(SLANG_ENABLE_ASAN OFF)
+set(SLANG_ENABLE_COVERAGE OFF)
+set(SLANG_ENABLE_RELEASE_LTO OFF)
+set(SLANG_ENABLE_RELEASE_DEBUG_INFO OFF)
+set(SLANG_ENABLE_SPLIT_DEBUG_INFO OFF)
+set(SLANG_ENABLE_DX_ON_VK OFF)
+set(SLANG_EXCLUDE_DAWN ON)
+set(SLANG_EXCLUDE_TINT ON)
+set(SLANG_SLANG_LLVM_FLAVOR "DISABLE" CACHE STRING "" FORCE)
+# Use system copies already built in this composite SDK
+set(SLANG_USE_SYSTEM_SPIRV_TOOLS ON)
+set(SLANG_USE_SYSTEM_GLSLANG ON)
+# Let slang's external/CMakeLists.txt detect existing targets
+set(SLANG_USE_SYSTEM_VULKAN_HEADERS OFF)
+set(SLANG_USE_SYSTEM_SPIRV_HEADERS OFF)
+set(SLANG_USE_SYSTEM_UNORDERED_DENSE OFF)
+set(SLANG_USE_SYSTEM_MINIZ OFF)
+set(SLANG_USE_SYSTEM_LZ4 OFF)
+add_subdirectory(slang)
+if (SDK_INSTALL)
+    set(SLANG_SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/slang")
+    set(SLANG_BINARY_DIR "${CMAKE_CURRENT_BINARY_DIR}/slang")
+
+    install(DIRECTORY "${SLANG_SOURCE_DIR}/include/" DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
+            PATTERN ".*" EXCLUDE)
+endif ()
+message(STATUS "-- -- slang")
+# ================ slang ====================================

@@ -142,3 +142,6 @@
 [submodule "Libs/nanosvg/nanosvg"]
 	path = Libs/nanosvg/nanosvg
 	url = git@github.com:memononen/nanosvg.git
+[submodule "Libs/vulkan_sdk/source/slang"]
+	path = Libs/vulkan_sdk/source/slang
+	url = git@github.com:shader-slang/slang.git

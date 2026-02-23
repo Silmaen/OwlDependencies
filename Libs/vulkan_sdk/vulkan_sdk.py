@@ -2,7 +2,18 @@
 Depmanager recipes
 """
 
+import subprocess
+
 from depmanager.api.recipe import Recipe
+
+# Sous-modules imbriqués de slang nécessaires au build.
+# Initialisés automatiquement dans source() pour éviter un checkout récursif complet.
+slang_required_submodules = [
+    "external/lua",
+    "external/unordered_dense",
+    "external/miniz",
+    "external/lz4",
+]
 
 ignore_list = ["BUILD_TESTING"]
 
@@ -18,6 +29,8 @@ cmakelists_modif = [
     "SPIRV-Reflect/CMakeLists.txt",
     "shaderc/libshaderc/CMakeLists.txt",
     "shaderc/libshaderc_util/CMakeLists.txt",
+    "slang/CMakeLists.txt",
+    "CMakeLists.txt",
 ]
 
 corrections = [
@@ -51,6 +64,21 @@ corrections = [
         b"EXPORT ${config_name}Config DESTINATION ${cmake_install_dir}",
         None,
     ],
+    [
+        b'@PACKAGE_INIT@\n        @INSTALL_CONFIG_UNIX@\n        include("@PACKAGE_PATH_EXPORT_TARGETS@")',
+        b'@PACKAGE_INIT@\n        include(CMakeFindDependencyMacro)\n        find_dependency(SPIRV-Tools-opt)\n        @INSTALL_CONFIG_UNIX@\n        include("@PACKAGE_PATH_EXPORT_TARGETS@")',
+        "CMakeLists.txt",
+    ],
+    [
+        b"    find_package(SPIRV-Tools REQUIRED)",
+        b"    #find_package(SPIRV-Tools REQUIRED)",
+        "slang/CMakeLists.txt",
+    ],
+    [
+        b"if(${SLANG_USE_SYSTEM_GLSLANG})\n    find_package(glslang REQUIRED)\n    add_library(glslang ALIAS glslang::glslang)\nendif()",
+        b"#if(${SLANG_USE_SYSTEM_GLSLANG})\n#    find_package(glslang REQUIRED)\n#    add_library(glslang ALIAS glslang::glslang)\n#endif()",
+        "slang/CMakeLists.txt",
+    ],
 ]
 
 
@@ -60,12 +88,20 @@ class VulkanSdk(Recipe):
     """
 
     name = "vulkan_sdk"
-    version = "1.4.328"
+    version = "1.4.341"
     source_dir = "source"
     kind = "shared"
     config = ["Release"]
 
     def source(self):
+        # Initialiser uniquement les sous-modules slang requis (pas de checkout récursif)
+        slang_dir = self.path / self.source_dir / "slang"
+        if (slang_dir / ".gitmodules").exists():
+            subprocess.run(
+                ["git", "submodule", "update", "--init"] + slang_required_submodules,
+                cwd=str(slang_dir),
+                check=True,
+            )
         for cmakelists in cmakelists_modif:
             path = self.path / self.source_dir / cmakelists
             if not path.exists():
