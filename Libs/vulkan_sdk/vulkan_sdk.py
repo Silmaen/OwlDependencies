@@ -87,7 +87,16 @@ corrections = [
     ],
     [
         b"#ifndef _WIN32",
-        b"#if !defined(_WIN32) || defined(__MINGW32__)",
+        b"#if defined(__MINGW32__)\n"
+        b"#include <assert.h>\n"
+        b"#include <stdio.h>\n"
+        b"inline size_t fread_s(void* buffer, size_t bufferSize, size_t elementSize,"
+        b" size_t count, FILE* stream) {\n"
+        b"    assert(bufferSize >= elementSize * count);\n"
+        b"    return fread(buffer, elementSize, count, stream);\n"
+        b"}\n"
+        b"#endif\n"
+        b"#ifndef _WIN32",
         "slang/source/core/slang-secure-crt.h",
     ],
 ]
