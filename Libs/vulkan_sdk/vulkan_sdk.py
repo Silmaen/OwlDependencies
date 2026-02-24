@@ -30,6 +30,7 @@ cmakelists_modif = [
     "shaderc/libshaderc/CMakeLists.txt",
     "shaderc/libshaderc_util/CMakeLists.txt",
     "slang/CMakeLists.txt",
+    "slang/source/core/slang-secure-crt.h",
     "CMakeLists.txt",
 ]
 
@@ -83,6 +84,11 @@ corrections = [
         b"    add_library(glslang ALIAS glslang::glslang)",
         b"    #add_library(glslang ALIAS glslang::glslang)",
         "slang/CMakeLists.txt",
+    ],
+    [
+        b"#ifndef _WIN32",
+        b"#if !defined(_WIN32) || defined(__MINGW32__)",
+        "slang/source/core/slang-secure-crt.h",
     ],
 ]
 
