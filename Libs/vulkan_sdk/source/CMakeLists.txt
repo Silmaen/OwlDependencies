@@ -475,7 +475,11 @@ set(SLANG_USE_SYSTEM_SPIRV_HEADERS OFF)
 set(SLANG_USE_SYSTEM_UNORDERED_DENSE OFF)
 set(SLANG_USE_SYSTEM_MINIZ OFF)
 set(SLANG_USE_SYSTEM_LZ4 OFF)
+# Force static linking for slang's internal deps (miniz, lz4).
+# Slang uses SLANG_LIB_TYPE for its own libs, not BUILD_SHARED_LIBS.
+set(BUILD_SHARED_LIBS OFF)
 add_subdirectory(slang)
+set(BUILD_SHARED_LIBS ON)
 if (SDK_INSTALL)
     set(SLANG_SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/slang")
     set(SLANG_BINARY_DIR "${CMAKE_CURRENT_BINARY_DIR}/slang")

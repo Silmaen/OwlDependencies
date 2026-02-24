@@ -75,8 +75,13 @@ corrections = [
         "slang/CMakeLists.txt",
     ],
     [
-        b"if(${SLANG_USE_SYSTEM_GLSLANG})\n    find_package(glslang REQUIRED)\n    add_library(glslang ALIAS glslang::glslang)\nendif()",
-        b"#if(${SLANG_USE_SYSTEM_GLSLANG})\n#    find_package(glslang REQUIRED)\n#    add_library(glslang ALIAS glslang::glslang)\n#endif()",
+        b"    find_package(glslang REQUIRED)",
+        b"    #find_package(glslang REQUIRED)",
+        "slang/CMakeLists.txt",
+    ],
+    [
+        b"    add_library(glslang ALIAS glslang::glslang)",
+        b"    #add_library(glslang ALIAS glslang::glslang)",
         "slang/CMakeLists.txt",
     ],
 ]
