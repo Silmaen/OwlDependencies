@@ -5,7 +5,7 @@ description = ""
 authors = ["Silmaen <genteur.slayer@laposte.net>"]
 readme = "README.md"
 
-[tool.poetry.dependesousncies]
+[tool.poetry.dependencies]
 python = "^3.10"
 
 [tool.poetry.group.build.dependencies]
