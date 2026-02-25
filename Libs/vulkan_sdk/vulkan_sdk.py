@@ -87,11 +87,12 @@ corrections = [
     ],
     [
         b"#ifndef _WIN32",
-        b"#if defined(__MINGW32__)\n"
+        b"#if defined(__MINGW32__) && !defined(SLANG_MINGW_FREAD_S_DEFINED)\n"
+        b"#define SLANG_MINGW_FREAD_S_DEFINED\n"
         b"#include <assert.h>\n"
         b"#include <stdio.h>\n"
-        b"inline size_t fread_s(void* buffer, size_t bufferSize, size_t elementSize,"
-        b" size_t count, FILE* stream) {\n"
+        b"inline size_t fread_s(void* buffer, [[maybe_unused]] size_t bufferSize,"
+        b" size_t elementSize, size_t count, FILE* stream) {\n"
         b"    assert(bufferSize >= elementSize * count);\n"
         b"    return fread(buffer, elementSize, count, stream);\n"
         b"}\n"
