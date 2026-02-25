@@ -30,6 +30,7 @@ cmakelists_modif = [
     "shaderc/libshaderc/CMakeLists.txt",
     "shaderc/libshaderc_util/CMakeLists.txt",
     "slang/CMakeLists.txt",
+    "slang/source/slang/CMakeLists.txt",
     "slang/source/core/slang-secure-crt.h",
     "CMakeLists.txt",
 ]
@@ -84,6 +85,16 @@ corrections = [
         b"    add_library(glslang ALIAS glslang::glslang)",
         b"    #add_library(glslang ALIAS glslang::glslang)",
         "slang/CMakeLists.txt",
+    ],
+    [
+        b'"${slang_SOURCE_DIR}/source/slang-record-replay/record"',
+        b'# "${slang_SOURCE_DIR}/source/slang-record-replay/record"',
+        "slang/source/slang/CMakeLists.txt",
+    ],
+    [
+        b'"${slang_SOURCE_DIR}/source/slang-record-replay/util"',
+        b'# "${slang_SOURCE_DIR}/source/slang-record-replay/util"',
+        "slang/source/slang/CMakeLists.txt",
     ],
     [
         b"#ifndef _WIN32",
