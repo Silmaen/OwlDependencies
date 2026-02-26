@@ -30,6 +30,7 @@ cmakelists_modif = [
     "shaderc/libshaderc/CMakeLists.txt",
     "shaderc/libshaderc_util/CMakeLists.txt",
     "slang/CMakeLists.txt",
+    "slang/source/slang/CMakeLists.txt",
     "slang/source/slang-record-replay/util/record-utility.cpp",
     "slang/source/core/slang-secure-crt.h",
     "slang/source/slangc/main.cpp",
@@ -111,6 +112,11 @@ corrections = [
         b"#define MAIN slangc_main",
         b"#define MAIN main",
         "slang/source/slangc/main.cpp",
+    ],
+    [
+        b'if(WIN32 AND SLANG_LIB_TYPE STREQUAL "SHARED")',
+        b'if(MSVC AND SLANG_LIB_TYPE STREQUAL "SHARED")',
+        "slang/source/slang/CMakeLists.txt",
     ],
 ]
 
