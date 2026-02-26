@@ -479,10 +479,6 @@ set(SLANG_USE_SYSTEM_LZ4 OFF)
 # Force static linking for slang's internal deps (miniz, lz4).
 # Slang uses SLANG_LIB_TYPE for its own libs, not BUILD_SHARED_LIBS.
 set(BUILD_SHARED_LIBS OFF)
-# MinGW needs -municode to support wmain() entry point used by slang executables
-if(MINGW)
-    add_link_options(-municode)
-endif()
 add_subdirectory(slang)
 set(BUILD_SHARED_LIBS ON)
 if (SDK_INSTALL)

@@ -32,6 +32,7 @@ cmakelists_modif = [
     "slang/CMakeLists.txt",
     "slang/source/slang-record-replay/util/record-utility.cpp",
     "slang/source/core/slang-secure-crt.h",
+    "slang/source/slangc/main.cpp",
     "CMakeLists.txt",
 ]
 
@@ -105,6 +106,11 @@ corrections = [
         b"#endif\n"
         b"#ifndef _WIN32",
         "slang/source/core/slang-secure-crt.h",
+    ],
+    [
+        b"#define MAIN slangc_main",
+        b"#define MAIN main",
+        "slang/source/slangc/main.cpp",
     ],
 ]
 
