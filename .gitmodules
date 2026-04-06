@@ -145,3 +145,6 @@
 [submodule "Libs/vulkan_sdk/source/slang"]
 	path = Libs/vulkan_sdk/source/slang
 	url = git@github.com:shader-slang/slang.git
+[submodule "Libs/taskflow/taskflow"]
+	path = Libs/taskflow/taskflow
+	url = git@github.com:taskflow/taskflow.git
