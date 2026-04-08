@@ -9,13 +9,13 @@ from depmanager.api.recipe import Recipe
 here = Path(__file__).parent
 
 
-class NanoSvgStatic(Recipe):
+class NanoSvg(Recipe):
     """
-    StaticLib version
+    Header version
     """
 
     name = "nanosvg"
     version = "1.0.0"
     source_dir = "nanosvg"
-    kind = "static"
+    kind = "header"
     description = "NanoSVG is a simple SVG parser and rasterizer"

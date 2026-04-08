@@ -148,3 +148,6 @@
 [submodule "Libs/taskflow/taskflow"]
 	path = Libs/taskflow/taskflow
 	url = git@github.com:taskflow/taskflow.git
+[submodule "Libs/lunasvg/lunasvg"]
+	path = Libs/lunasvg/lunasvg
+	url = git@github.com:sammycage/lunasvg.git
