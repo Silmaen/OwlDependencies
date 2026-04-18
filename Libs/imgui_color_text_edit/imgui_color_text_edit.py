@@ -32,6 +32,6 @@ class ImguiColorTextEditStatic(ImguiColorTextEditShared):
 
     kind = "static"
     dependencies = [
-        {"name": "imgui", "kind": "static"},
+        {"name": "imgui", "kind": "shared"},
         {"name": "vulkan_sdk", "kind": "shared"},
     ]
