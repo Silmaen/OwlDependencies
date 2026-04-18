@@ -154,3 +154,6 @@
 [submodule "Libs/lua/lua"]
 	path = Libs/lua/lua
 	url = git@github.com:lua/lua.git
+[submodule "Libs/imgui_color_text_edit/sources/imgui_color_text_edit"]
+	path = Libs/imgui_color_text_edit/sources/imgui_color_text_edit
+	url = git@github.com:goossens/ImGuiColorTextEdit.git
