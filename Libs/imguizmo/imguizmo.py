@@ -5,15 +5,15 @@ Depmanager recipes
 from depmanager.api.recipe import Recipe
 
 
-class ImguizmoShared(Recipe):
+class Imguizmo(Recipe):
     """
-    Shared version
+    Static version
     """
 
     name = "imguizmo"
-    version = "1.92.6"
+    version = "1.92.7"
     source_dir = "sources"
-    kind = "shared"
+    kind = "static"
     dependencies = [
         {"name": "imgui", "kind": "shared"},
         {"name": "vulkan_sdk", "kind": "shared"},
@@ -23,15 +23,3 @@ class ImguizmoShared(Recipe):
     def configure(self):
         self.cache_variables["PROJECT_VERSION"] = self.version
         self.cache_variables["CMAKE_DEBUG_POSTFIX"] = "d"
-
-
-class ImguizmoStatic(ImguizmoShared):
-    """
-    Shared version
-    """
-
-    kind = "static"
-    dependencies = [
-        {"name": "imgui", "kind": "shared"},
-        {"name": "vulkan_sdk", "kind": "shared"},
-    ]

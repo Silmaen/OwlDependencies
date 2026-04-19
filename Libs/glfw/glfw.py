@@ -5,7 +5,7 @@ Depmanager recipes
 from depmanager.api.recipe import Recipe
 
 
-class GlfwShared(Recipe):
+class Glfw(Recipe):
     """
     Shared version
     """
@@ -21,11 +21,3 @@ class GlfwShared(Recipe):
         self.cache_variables["GLFW_BUILD_TESTS"] = "OFF"
         self.cache_variables["GLFW_BUILD_DOCS"] = "OFF"
         self.cache_variables["CMAKE_DEBUG_POSTFIX"] = "d"
-
-
-class GlfwStatic(GlfwShared):
-    """
-    Static version
-    """
-
-    kind = "static"
