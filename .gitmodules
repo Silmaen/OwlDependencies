@@ -157,3 +157,12 @@
 [submodule "Libs/imgui_color_text_edit/sources/imgui_color_text_edit"]
 	path = Libs/imgui_color_text_edit/sources/imgui_color_text_edit
 	url = git@github.com:goossens/ImGuiColorTextEdit.git
+[submodule "Libs/imgui_node_editor/sources/imgui_node_editor"]
+	path = Libs/imgui_node_editor/sources/imgui_node_editor
+	url = git@github.com:thedmd/imgui-node-editor.git
+[submodule "Libs/implot/sources/implot"]
+	path = Libs/implot/sources/implot
+	url = git@github.com:epezent/implot.git
+[submodule "Libs/imgui_markdown/sources/imgui_markdown"]
+	path = Libs/imgui_markdown/sources/imgui_markdown
+	url = git@github.com:enkisoftware/imgui_markdown.git
