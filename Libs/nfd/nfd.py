@@ -15,7 +15,7 @@ class NfdShared(Recipe):
     """
 
     name = "nfd"
-    version = "1.2.1"
+    version = "1.3.0"
     source_dir = "nativefiledialog-extended"
     kind = "shared"
     description = "Native File Dialog Extended is a tiny, neat C/C++ library that portably invokes native file open/save dialogs"
