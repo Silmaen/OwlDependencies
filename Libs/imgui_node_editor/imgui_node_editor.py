@@ -45,11 +45,16 @@ class ImguiNodeEditor(Recipe):
                 continue
             with open(path, "rb") as fp:
                 lines = fp.read()
+            # On Windows, git may check out files with CRLF line endings;
+            # match the correction patterns against whichever EOL the file uses.
+            eol = b"\r\n" if b"\r\n" in lines else b"\n"
             for correction in corrections:
                 if correction[2] not in [None, ""]:
                     if correction[2] != file:
                         continue
-                lines = lines.replace(correction[0], correction[1])
+                orig = correction[0].replace(b"\n", eol)
+                repl = correction[1].replace(b"\n", eol)
+                lines = lines.replace(orig, repl)
             with open(path, "wb") as fp:
                 fp.write(lines)
             print(f"***** File {file} @ {path} found and modified.")
@@ -62,11 +67,14 @@ class ImguiNodeEditor(Recipe):
                 continue
             with open(path, "rb") as fp:
                 lines = fp.read()
+            eol = b"\r\n" if b"\r\n" in lines else b"\n"
             for correction in corrections:
                 if correction[2] not in [None, ""]:
                     if correction[2] != file:
                         continue
-                lines = lines.replace(correction[1], correction[0])
+                orig = correction[0].replace(b"\n", eol)
+                repl = correction[1].replace(b"\n", eol)
+                lines = lines.replace(repl, orig)
             with open(path, "wb") as fp:
                 fp.write(lines)
             print(f"***** File {file} @ {path} restored.")
