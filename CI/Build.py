@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import re
+from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 from shutil import rmtree
 from sys import stderr
@@ -14,6 +15,8 @@ from depmanager.api.package import PackageManager
 here = Path(__file__).resolve().parent
 root = here.parent
 lib_dir = root / "Libs"
+
+MAX_WORKERS = 2
 
 
 class Parameters:
@@ -260,6 +263,71 @@ def reorder_recipes(recipes, package_manager: PackageManager, strict_dep: bool =
     return new_recipe
 
 
+def classify_recipe(package_manager, recipe):
+    """
+    Query the remote only to decide if a recipe needs rebuilding.
+
+    Returns (recipe, is_on_remote). Local cache is NOT consulted here: the
+    remote is the source of truth for 'what should end up in the remote'.
+    """
+    qr = query_from_recipe(recipe)
+    remote_result = package_manager.query(qr, remote_name="default")
+    return recipe, len(remote_result) > 0
+
+
+def remove_stale_local(package_manager, recipe):
+    """
+    If a recipe is missing from remote but a local copy exists, wipe the local
+    copy so the rebuild starts clean (and the push uploads a fresh artifact).
+    """
+    local_result = package_manager.query(query_from_recipe(recipe))
+    for pkg in local_result:
+        if parameters.verbosity > 0:
+            print(
+                f"Removing stale local package {pkg.properties.get_as_str()} "
+                f"(missing from remote, will rebuild)."
+            )
+        package_manager.remove_package(pkg, remote_name="")
+
+
+def pull_dep(package_manager, dep_query):
+    """
+    Ensure a dependency is available locally. Skips if already local.
+    add_from_remote handles transitive sub-deps automatically.
+    """
+    if len(package_manager.query(dep_query)) > 0:
+        return
+    remote_result = package_manager.query(dep_query, remote_name="default")
+    if len(remote_result) > 0:
+        if parameters.verbosity > 0:
+            print(f"Pulling {remote_result[0].properties.get_as_str()} from remote.")
+        package_manager.add_from_remote(remote_result[0], "default")
+
+
+def collect_build_deps(to_build, recipes):
+    """
+    Return the list of unique dep query dicts needed to build everything in
+    to_build. Only immediate deps are collected; add_from_remote will pull
+    sub-deps transitively when it fetches a package.
+    """
+    by_name_kind = {(r.name, r.kind): r for r in recipes}
+    to_build_keys = {(r.name, r.kind) for r in to_build}
+    seen = set()
+    deps = []
+    for recipe in to_build:
+        for dep in recipe.dependencies:
+            key = (dep["name"], dep.get("kind", recipe.kind))
+            if key in seen or key in to_build_keys:
+                continue
+            seen.add(key)
+            # Prefer a full query (matches current platform) when we know the recipe
+            if key in by_name_kind:
+                deps.append(query_from_recipe(by_name_kind[key]))
+            else:
+                deps.append(dep)
+    return deps
+
+
 def main():
     """
     Do all builds
@@ -270,44 +338,70 @@ def main():
     local_manager = LocalManager()
     package_manager = PackageManager(system=local_manager.get_sys())
     rem = package_manager.get_default_remote()
+    if rem is None:
+        print("ERROR: no default remote configured.", file=stderr)
+        exit(1)
     #
     # find all recipes
     #
     err_code = 0
     recipes = find_recipes(lib_dir, 1)
     recipes = reorder_recipes(recipes, package_manager, True)
-    recipe_to_build = []
+
     #
-    # Select only what need to be build right now!
-    #   Eventually pull package from remote
+    # Classification against the remote (parallel). Local cache is ignored here:
+    # a recipe missing from the remote must be rebuilt even if present locally.
     #
-    if rem is not None:
-        for recipe in recipes:
-            qr = query_from_recipe(recipe)
-            query_result = package_manager.query(qr)
-            if len(query_result):
-                if parameters.verbosity > 0:
-                    print(f"Package {recipe.to_str()} found locally, no build.")
-                continue
-            query_result = package_manager.query(qr, remote_name="default")
-            if len(query_result) > 0:
-                if parameters.verbosity > 0:
-                    print(
-                        f"Package {recipe.to_str()} found on remote, pulling, no build."
-                    )
-                if parameters.do_pull:
-                    package_manager.add_from_remote(query_result[0], "default")
-                continue
-            recipe_to_build.append(recipe)
+    with ThreadPoolExecutor(max_workers=MAX_WORKERS) as ex:
+        classifications = list(
+            ex.map(lambda r: classify_recipe(package_manager, r), recipes)
+        )
+
+    recipe_to_build = [r for r, on_remote in classifications if not on_remote]
+
+    if parameters.verbosity > 0:
+        on_remote_count = sum(1 for _, on_remote in classifications if on_remote)
+        print(
+            f"{on_remote_count} recipe(s) already on remote, "
+            f"{len(recipe_to_build)} recipe(s) to build."
+        )
+
     nb = len(recipe_to_build)
     if nb == 0:
-        print("Nothing else to build!")
+        print("Remote is up-to-date, nothing to build.")
         exit(0)
-    else:
-        print(f"{nb} recipe{['', 's'][nb > 1]} needs to be build.")
-        if parameters.verbosity > 0:
-            for recipe in recipe_to_build:
-                print(f" --- Building: {recipe.to_str()}...")
+
+    print(f"{nb} recipe{['', 's'][nb > 1]} needs to be build.")
+    if parameters.verbosity > 0:
+        for recipe in recipe_to_build:
+            print(f" --- Building: {recipe.to_str()}...")
+
+    #
+    # Remove stale local copies of recipes we are about to rebuild.
+    # (User rule: if missing from remote, wipe local and rebuild from scratch.)
+    #
+    for recipe in recipe_to_build:
+        remove_stale_local(package_manager, recipe)
+    local_manager.get_sys().local_database.dependencies.clear()
+    local_manager.get_sys().local_database.reload()
+
+    #
+    # Pull only the build-time deps of the recipes we are going to build.
+    # add_from_remote recursively pulls sub-deps when it fetches a package.
+    # Pulls are serialised: depmanager's add_from_location uses a shared
+    # temp dir (self.__sys.temp_path / "pack") that is not safe to share
+    # across threads.
+    #
+    if parameters.do_pull:
+        deps_to_pull = collect_build_deps(recipe_to_build, recipes)
+        if deps_to_pull:
+            if parameters.verbosity > 0:
+                print(f"Ensuring {len(deps_to_pull)} dep(s) are available locally...")
+            for dep_query in deps_to_pull:
+                pull_dep(package_manager, dep_query)
+            local_manager.get_sys().local_database.dependencies.clear()
+            local_manager.get_sys().local_database.reload()
+
     #
     # do the build
     #
