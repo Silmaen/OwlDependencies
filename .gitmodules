@@ -166,3 +166,6 @@
 [submodule "Libs/imgui_markdown/sources/imgui_markdown"]
 	path = Libs/imgui_markdown/sources/imgui_markdown
 	url = git@github.com:enkisoftware/imgui_markdown.git
+[submodule "Libs/md4c/md4c"]
+	path = Libs/md4c/md4c
+	url = git@github.com:mity/md4c.git
