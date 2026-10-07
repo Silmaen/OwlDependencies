@@ -1,5 +1,10 @@
 # Owl Dependencies
 
+> [!WARNING]
+> **This project is deprecated and no longer maintained.** The Owl Engine now gets its
+> dependencies through [Conan](https://conan.io), so these DepManager recipes are no longer
+> used. [DepManager](https://github.com/Silmaen/DepManager) itself is deprecated as well.
+
 This project only aims to gather all dependencies for the Owl Engine.
 
 See the git repository [OwlEngine](https://github.com/Silmaen/Owl) for the Engine code.
